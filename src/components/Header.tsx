@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, FileText } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import NowPlaying from "./NowPlaying";
 import { useLocation, Link } from "react-router-dom";
 
 const Header = () => {
@@ -81,6 +82,7 @@ const Header = () => {
                   <Mail className="h-5 w-5" />
                 </a>
               </Button>
+              <NowPlaying />
               <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2" asChild>
                 <Link to={isResumePage ? "/" : "/resume"}>
                   <FileText className="h-4 w-4 mr-2" />
@@ -106,6 +108,7 @@ const Header = () => {
                   <Mail className="h-4 w-4" />
                 </a>
               </Button>
+              <NowPlaying />
               <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-1" asChild>
                 <Link to={isResumePage ? "/" : "/resume"}>
                   <FileText className="h-4 w-4" />

@@ -46,13 +46,13 @@ const Resume = () => {
       institution: "Patan Multiple Campus",
       degree: "B.Sc. in Computer Science and Information Technology",
       duration: "2023 - 2027 (Ongoing)",
-      details: "CGPA: 3.36 / 4.0"
+      details: ""
     },
     {
       institution: "Prasadi Academy",
       degree: "Senior Secondary (+2), NEB – Science",
       duration: "Graduated 2022",
-      details: ""
+      details: "CGPA: 3.36 / 4.0"
     }
   ];
 
