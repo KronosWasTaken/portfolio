@@ -6,6 +6,15 @@ import { Button } from "@/components/ui/button";
 const Certifications = () => {
   const certifications = [
     {
+      title: "Oracle Cloud Infrastructure 2025 Certified Networking Professional",
+      issuer: "Oracle",
+      date: "September 2025",
+      description: "Professional certification in Oracle Cloud Infrastructure networking services and solutions",
+      credentialLink: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=AAD114450C5C2A72ABF108B067E8420E9C80CB8C985ACB75FD8103F137B49A12",
+      icon: "☁️",
+      featured: true
+    },
+    {
       title: "Google Cybersecurity Professional",
       issuer: "Google",
       date: "August 2025",
