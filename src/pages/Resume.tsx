@@ -65,6 +65,7 @@ const Resume = () => {
 
   const certifications = [
     { name: "Oracle Cloud Infrastructure 2025 Certified Networking Professional", issuer: "Oracle", date: "September 2025" },
+    { name: "Oracle Cloud Infrastructure 2025 Certified DevOps Professional", issuer: "Oracle", date: "September 2025" },
     { name: "Google Cybersecurity Professional", issuer: "Google", date: "August 2025" },
     { name: "Juniper Networks Certified Associate - Junos (JNCIA-Junos)", issuer: "Juniper Networks", date: "August 2025" },
     { name: "Junior Cybersecurity Analyst Career Path", issuer: "Cisco Networking Academy", date: "June 2025" },

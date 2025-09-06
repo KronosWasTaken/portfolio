@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { SiPython, SiLinux, SiDocker, SiGithub } from "react-icons/si";
 import { Shield, Network, Code, Lock, Brain } from "lucide-react";
+import { motion } from "motion/react";
+import { aboutAnimations } from "@/animations";
 
 const About = () => {
   const expertise = [
@@ -29,33 +31,51 @@ const About = () => {
   return (
     <section id="about" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          {...aboutAnimations.header}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">My Expertise</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Specialized in cybersecurity, network defense, and building secure applications
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {expertise.map((item, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border/50">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20 group-hover:rotate-12 transition-all duration-300">
-                  <item.icon className="h-6 w-6 text-highlight" />
-                </div>
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={index}
+              {...aboutAnimations.expertiseCard(index)}
+              {...aboutAnimations.cardHover}
+            >
+              <Card className="group hover:shadow-lg border-border/50 h-full">
+                <CardContent className="p-6 text-center">
+                  <motion.div 
+                    className="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20"
+                    {...aboutAnimations.iconHover}
+                  >
+                    <item.icon className="h-6 w-6 text-highlight" />
+                  </motion.div>
+                  <h3 className="font-semibold mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <Card className="max-w-3xl mx-auto group hover:shadow-lg transition-all duration-300 border-border/50">
+        <motion.div 
+          className="mt-16 text-center"
+          {...aboutAnimations.learningCard}
+        >
+          <Card className="max-w-3xl mx-auto group hover:shadow-lg border-border/50">
             <CardContent className="p-6 text-center">
-              <div className="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20 group-hover:rotate-12 transition-all duration-300">
+              <motion.div 
+                className="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20"
+                {...aboutAnimations.iconHover}
+              >
                 <Brain className="h-6 w-6 text-highlight" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold mb-2">Continuous Learning Journey</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 I embrace the mindset of a perpetual learner in the rapidly evolving field of cybersecurity. 
@@ -64,7 +84,7 @@ const About = () => {
               </p>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
