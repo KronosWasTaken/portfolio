@@ -2,9 +2,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SiPython, SiLinux, SiDocker, SiGithub } from "react-icons/si";
 import { Shield, Network, Code, Lock, Brain } from "lucide-react";
 import { motion } from "motion/react";
-import { aboutAnimations } from "@/animations";
+import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const About = () => {
+  const { about: aboutAnimations } = useMobileAnimations();
   const expertise = [
     {
       icon: Shield,

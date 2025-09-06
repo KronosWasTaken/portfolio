@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Shield, Lock, Code } from "lucide-react";
 import { motion } from "motion/react";
-import { projectsAnimations } from "@/animations";
+import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const Projects = () => {
+  const { projects: projectsAnimations } = useMobileAnimations();
   const projects = [
     {
       title: "Xylem",

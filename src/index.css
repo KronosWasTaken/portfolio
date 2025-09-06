@@ -163,6 +163,53 @@ All colors MUST be HSL.
     linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px);
 }
 
+/* Mobile optimizations - simpler grid pattern */
+@media (max-width: 768px) {
+  .bg-grid-pattern {
+    background-size: 100px 100px;
+    opacity: 0.3;
+  }
+  
+  /* Disable expensive CSS effects on mobile */
+  * {
+    will-change: auto !important;
+  }
+  
+  /* Reduce blur effects */
+  .blur-3xl {
+    filter: blur(8px);
+  }
+  
+  /* Optimize animations */
+  .animate-pulse {
+    animation-duration: 3s;
+  }
+  
+  /* Reduce shadow complexity */
+  .shadow-lg {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shadow-xl {
+    box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Ultra-low-end mobile devices */
+@media (max-width: 480px) {
+  .bg-grid-pattern {
+    display: none;
+  }
+  
+  .blur-3xl {
+    filter: none;
+  }
+  
+  .animate-pulse {
+    animation: none;
+  }
+}
+
 /* Animation delays */
 .delay-1000 {
   animation-delay: 1s;

@@ -3,12 +3,13 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { useState, useEffect } from "react";
 import ParticleBackground from "./ParticleBackground";
 import { motion } from "motion/react";
-import { heroAnimations } from "@/animations";
+import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const Hero = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const titles = ["Analyst", "Engineer"];
+  const { hero: heroAnimations, isMobile } = useMobileAnimations();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,12 +28,16 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20"></div>
       <div className="absolute inset-0 bg-grid-pattern"></div>
       
-      {/* Interactive particle background */}
-      <ParticleBackground />
+      {/* Interactive particle background - disabled on mobile for performance */}
+      {!isMobile && <ParticleBackground />}
       
-      {/* Floating shapes - theme adaptive */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-highlight/[0.03] dark:bg-highlight/5 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/[0.03] dark:bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      {/* Floating shapes - theme adaptive - reduced on mobile */}
+      {!isMobile && (
+        <>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-highlight/[0.03] dark:bg-highlight/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/[0.03] dark:bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </>
+      )}
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div 

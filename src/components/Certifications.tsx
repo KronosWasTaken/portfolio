@@ -11,9 +11,10 @@ import {
 } from "react-icons/si";
 import { Shield } from "lucide-react";
 import { motion } from "motion/react";
-import { certificationsAnimations } from "@/animations";
+import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const Certifications = () => {
+  const { certifications: certificationsAnimations } = useMobileAnimations();
   const certifications = [
     {
       title: "Oracle Cloud Infrastructure 2025 Certified Networking Professional",

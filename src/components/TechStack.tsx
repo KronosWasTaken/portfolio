@@ -13,9 +13,10 @@ import {
 } from "react-icons/si";
 import { Shield, Lock, Network, Code } from "lucide-react";
 import { motion } from "motion/react";
-import { techStackAnimations } from "@/animations";
+import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const TechStack = () => {
+  const { techStack: techStackAnimations } = useMobileAnimations();
   const technologies = [
     { name: "Python", icon: SiPython },
     { name: "Golang", icon: SiGoland },

@@ -2,9 +2,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Shield, Network, Calendar, Building } from "lucide-react";
 import { motion } from "motion/react";
-import { experienceAnimations } from "@/animations";
+import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const Experience = () => {
+  const { experience: experienceAnimations } = useMobileAnimations();
   const experiences = [
     {
       title: "Cybersecurity Research Intern",

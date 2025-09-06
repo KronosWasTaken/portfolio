@@ -6,6 +6,11 @@ export * from "./variants/transitions";
 
 // Hooks
 export * from "./hooks/useHoverAnimation";
+export * from "./hooks/useMobileAnimations";
+
+// Mobile optimizations
+export * from "./mobile";
+export * from "./components/mobile";
 
 // Component animations
 export * from "./components/hero";
