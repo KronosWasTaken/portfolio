@@ -10,9 +10,16 @@ import {
   Github, 
   Calendar,
   ExternalLink,
-  Download
+  Download,
+  ChevronDown
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Resume = () => {
   const experience = [
@@ -59,8 +66,8 @@ const Resume = () => {
   const skills = {
     "Programming Languages": ["Python", "Golang", "Bash", "JavaScript", "Rust", "TypeScript", "C#"],
     "Cybersecurity Tools/Concepts": ["Ethical Hacking", "Cyber Threat Management", "Network Defense", "Endpoint Security"],
-    "Systems & Platforms": ["Linux", "Networking Devices", "Docker", "Oracle Cloud"],
-    "Web & Development": ["React", "Flask", "Bootstrap", "PyQt5", "Selenium"]
+    "Systems & Platforms": ["Linux", "Networking Devices", "Docker", "Oracle Cloud", "Supabase", "Vercel"],
+    "Web & Development": ["React", "Flask", "Bootstrap", "PyQt5", "Selenium", "Tailwind CSS", "Framer Motion", "PostgreSQL"]
   };
 
   const certifications = [
@@ -80,6 +87,12 @@ const Resume = () => {
   ];
 
   const projects = [
+    {
+      name: "VFlix",
+      description: "A sophisticated, full-stack streaming platform built with cutting-edge technologies. Features real-time data synchronization, user authentication, and comprehensive movie/TV show database integration.",
+      link: "https://github.com/KronosWasTaken/VFlix",
+      technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion", "TMDb API", "Vercel"]
+    },
     {
       name: "Xylem",
       description: "Statically-typed, block-structured programming language with functions and type checking. Built in Rust.",
@@ -128,7 +141,47 @@ const Resume = () => {
             <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span>aaditya12raj@gmail.com</span>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-muted-foreground hover:text-foreground p-0 h-auto font-normal"
+                    >
+                      <span>aaditya12raj@gmail.com</span>
+                      <ChevronDown className="h-3 w-3 ml-1" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="center">
+                    <DropdownMenuItem asChild>
+                      <a 
+                        href="mailto:aaditya12raj@gmail.com"
+                        className="flex items-center space-x-2 w-full"
+                      >
+                        <Mail className="h-4 w-4" />
+                        <span>Gmail</span>
+                      </a>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <a 
+                        href="mailto:aaditya12raj@tuta.io"
+                        className="flex items-center space-x-2 w-full"
+                      >
+                        <Mail className="h-4 w-4" />
+                        <span>Tutanota</span>
+                      </a>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <a 
+                        href="mailto:InfiniteEcl1pse@protonmail.com"
+                        className="flex items-center space-x-2 w-full"
+                      >
+                        <Mail className="h-4 w-4" />
+                        <span>ProtonMail</span>
+                      </a>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />

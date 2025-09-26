@@ -65,7 +65,6 @@ const Header = () => {
           <div className="flex items-center space-x-1 sm:space-x-2">
             <ThemeToggle />
             
-            {/* Desktop: Show all social icons + resume button */}
             <div className="hidden sm:flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild>
                 <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
@@ -91,7 +90,6 @@ const Header = () => {
               </Button>
             </div>
 
-            {/* Mobile: Show essential social links + resume button */}
             <div className="flex sm:hidden items-center space-x-1">
               <Button variant="ghost" size="icon" asChild>
                 <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">

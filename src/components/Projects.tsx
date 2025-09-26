@@ -1,13 +1,22 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Shield, Lock, Code } from "lucide-react";
+import { ExternalLink, Github, Shield, Lock, Code, Play } from "lucide-react";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const Projects = () => {
   const { projects: projectsAnimations } = useMobileAnimations();
   const projects = [
+    {
+      title: "VFlix",
+      description: "A sophisticated, full-stack streaming platform built with cutting-edge technologies. Features real-time data synchronization, user authentication, and comprehensive movie/TV show database integration.",
+      technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion", "TMDb API", "Vercel"],
+      demoLink: "https://vflix-mocha.vercel.app",
+      githubLink: "https://github.com/KronosWasTaken/VFlix",
+      icon: Play,
+      featured: true
+    },
     {
       title: "Xylem",
       description: "Statically-typed, block-structured programming language with functions and type checking. Built in Rust with a focus on security and performance.",
@@ -64,7 +73,7 @@ const Projects = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A showcase of innovative cybersecurity tools and programming language projects
+            A showcase of innovative full-stack applications, cybersecurity tools, and programming language projects
           </p>
         </motion.div>
 

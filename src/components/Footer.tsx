@@ -1,4 +1,11 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Footer = () => {
   return (
@@ -27,12 +34,47 @@ const Footer = () => {
             >
               <Linkedin className="h-5 w-5" />
             </a>
-            <a 
-              href="mailto:aaditya12raj@gmail.com"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-muted-foreground hover:text-foreground p-2 h-auto"
+                >
+                  <Mail className="h-5 w-5" />
+                  <ChevronDown className="h-3 w-3 ml-1" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                  <a 
+                    href="mailto:aaditya12raj@gmail.com"
+                    className="flex items-center space-x-2 w-full"
+                  >
+                    <Mail className="h-4 w-4" />
+                    <span>Gmail</span>
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a 
+                    href="mailto:aaditya12raj@tuta.io"
+                    className="flex items-center space-x-2 w-full"
+                  >
+                    <Mail className="h-4 w-4" />
+                    <span>Tutanota</span>
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a 
+                    href="mailto:InfiniteEcl1pse@protonmail.com"
+                    className="flex items-center space-x-2 w-full"
+                  >
+                    <Mail className="h-4 w-4" />
+                    <span>ProtonMail</span>
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
         
