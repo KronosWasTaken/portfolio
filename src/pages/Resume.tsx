@@ -64,10 +64,11 @@ const Resume = () => {
   ];
 
   const skills = {
-    "Programming Languages": ["Python", "Golang", "Bash", "JavaScript", "Rust", "TypeScript", "C#"],
-    "Cybersecurity Tools/Concepts": ["Ethical Hacking", "Cyber Threat Management", "Network Defense", "Endpoint Security"],
-    "Systems & Platforms": ["Linux", "Networking Devices", "Docker", "Oracle Cloud", "Supabase", "Vercel"],
-    "Web & Development": ["React", "Flask", "Bootstrap", "PyQt5", "Selenium", "Tailwind CSS", "Framer Motion", "PostgreSQL"]
+    "Programming Languages": ["Python", "Golang", "Rust", "JavaScript", "TypeScript", "C#"],
+    "Web Development": ["React", "Tailwind CSS", "FastAPI", "Flask", "Gin"],
+    "Database & Cloud": ["PostgreSQL", "Supabase", "SQLAlchemy", "Oracle Cloud", "Docker"],
+    "Cybersecurity": ["Network Defense", "Ethical Hacking", "Cryptography", "Endpoint Security"],
+    "Systems & Tools": ["Linux", "Git", "Tauri", "Selenium"]
   };
 
   const certifications = [
