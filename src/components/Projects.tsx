@@ -1,13 +1,22 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Shield, Lock, Code, Play } from "lucide-react";
+import { ExternalLink, Github, Shield, Lock, Code, Play, BookOpen } from "lucide-react";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const Projects = () => {
   const { projects: projectsAnimations } = useMobileAnimations();
   const projects = [
+    {
+      title: "AniRyu",
+      description: "A modern, full-stack anime and manga tracking application with beautiful statistics, bulk management features, and seamless AniList import functionality. Features responsive design, dark theme, and comprehensive progress tracking.",
+      technologies: ["React", "TypeScript", "Go", "Gin", "GORM", "SQLite", "Tailwind CSS", "shadcn/ui", "Framer Motion"],
+      demoLink: null,
+      githubLink: "https://github.com/KronosWasTaken/AniRyu",
+      icon: BookOpen,
+      featured: true
+    },
     {
       title: "VFlix",
       description: "A sophisticated, full-stack streaming platform built with cutting-edge technologies. Features real-time data synchronization, user authentication, and comprehensive movie/TV show database integration.",

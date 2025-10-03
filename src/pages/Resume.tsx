@@ -89,6 +89,12 @@ const Resume = () => {
 
   const projects = [
     {
+      name: "AniRyu",
+      description: "A modern, full-stack anime and manga tracking application with beautiful statistics, bulk management features, and seamless AniList import functionality. Features responsive design, dark theme, and comprehensive progress tracking.",
+      link: "https://github.com/KronosWasTaken/AniRyu",
+      technologies: ["React", "TypeScript", "Go", "Gin", "GORM", "SQLite", "Tailwind CSS", "shadcn/ui", "Framer Motion"]
+    },
+    {
       name: "VFlix",
       description: "A sophisticated, full-stack streaming platform built with cutting-edge technologies. Features real-time data synchronization, user authentication, and comprehensive movie/TV show database integration.",
       link: "https://github.com/KronosWasTaken/VFlix",
