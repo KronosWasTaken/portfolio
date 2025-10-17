@@ -65,7 +65,7 @@ const Resume = () => {
 
   const skills = {
     "Programming Languages": ["Python", "Golang", "Rust", "JavaScript", "TypeScript", "C#"],
-    "Web Development": ["React", "Tailwind CSS", "FastAPI", "Flask", "Gin"],
+    "Web Development": ["React", "Tailwind CSS", "Electron", "FastAPI", "Flask", "Gin"],
     "Database & Cloud": ["PostgreSQL", "Supabase", "SQLAlchemy", "Oracle Cloud", "Docker"],
     "Cybersecurity": ["Network Defense", "Ethical Hacking", "Cryptography", "Endpoint Security"],
     "Systems & Tools": ["Linux", "Git", "Tauri", "Selenium"]
@@ -111,6 +111,12 @@ const Resume = () => {
       description: "A simple, modular, and educational GPG-like encryption tool in Python supporting AES, Argon2, and RSA hybrid encryption.",
       link: "https://github.com/KronosWasTaken/GPG-Lite",
       technologies: ["Python", "Cryptography", "AES", "Argon2", "RSA", "Security"]
+    },
+    {
+      name: "Onyx",
+      description: "A modern, fast, and beautiful note-taking application built with Electron and React. Features rich text editing, customizable themes, local data storage with encryption, and offline functionality.",
+      link: "https://github.com/KronosWasTaken/Onyx",
+      technologies: ["React", "TypeScript", "Electron", "Tailwind CSS", "Better-SQLite3", "SQLCipher", "TipTap", "Zustand", "Vite", "pnpm"]
     },
     {
       name: "Intrusion Detector",

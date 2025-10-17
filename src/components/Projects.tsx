@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Shield, Lock, Code, Play, BookOpen } from "lucide-react";
+import { ExternalLink, Github, Shield, Lock, Code, Play, BookOpen, FileText } from "lucide-react";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
@@ -43,6 +43,15 @@ const Projects = () => {
       githubLink: "https://github.com/KronosWasTaken/GPG-Lite",
       icon: Lock,
       featured: true
+    },
+    {
+      title: "Onyx",
+      description: "A modern, fast, and beautiful note-taking application built with Electron and React. Features rich text editing, customizable themes, local data storage with encryption, and offline functionality.",
+      technologies: ["React", "TypeScript", "Electron", "Tailwind CSS", "Better-SQLite3", "SQLCipher", "TipTap", "Zustand", "Vite", "pnpm"],
+      demoLink: null,
+      githubLink: "https://github.com/KronosWasTaken/Onyx",
+      icon: FileText,
+      featured: false
     },
     {
       title: "Intrusion Detector",

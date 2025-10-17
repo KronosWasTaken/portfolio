@@ -21,10 +21,11 @@ import {
   SiBootstrap,
   SiSelenium,
   SiTauri,
-  SiCapacitor
+  SiCapacitor,
+  SiElectron
 } from "react-icons/si";
 import { Shield, Lock, Network, Code, Database, Globe, Palette, Cloud, Server, Terminal, Key, TestTube, Smartphone } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 import { useState } from "react";
 
@@ -44,6 +45,7 @@ const TechStack = () => {
         { name: "Bootstrap", icon: SiBootstrap },
         { name: "Radix UI", icon: Palette },
         { name: "Framer Motion", icon: Globe },
+        { name: "Electron", icon: SiElectron },
         { name: "Capacitor", icon: SiCapacitor }
       ]
     },
@@ -117,33 +119,35 @@ const TechStack = () => {
         </div>
 
         {/* Tab Content */}
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="space-y-6"
-        >
-          <div className="text-center">
+        <div className="space-y-6">
+          <motion.div 
+            key={`header-${activeTab}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="text-center"
+          >
             <h3 className="text-2xl font-bold text-highlight mb-2">
               {techCategories[activeTab].title}
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               {techCategories[activeTab].description}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-6xl mx-auto">
+          <motion.div 
+            key={`grid-${activeTab}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-6xl mx-auto"
+          >
             {techCategories[activeTab].technologies.map((tech, techIndex) => {
               const IconComponent = tech.icon;
               return (
-                <motion.div 
-                  key={techIndex}
+                <div 
+                  key={`${activeTab}-${tech.name}`}
                   className="flex flex-col items-center p-4 bg-card rounded-lg border hover:shadow-lg transition-all duration-300 hover:scale-105"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: techIndex * 0.1 }}
                 >
                   <motion.div 
                     whileHover={{ scale: 1.2, rotate: 5 }}
@@ -152,11 +156,11 @@ const TechStack = () => {
                     <IconComponent className="h-8 w-8 mb-3 text-highlight" />
                   </motion.div>
                   <span className="text-sm font-medium text-center">{tech.name}</span>
-                </motion.div>
+                </div>
               );
             })}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         <motion.div 
           className="mt-12 text-center"
