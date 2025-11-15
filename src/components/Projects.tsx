@@ -9,6 +9,15 @@ const Projects = () => {
   const { projects: projectsAnimations } = useMobileAnimations();
   const projects = [
     {
+      title: "Eon",
+      description: "Eon is a small, statically-typed, expression-oriented language that compiles to bytecode and runs on a custom VM.",
+      technologies: ["Rust", "Programming Language", "Bytecode VM", "Compiler", "Type System"],
+      demoLink: null,
+      githubLink: "https://github.com/KronosWasTaken/Eon",
+      icon: Code,
+      featured: true
+    },
+    {
       title: "AniRyu",
       description: "A modern, full-stack anime and manga tracking application with beautiful statistics, bulk management features, and seamless AniList import functionality. Features responsive design, dark theme, and comprehensive progress tracking.",
       technologies: ["React", "TypeScript", "Go", "Gin", "GORM", "SQLite", "Tailwind CSS", "shadcn/ui", "Framer Motion"],
@@ -71,15 +80,6 @@ const Projects = () => {
       icon: Lock,
       featured: false
     },
-    {
-      title: "Derivative Calculator",
-      description: "A Rust/Tauri derivative calculator supporting polynomials, trig functions, exponentials, and implicit multiplication.",
-      technologies: ["Rust", "Tauri", "Mathematics", "Calculator", "Desktop App"],
-      demoLink: null,
-      githubLink: "https://github.com/KronosWasTaken/Derivative_Calculator",
-      icon: Code,
-      featured: false
-    }
   ];
 
   return (

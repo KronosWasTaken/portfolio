@@ -89,6 +89,12 @@ const Resume = () => {
 
   const projects = [
     {
+      name: "Eon",
+      description: "Eon is a small, statically-typed, expression-oriented language that compiles to bytecode and runs on a custom VM.",
+      link: "https://github.com/KronosWasTaken/Eon",
+      technologies: ["Rust", "Programming Language", "Bytecode VM", "Compiler", "Type System"]
+    },
+    {
       name: "AniRyu",
       description: "A modern, full-stack anime and manga tracking application with beautiful statistics, bulk management features, and seamless AniList import functionality. Features responsive design, dark theme, and comprehensive progress tracking.",
       link: "https://github.com/KronosWasTaken/AniRyu",
@@ -130,12 +136,6 @@ const Resume = () => {
       link: "https://github.com/KronosWasTaken/pass-cli",
       technologies: ["Python", "CLI", "SQLite3", "Argon2", "Fernet", "Password Management"]
     },
-    {
-      name: "Derivative Calculator",
-      description: "A Rust/Tauri derivative calculator supporting polynomials, trig functions, exponentials, and implicit multiplication.",
-      link: "https://github.com/KronosWasTaken/Derivative_Calculator",
-      technologies: ["Rust", "Tauri", "Mathematics", "Calculator", "Desktop App"]
-    }
   ];
 
   return (
