@@ -10,7 +10,7 @@ const Experience = () => {
     {
       title: "Cybersecurity Research Intern",
       company: "Neelgai",
-      period: "Aug 2025 - Present",
+      period: "Aug 2025 - Nov 2025",
       description: "Designed and built an MCP server to explore secure integrations with various services. Researched and implemented defenses against prompt injection, authentication flaws, and insecure agent behaviors. Developed proof-of-concepts and documented security findings to support blue team use cases.",
       technologies: ["MCP Server", "Security Research", "Blue Team", "Documentation"],
       icon: Shield,

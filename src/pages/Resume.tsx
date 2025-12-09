@@ -26,7 +26,7 @@ const Resume = () => {
     {
       company: "Neelgai",
       position: "Cybersecurity Research Intern",
-      duration: "Aug 2025 - Present",
+      duration: "Aug 2025 - Nov 2025",
       location: "Remote",
       achievements: [
         "Designed and built an MCP server to explore secure integrations with various services.",
