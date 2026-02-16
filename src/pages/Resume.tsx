@@ -26,7 +26,7 @@ const Resume = () => {
     {
       company: "Neelgai",
       position: "Cybersecurity Research Intern",
-      duration: "Aug 2025 - Nov 2025",
+      duration: "Aug 2025 - Jan 2025",
       location: "Remote",
       achievements: [
         "Designed and built an MCP server to explore secure integrations with various services.",
@@ -64,7 +64,7 @@ const Resume = () => {
   ];
 
   const skills = {
-    "Programming Languages": ["Python", "Golang", "Rust", "JavaScript", "TypeScript", "C#"],
+    "Programming Languages": ["Python", "Golang", "Rust", "Zig", "JavaScript", "TypeScript", "C#"],
     "Web Development": ["React", "Tailwind CSS", "Electron", "FastAPI", "Flask", "Gin"],
     "Database & Cloud": ["PostgreSQL", "Supabase", "SQLAlchemy", "Oracle Cloud", "Docker"],
     "Cybersecurity": ["Network Defense", "Ethical Hacking", "Cryptography", "Endpoint Security"],
@@ -93,6 +93,12 @@ const Resume = () => {
       description: "Eon is a small, statically-typed, expression-oriented language that compiles to bytecode and runs on a custom VM.",
       link: "https://github.com/KronosWasTaken/Eon",
       technologies: ["Rust", "Programming Language", "Bytecode VM", "Compiler", "Type System"]
+    },
+    {
+      name: "Advent of Code",
+      description: "Advent of Code solutions starting from 2015.",
+      link: "https://github.com/KronosWasTaken/Advent_Of_Code",
+      technologies: ["Algorithms", "Problem Solving", "Advent of Code", "Multi-year", "Zig"]
     },
     {
       name: "AniRyu",

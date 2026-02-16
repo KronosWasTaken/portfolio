@@ -22,7 +22,8 @@ import {
   SiSelenium,
   SiTauri,
   SiCapacitor,
-  SiElectron
+  SiElectron,
+  SiZig
 } from "react-icons/si";
 import { Shield, Lock, Network, Code, Database, Globe, Palette, Cloud, Server, Terminal, Key, TestTube, Smartphone } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -75,6 +76,7 @@ const TechStack = () => {
         { name: "Oracle Cloud", icon: SiOracle },
         { name: "Tauri", icon: SiTauri },
         { name: "Rust", icon: SiRust },
+        { name: "Zig", icon: SiZig },
         { name: "C#", icon: SiSharp },
         { name: "Cisco", icon: SiCisco },
         { name: "Juniper", icon: SiJunipernetworks },

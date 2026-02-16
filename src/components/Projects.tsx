@@ -18,6 +18,15 @@ const Projects = () => {
       featured: true
     },
     {
+      title: "Advent of Code",
+      description: "Advent of Code solutions starting from 2015.",
+      technologies: ["Algorithms", "Problem Solving", "Advent of Code", "Multi-year", "Zig"],
+      demoLink: null,
+      githubLink: "https://github.com/KronosWasTaken/Advent_Of_Code",
+      icon: Code,
+      featured: false
+    },
+    {
       title: "AniRyu",
       description: "A modern, full-stack anime and manga tracking application with beautiful statistics, bulk management features, and seamless AniList import functionality. Features responsive design, dark theme, and comprehensive progress tracking.",
       technologies: ["React", "TypeScript", "Go", "Gin", "GORM", "SQLite", "Tailwind CSS", "shadcn/ui", "Framer Motion"],
