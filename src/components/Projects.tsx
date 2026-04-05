@@ -1,7 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Shield, Lock, Code, Play, BookOpen, FileText } from "lucide-react";
+import { ExternalLink, Shield, Lock, Code, Play, BookOpen, FileText } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
@@ -157,23 +158,23 @@ const Projects = () => {
                     ))}
                   </div>
                   
-                  <div className="flex items-center space-x-3 pt-4">
+                   <div className="flex items-center space-x-3 pt-4">
+                    {project.githubLink && (
+                      <motion.div {...projectsAnimations.buttonHover}>
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                            <SiGithub className="h-4 w-4 mr-2" />
+                            View Code
+                          </a>
+                        </Button>
+                      </motion.div>
+                    )}
                     {project.demoLink && (
                       <motion.div {...projectsAnimations.buttonHover}>
                         <Button variant="default" size="sm" asChild className="bg-highlight text-highlight-foreground hover:bg-highlight/90">
                           <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4 mr-2" />
                             Live Demo
-                          </a>
-                        </Button>
-                      </motion.div>
-                    )}
-                    {project.githubLink && (
-                      <motion.div {...projectsAnimations.buttonHover}>
-                        <Button variant="outline" size="sm" asChild>
-                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                            <Github className="h-4 w-4 mr-2" />
-                            View Code
                           </a>
                         </Button>
                       </motion.div>
@@ -195,7 +196,7 @@ const Projects = () => {
           <motion.div {...projectsAnimations.buttonHover}>
             <Button variant="outline" asChild>
               <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
+                <SiGithub className="h-4 w-4 mr-2" />
                 View All Projects on GitHub
               </a>
             </Button>

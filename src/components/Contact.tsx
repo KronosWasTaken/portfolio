@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, MapPin, ChevronDown } from "lucide-react";
+import { Mail, MapPin, ChevronDown } from "lucide-react";
+import { SiGithub } from "react-icons/si";
+import { FiLinkedin } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import {
@@ -122,14 +124,14 @@ const Contact = () => {
                     
                     <Button variant="outline" className="w-full justify-start" asChild>
                       <a href="https://linkedin.com/in/aaditya-raj-390113324" target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="h-5 w-5 mr-3" />
+                        <FiLinkedin className="h-5 w-5 mr-3" />
                         LinkedIn Profile
                       </a>
                     </Button>
                     
                     <Button variant="outline" className="w-full justify-start" asChild>
                       <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
-                        <Github className="h-5 w-5 mr-3" />
+                        <SiGithub className="h-5 w-5 mr-3" />
                         GitHub Profile
                       </a>
                     </Button>

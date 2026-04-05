@@ -25,7 +25,7 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20 relative overflow-hidden">
       {/* Elegant background - theme adaptive */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-background via-background to-muted/20"></div>
       <div className="absolute inset-0 bg-grid-pattern"></div>
       
       {/* Interactive particle background - disabled on mobile for performance */}
@@ -34,8 +34,8 @@ const Hero = () => {
       {/* Floating shapes - theme adaptive - reduced on mobile */}
       {!isMobile && (
         <>
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-highlight/[0.03] dark:bg-highlight/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/[0.03] dark:bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-highlight/3 dark:bg-highlight/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/3 dark:bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </>
       )}
       

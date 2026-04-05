@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Mail, FileText } from "lucide-react";
+import { SiGithub } from "react-icons/si";
+import { FiLinkedin } from "react-icons/fi";
 import ThemeToggle from "./ThemeToggle";
 import NowPlaying from "./NowPlaying";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router";
 
 const Header = () => {
   const location = useLocation();
@@ -68,12 +70,12 @@ const Header = () => {
             <div className="hidden sm:flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild>
                 <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-5 w-5" />
+                  <SiGithub className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
                 <a href="https://linkedin.com/in/aaditya-raj-390113324" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-5 w-5" />
+                  <FiLinkedin className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
@@ -93,12 +95,12 @@ const Header = () => {
             <div className="flex sm:hidden items-center space-x-1">
               <Button variant="ghost" size="icon" asChild>
                 <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4" />
+                  <SiGithub className="h-4 w-4" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
                 <a href="https://linkedin.com/in/aaditya-raj-390113324" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-4 w-4" />
+                  <FiLinkedin className="h-4 w-4" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>

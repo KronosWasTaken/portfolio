@@ -6,13 +6,13 @@ import {
   MapPin, 
   Phone, 
   Mail, 
-  Linkedin, 
-  Github, 
   Calendar,
   ExternalLink,
   Download,
   ChevronDown
 } from "lucide-react";
+import { SiGithub } from "react-icons/si";
+import { FiLinkedin } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -215,13 +215,13 @@ const Resume = () => {
             <div className="flex justify-center space-x-4 mt-4">
               <Button variant="outline" size="sm" asChild>
                 <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4 mr-2" />
+                  <SiGithub className="h-4 w-4 mr-2" />
                   GitHub
                 </a>
               </Button>
               <Button variant="outline" size="sm" asChild>
                 <a href="https://linkedin.com/in/aaditya-raj-390113324" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-4 w-4 mr-2" />
+                  <FiLinkedin className="h-4 w-4 mr-2" />
                   LinkedIn Profile
                 </a>
               </Button>

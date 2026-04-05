@@ -17,7 +17,6 @@ import {
   SiFastapi,
   SiFlask,
   SiGin,
-  SiOracle,
   SiBootstrap,
   SiSelenium,
   SiTauri,
@@ -25,6 +24,7 @@ import {
   SiElectron,
   SiZig
 } from "react-icons/si";
+import { GrOracle } from "react-icons/gr";
 import { Shield, Lock, Network, Code, Database, Globe, Palette, Cloud, Server, Terminal, Key, TestTube, Smartphone } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
@@ -73,7 +73,7 @@ const TechStack = () => {
       technologies: [
         { name: "Linux", icon: SiLinux },
         { name: "Docker", icon: SiDocker },
-        { name: "Oracle Cloud", icon: SiOracle },
+        { name: "Oracle Cloud", icon: GrOracle },
         { name: "Tauri", icon: SiTauri },
         { name: "Rust", icon: SiRust },
         { name: "Zig", icon: SiZig },

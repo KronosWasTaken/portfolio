@@ -1,4 +1,6 @@
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Mail, ChevronDown } from "lucide-react";
+import { SiGithub } from "react-icons/si";
+import { FiLinkedin } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -24,7 +26,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Github className="h-5 w-5" />
+              <SiGithub className="h-5 w-5" />
             </a>
             <a 
               href="https://linkedin.com/in/aaditya-raj-390113324" 
@@ -32,7 +34,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Linkedin className="h-5 w-5" />
+              <FiLinkedin className="h-5 w-5" />
             </a>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

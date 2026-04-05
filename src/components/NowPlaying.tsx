@@ -750,7 +750,7 @@ const NowPlaying = () => {
                 <span className="text-sm font-medium text-highlight">Now Playing</span>
               </div>
               
-              <div className="bg-card border border-border/50 rounded-lg p-4 space-y-3 shadow-sm">
+              <div className="bg-card border border-border/50 rounded-lg p-4 space-y-3 shadow-xs">
                 <div className="flex items-center space-x-3">
                   {getAlbumImage(currentTrack) ? (
                     <img 
@@ -908,8 +908,8 @@ const NowPlaying = () => {
                     })}
                   </div>
                 </div>
-                <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-background to-transparent pointer-events-none" />
-                <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+                <div className="absolute top-0 left-0 right-0 h-4 bg-linear-to-b from-background to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-4 bg-linear-to-t from-background to-transparent pointer-events-none" />
               </div>
             </div>
           )}

@@ -3,12 +3,12 @@ import { Badge } from "@/components/ui/badge";
 import { Award, Calendar, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
-  SiOracle,
   SiGoogle,
   SiJunipernetworks,
   SiCisco,
   SiFortinet
 } from "react-icons/si";
+import { GrOracle } from "react-icons/gr";
 import { Shield } from "lucide-react";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
@@ -22,7 +22,7 @@ const Certifications = () => {
       date: "September 2025",
       description: "Professional certification in Oracle Cloud Infrastructure networking services and solutions",
       credentialLink: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=AAD114450C5C2A72ABF108B067E8420E9C80CB8C985ACB75FD8103F137B49A12",
-      icon: SiOracle,
+      icon: GrOracle,
       featured: true
     },
     {
@@ -31,7 +31,7 @@ const Certifications = () => {
       date: "September 2025",
       description: "Professional certification in Oracle Cloud Infrastructure DevOps practices and solutions",
       credentialLink: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=682D36DF25A1F92246D19E905BE1A7B607EE5CE04BA24304CE18184580FC1E27",
-      icon: SiOracle,
+      icon: GrOracle,
       featured: true
     },
     {
@@ -162,7 +162,7 @@ const Certifications = () => {
                     <div className="flex items-start justify-between">
                       <div className="flex items-start space-x-3">
                          <motion.div 
-                           className="flex-shrink-0 mt-1"
+                           className="shrink-0 mt-1"
                            {...certificationsAnimations.iconHover}
                          >
                            <IconComponent className="h-8 w-8 text-highlight" />
