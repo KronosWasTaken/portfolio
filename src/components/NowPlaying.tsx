@@ -56,15 +56,28 @@ const NowPlaying = () => {
   const [albumImageCache, setAlbumImageCache] = useState<Map<string, string>>(new Map());
   const [currentImageUrls, setCurrentImageUrls] = useState<Map<string, string>>(new Map());
 
+  const cleanArtist = (artist: string) => {
+    if (!artist) return '';
+    // Last.fm sometimes adds multiple artists separated by ; or ,
+    // For album/track lookups, the primary artist (the first one) usually works best
+    return artist.split(';')[0].trim();
+  };
+
+  const isPlaceholderImage = (url?: string) => {
+    if (!url || url.trim() === '') return true;
+    return url.includes('default_album') || url.includes('2a96cbd8');
+  };
+
+  const getAlbumInfoKey = (artist: string, albumOrTrack: string) => {
+    const cleanedArtist = cleanArtist(artist).toLowerCase();
+    const cleanedItem = albumOrTrack.trim().toLowerCase();
+    return `${cleanedArtist}-${cleanedItem}`;
+  };
+
   const fetchAlbumInfo = async (artist: string, album: string, albumKey: string) => {
     try {
-      const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
-      if (!apiKey) {
-        return null;
-      }
-
       const response = await fetch(
-        `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(album)}&api_key=${apiKey}&format=json`,
+        `/api/lastfm?method=album.getinfo&artist=${encodeURIComponent(cleanArtist(artist))}&album=${encodeURIComponent(album)}`,
         {
           headers: {
             'User-Agent': 'Portfolio-NowPlaying/1.0'
@@ -77,16 +90,18 @@ const NowPlaying = () => {
         
         if (data.album?.image) {
           const images = Array.isArray(data.album.image) ? data.album.image : [data.album.image];
-          const imageUrl = images.find(img => img.size === 'large')?.['#text'] ||
+          const imageUrl = images.find(img => img.size === 'extralarge')?.['#text'] ||
+                          images.find(img => img.size === 'large')?.['#text'] ||
                           images.find(img => img.size === 'medium')?.['#text'] ||
-                          images.find(img => img.size === 'small')?.['#text'] ||
                           images[0]?.['#text'];
           
-          if (imageUrl && imageUrl.trim() !== '') {
-            setAlbumImageCache(prev => new Map(prev).set(albumKey, imageUrl));
-            setCurrentImageUrls(prev => new Map(prev).set(albumKey, imageUrl));
+          if (!isPlaceholderImage(imageUrl)) {
+            const normalizedKey = albumKey.toLowerCase();
+            const cacheKey = `album_image_${normalizedKey}`;
             
-            const cacheKey = `album_image_${albumKey}`;
+            setAlbumImageCache(prev => new Map(prev).set(normalizedKey, imageUrl));
+            setCurrentImageUrls(prev => new Map(prev).set(normalizedKey, imageUrl));
+            
             localStorage.setItem(cacheKey, JSON.stringify({
               imageUrl: imageUrl,
               timestamp: Date.now()
@@ -101,44 +116,77 @@ const NowPlaying = () => {
     return null;
   };
 
+  const syncAlbumArt = async (artist: string, track: string, album?: string) => {
+    const trackKey = getAlbumInfoKey(artist, track);
+    const albumKey = album ? getAlbumInfoKey(artist, album) : null;
+    
+    // Skip if already in cache with a valid URL
+    const hasTrackArt = currentImageUrls.has(trackKey) && !isPlaceholderImage(currentImageUrls.get(trackKey));
+    const hasAlbumArt = albumKey && currentImageUrls.has(albumKey) && !isPlaceholderImage(currentImageUrls.get(albumKey));
+    
+    if (hasTrackArt || hasAlbumArt) return;
+
+    // Try album first if we have one
+    if (album) {
+      const albumUrl = await fetchAlbumInfo(artist, album, albumKey!);
+      if (albumUrl) {
+        // fetchAlbumInfo already caches under albumKey. 
+        // Let's also link it to the trackKey for consistency.
+        setAlbumImageCache(prev => new Map(prev).set(trackKey, albumUrl));
+        setCurrentImageUrls(prev => new Map(prev).set(trackKey, albumUrl));
+        localStorage.setItem(`album_image_${trackKey}`, JSON.stringify({
+          imageUrl: albumUrl,
+          timestamp: Date.now()
+        }));
+        return;
+      }
+    }
+
+    // Fallback to track.getinfo which also fetches duration for Now Playing
+    // (In fetchImagesForRecentTracks, this will still get us the image)
+    fetchTrackInfo(artist, track, trackKey, false);
+  };
+
   const getAlbumImage = useMemo(() => {
     return (track: Track) => {
-      if (!track.artist?.['#text'] || !track.album?.['#text']) {
-        return null;
-      }
+      const rawArtist = track.artist?.['#text'];
+      const rawAlbum = track.album?.['#text'];
+      const rawTrack = track.name;
+
+      if (!rawArtist) return null;
       
-      const albumKey = `${track.artist['#text']}-${track.album['#text']}`;
-      
-      if (currentImageUrls.has(albumKey)) {
-        return currentImageUrls.get(albumKey);
-      }
-      
-      if (track.image) {
-        const imageUrl = track.image.find(img => img.size === 'small')?.['#text'] || 
-                         track.image.find(img => img.size === 'medium')?.['#text'] ||
-                         track.image.find(img => img.size === 'large')?.['#text'] ||
-                         track.image[0]?.['#text'];
+      const artistName = cleanArtist(rawArtist);
+
+      // 1. Try images from the track object itself
+      if (track.image && Array.isArray(track.image)) {
+        const images = track.image;
+        const imageUrl = images.find(img => img.size === 'extralarge')?.['#text'] ||
+                         images.find(img => img.size === 'large')?.['#text'] || 
+                         images.find(img => img.size === 'medium')?.['#text'] ||
+                         images[0]?.['#text'];
         
-        if (imageUrl && imageUrl.trim() !== '') {
-          setAlbumImageCache(prev => new Map(prev).set(albumKey, imageUrl));
-          setCurrentImageUrls(prev => new Map(prev).set(albumKey, imageUrl));
-          
-          const cacheKey = `album_image_${albumKey}`;
-          localStorage.setItem(cacheKey, JSON.stringify({
-            imageUrl: imageUrl,
-            timestamp: Date.now()
-          }));
-          
+        if (!isPlaceholderImage(imageUrl)) {
           return imageUrl;
         }
       }
-      
-      if (!albumImageCache.has(albumKey)) {
-        fetchAlbumInfo(track.artist['#text'], track.album['#text'], albumKey);
+
+      // 2. Try cache with multiple keys as fallbacks
+      const albumKey = (rawAlbum && rawAlbum.length > 0) ? getAlbumInfoKey(rawArtist, rawAlbum) : null;
+      const trackKey = getAlbumInfoKey(rawArtist, rawTrack);
+
+      if (albumKey && currentImageUrls.has(albumKey)) {
+        const url = currentImageUrls.get(albumKey);
+        if (!isPlaceholderImage(url)) return url;
       }
+
+      if (currentImageUrls.has(trackKey)) {
+        const url = currentImageUrls.get(trackKey);
+        if (!isPlaceholderImage(url)) return url;
+      }
+      
       return null;
     };
-  }, [currentImageUrls, albumImageCache]);
+  }, [currentImageUrls]);
 
   const cleanupExpiredCache = () => {
     const keysToRemove = [];
@@ -190,7 +238,7 @@ const NowPlaying = () => {
           const cached = localStorage.getItem(key);
           if (cached) {
             const { imageUrl, timestamp } = JSON.parse(cached);
-            if (Date.now() - timestamp < 604800000) {
+            if (Date.now() - timestamp < 604800000 && !isPlaceholderImage(imageUrl)) {
               const albumKey = key.replace('album_image_', '');
               cache.set(albumKey, imageUrl);
               currentUrls.set(albumKey, imageUrl);
@@ -206,42 +254,80 @@ const NowPlaying = () => {
   };
 
   const fetchImagesForRecentTracks = (tracks: Track[]) => {
+    const newImageEntries = new Map<string, string>();
+    let hasNewData = false;
+
     tracks.forEach(track => {
-      if (track.artist?.['#text'] && track.album?.['#text']) {
-        const albumKey = `${track.artist['#text']}-${track.album['#text']}`;
+      if (track.artist?.['#text']) {
+        const rawArtist = track.artist['#text'];
+        const rawAlbum = track.album?.['#text'];
+        const rawTrack = track.name;
         
-        if (!currentImageUrls.has(albumKey) && !albumImageCache.has(albumKey)) {
-          fetchAlbumInfo(track.artist['#text'], track.album['#text'], albumKey);
+        const albumKey = (rawAlbum && rawAlbum.length > 0)
+          ? getAlbumInfoKey(rawArtist, rawAlbum)
+          : getAlbumInfoKey(rawArtist, rawTrack);
+        
+        // 1. Proactive capture from the object itself
+        if (track.image && Array.isArray(track.image)) {
+          const imageUrl = track.image.find(img => img.size === 'extralarge')?.['#text'] ||
+                           track.image.find(img => img.size === 'large')?.['#text'] || 
+                           track.image.find(img => img.size === 'medium')?.['#text'] ||
+                           track.image[0]?.['#text'];
+          
+          if (!isPlaceholderImage(imageUrl)) {
+            if (!currentImageUrls.has(albumKey) || isPlaceholderImage(currentImageUrls.get(albumKey))) {
+              newImageEntries.set(albumKey, imageUrl);
+              hasNewData = true;
+              localStorage.setItem(`album_image_${albumKey}`, JSON.stringify({ imageUrl, timestamp: Date.now() }));
+            }
+          }
         }
+
+        // 2. Trigger unified fetch if still missing/placeholder
+        syncAlbumArt(rawArtist, rawTrack, rawAlbum);
       }
     });
+
+    if (hasNewData) {
+      setAlbumImageCache(prev => {
+        const next = new Map(prev);
+        newImageEntries.forEach((url, key) => next.set(key, url));
+        return next;
+      });
+      setCurrentImageUrls(prev => {
+        const next = new Map(prev);
+        newImageEntries.forEach((url, key) => next.set(key, url));
+        return next;
+      });
+    }
   };
 
-  const fetchTrackInfo = async (artist: string, track: string, trackId: string) => {
+  const fetchTrackInfo = async (artist: string, track: string, trackId: string, isNowPlaying: boolean = true) => {
     try {
-      const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
-      if (!apiKey) {
+      const username = import.meta.env.VITE_LASTFM_USERNAME;
+      if (!username) {
         return;
       }
-
 
       const durationCacheKey = `lastfm_duration_${trackId}`;
       const cachedDuration = localStorage.getItem(durationCacheKey);
       if (cachedDuration) {
         const { duration, timestamp } = JSON.parse(cachedDuration);
         if (Date.now() - timestamp < 86400000) {
-          setTrackDuration(duration);
-          setIsDurationValid(true);
-          setIsFetchingDuration(false);
+          if (isNowPlaying) {
+            setTrackDuration(duration);
+            setIsDurationValid(true);
+            setIsFetchingDuration(false);
+          }
           return;
         }
       }
 
-      setIsFetchingDuration(true);
+      if (isNowPlaying) setIsFetchingDuration(true);
       
       const tryFetchTrackInfo = async (trackName: string) => {
         const response = await fetch(
-          `https://ws.audioscrobbler.com/2.0/?method=track.getinfo&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(trackName)}&api_key=${apiKey}&autocorrect=1&format=json`,
+          `/api/lastfm?method=track.getinfo&artist=${encodeURIComponent(cleanArtist(artist))}&track=${encodeURIComponent(trackName)}&autocorrect=1`,
           {
             headers: {
               'User-Agent': 'Portfolio-NowPlaying/1.0'
@@ -251,14 +337,61 @@ const NowPlaying = () => {
 
         if (response.ok) {
           const data = await response.json();
+          const normalizedKey = trackId.toLowerCase();
           
+          if (data.track?.album?.image) {
+            const images = Array.isArray(data.track.album.image) ? data.track.album.image : [data.track.album.image];
+            const imageUrl = images.find(img => img.size === 'extralarge')?.['#text'] ||
+                            images.find(img => img.size === 'large')?.['#text'] ||
+                            images.find(img => img.size === 'medium')?.['#text'] ||
+                            images[0]?.['#text'];
+            
+            if (!isPlaceholderImage(imageUrl)) {
+              setAlbumImageCache(prev => {
+                const newMap = new Map(prev);
+                newMap.set(normalizedKey, imageUrl);
+                // Also cache it under the album key if we found an album
+                if (data.track?.album?.title) {
+                  const albumKey = getAlbumInfoKey(artist, data.track.album.title);
+                  newMap.set(albumKey, imageUrl);
+                }
+                return newMap;
+              });
+              
+              setCurrentImageUrls(prev => {
+                const newMap = new Map(prev);
+                newMap.set(normalizedKey, imageUrl);
+                if (data.track?.album?.title) {
+                  const albumKey = getAlbumInfoKey(artist, data.track.album.title);
+                  newMap.set(albumKey, imageUrl);
+                }
+                return newMap;
+              });
+              
+              localStorage.setItem(`album_image_${normalizedKey}`, JSON.stringify({
+                imageUrl: imageUrl,
+                timestamp: Date.now()
+              }));
+
+              if (data.track?.album?.title) {
+                const albumKey = getAlbumInfoKey(artist, data.track.album.title);
+                localStorage.setItem(`album_image_${albumKey}`, JSON.stringify({
+                  imageUrl: imageUrl,
+                  timestamp: Date.now()
+                }));
+              }
+            }
+          }
+
           if (data.track?.duration) {
             const durationMs = parseInt(data.track.duration);
             const durationSeconds = Math.floor(durationMs / 1000);
             
             if (!isNaN(durationSeconds) && durationSeconds > 0 && durationSeconds < 3600) {
-              setTrackDuration(durationSeconds);
-              setIsDurationValid(true);
+              if (isNowPlaying) {
+                setTrackDuration(durationSeconds);
+                setIsDurationValid(true);
+              }
               
               localStorage.setItem(durationCacheKey, JSON.stringify({
                 duration: durationSeconds,
@@ -294,23 +427,25 @@ const NowPlaying = () => {
       }
       
       if (!found) {
+        if (isNowPlaying) {
+          setTrackDuration(180);
+          setIsDurationValid(false);
+        }
+      }
+    } catch (err) {
+      if (isNowPlaying) {
         setTrackDuration(180);
         setIsDurationValid(false);
       }
-    } catch (err) {
-      setTrackDuration(180);
-      setIsDurationValid(false);
     } finally {
-      setIsFetchingDuration(false);
+      if (isNowPlaying) setIsFetchingDuration(false);
     }
   };
 
   const fetchUserInfo = async () => {
     try {
-      const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
       const username = import.meta.env.VITE_LASTFM_USERNAME;
-
-      if (!apiKey || !username) return;
+      if (!username) return;
 
       const cacheKey = `lastfm_user_${username}`;
       const cached = localStorage.getItem(cacheKey);
@@ -323,7 +458,7 @@ const NowPlaying = () => {
       }
 
       const response = await fetch(
-        `https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${username}&api_key=${apiKey}&format=json`,
+        `/api/lastfm?method=user.getinfo&user=${username}`,
         {
           headers: {
             'User-Agent': 'Portfolio-NowPlaying/1.0'
@@ -345,10 +480,9 @@ const NowPlaying = () => {
 
   const fetchCurrentTrack = async () => {
     try {
-      const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
       const username = import.meta.env.VITE_LASTFM_USERNAME;
 
-      if (!apiKey || !username) {
+      if (!username) {
         setError('Last.fm API credentials not configured');
         setIsLoading(false);
         setIsInitialLoad(false);
@@ -383,7 +517,7 @@ const NowPlaying = () => {
             fetchImagesForRecentTracks(tracks.slice(0, 5));
             
             const currentTrackData = tracks[0];
-            const trackId = `${currentTrackData.artist['#text']}-${currentTrackData.name}`;
+            const trackId = getAlbumInfoKey(currentTrackData.artist['#text'], currentTrackData.name);
             const isNowPlaying = currentTrackData['@attr']?.nowplaying === 'true';
             
             if (isNowPlaying && trackId !== lastTrackId) {
@@ -398,7 +532,7 @@ const NowPlaying = () => {
       }
 
       const response = await fetch(
-        `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=6`,
+        `/api/lastfm?method=user.getrecenttracks&user=${username}&limit=6`,
         {
           headers: {
             'User-Agent': 'Portfolio-NowPlaying/1.0'
@@ -430,7 +564,7 @@ const NowPlaying = () => {
         fetchImagesForRecentTracks(tracks.slice(0, 5));
         
         const currentTrackData = tracks[0];
-        const trackId = `${currentTrackData.artist['#text']}-${currentTrackData.name}`;
+        const trackId = getAlbumInfoKey(currentTrackData.artist['#text'], currentTrackData.name);
         
         const isNowPlaying = currentTrackData['@attr']?.nowplaying === 'true';
         
@@ -490,11 +624,11 @@ const NowPlaying = () => {
                   timestamp: Date.now()
                 }));
               } else {
-                fetchTrackInfo(currentTrackData.artist['#text'], currentTrackData.name, trackId);
-              }
-            } else {
               fetchTrackInfo(currentTrackData.artist['#text'], currentTrackData.name, trackId);
             }
+          } else {
+            fetchTrackInfo(currentTrackData.artist['#text'], currentTrackData.name, trackId);
+          }
             
             setTimeout(() => setIsNewTrack(false), 2000);
           } else {
@@ -754,7 +888,8 @@ const NowPlaying = () => {
                 <div className="flex items-center space-x-3">
                   {getAlbumImage(currentTrack) ? (
                     <img 
-                      src={getAlbumImage(currentTrack)} 
+                      key={getAlbumImage(currentTrack) || 'fallback'}
+                      src={getAlbumImage(currentTrack) as string} 
                       alt={`${currentTrack.artist['#text']} - ${currentTrack.name}`}
                       className="h-12 w-12 rounded object-cover"
                       onError={(e) => {
@@ -767,6 +902,7 @@ const NowPlaying = () => {
                       }}
                       onLoad={(e) => {
                         const img = e.target as HTMLImageElement;
+                        img.style.display = '';
                         const fallback = img.nextElementSibling as HTMLElement;
                         if (fallback) {
                           fallback.classList.add('hidden');
@@ -795,42 +931,6 @@ const NowPlaying = () => {
                         on {currentTrack.album['#text']}
                       </div>
                     )}
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="w-full bg-muted rounded-full h-0.5">
-                    <div 
-                      className="bg-highlight h-0.5 rounded-full transition-all duration-1000"
-                      style={{ 
-                        width: `${Math.min((currentProgress / trackDuration) * 100, 100)}%`
-                      }}
-                    ></div>
-                  </div>
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>{formatTime(currentProgress)}</span>
-                    <span>
-                      {isFetchingDuration ? (
-                        <span className="flex items-center space-x-0.5">
-                          <span className="w-1 h-1 bg-muted-foreground rounded-full" style={{ 
-                            animation: 'wave 1.2s ease-in-out infinite',
-                            animationDelay: '0ms'
-                          }}></span>
-                          <span className="w-1 h-1 bg-muted-foreground rounded-full" style={{ 
-                            animation: 'wave 1.2s ease-in-out infinite',
-                            animationDelay: '200ms'
-                          }}></span>
-                          <span className="w-1 h-1 bg-muted-foreground rounded-full" style={{ 
-                            animation: 'wave 1.2s ease-in-out infinite',
-                            animationDelay: '400ms'
-                          }}></span>
-                        </span>
-                      ) : isDurationValid ? (
-                        formatTime(trackDuration)
-                      ) : (
-                        '--:--'
-                      )}
-                    </span>
                   </div>
                 </div>
               </div>
@@ -865,7 +965,8 @@ const NowPlaying = () => {
                         >
                           {getAlbumImage(track) ? (
                             <img 
-                              src={getAlbumImage(track)} 
+                              key={getAlbumImage(track) || 'fallback'}
+                              src={getAlbumImage(track) as string} 
                               alt={`${track.artist['#text']} - ${track.name}`}
                               className="h-8 w-8 rounded object-cover"
                               onError={(e) => {
@@ -878,6 +979,7 @@ const NowPlaying = () => {
                               }}
                               onLoad={(e) => {
                                 const img = e.target as HTMLImageElement;
+                                img.style.display = '';
                                 const fallback = img.nextElementSibling as HTMLElement;
                                 if (fallback) {
                                   fallback.classList.add('hidden');
