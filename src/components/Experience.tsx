@@ -3,9 +3,9 @@ import { Badge } from "@/components/ui/badge";
 import { Shield, Network, Calendar, Building } from "lucide-react";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
-import neelgaiLogo from "@/assets/logos/neelgai.webp?width=80";
-import icsLogo from "@/assets/logos/ics-logo.webp?width=80";
-import programizLogo from "@/assets/logos/programiz.jpeg?width=80";
+import neelgaiLogo from "@/assets/logos/neelgai.webp?width=80&format=webp";
+import icsLogo from "@/assets/logos/ics-logo.webp?width=80&format=webp";
+import programizLogo from "@/assets/logos/programiz.jpeg?width=80&format=webp";
 
 const Experience = () => {
   const { experience: experienceAnimations } = useMobileAnimations();

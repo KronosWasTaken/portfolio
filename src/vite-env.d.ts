@@ -10,7 +10,12 @@ declare module '*?width=40' {
   export default content;
 }
 
-declare module '*&width=80' {
+declare module '*&width=80&format=webp' {
+  const content: string;
+  export default content;
+}
+
+declare module '*?width=80&format=webp' {
   const content: string;
   export default content;
 }

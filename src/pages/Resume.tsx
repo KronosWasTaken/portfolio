@@ -16,9 +16,9 @@ import {
   Shield,
   Network
 } from "lucide-react";
-import neelgaiLogo from "@/assets/logos/neelgai.webp?width=80";
-import icsLogo from "@/assets/logos/ics-logo.webp?width=80";
-import programizLogo from "@/assets/logos/programiz.jpeg?width=80";
+import neelgaiLogo from "@/assets/logos/neelgai.webp?width=80&format=webp";
+import icsLogo from "@/assets/logos/ics-logo.webp?width=80&format=webp";
+import programizLogo from "@/assets/logos/programiz.jpeg?width=80&format=webp";
 import { SiGithub } from "react-icons/si";
 import { FiLinkedin } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
