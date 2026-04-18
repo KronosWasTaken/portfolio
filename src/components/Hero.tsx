@@ -6,21 +6,7 @@ import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
 const Hero = () => {
-  const [currentTitle, setCurrentTitle] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const titles = ["Analyst", "Engineer"];
   const { hero: heroAnimations, isMobile } = useMobileAnimations();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentTitle((prev) => (prev + 1) % titles.length);
-        setIsAnimating(false);
-      }, 300); // Half animation duration
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="min-h-dvh flex items-center justify-center px-4 sm:px-6 pt-20 relative overflow-hidden contain-layout">
@@ -53,36 +39,11 @@ const Hero = () => {
         </motion.div>
         
         <motion.h1 
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-8"
           {...heroAnimations.title}
         >
           Hi, I'm{" "}
-          <motion.span 
-            className="text-foreground"
-            {...heroAnimations.name}
-          >
-            Aaditya
-          </motion.span>
-          <br />
-          <motion.span 
-            className="text-muted-foreground"
-            {...heroAnimations.role}
-          >
-            Cybersecurity
-          </motion.span>{" "}
-          <motion.span 
-            className="inline-block relative text-highlight"
-            {...heroAnimations.titleWord}
-          >
-            <span className="invisible">{titles.reduce((a, b) => a.length > b.length ? a : b)}</span>
-            <motion.span 
-              className="absolute inset-0"
-              key={currentTitle}
-              {...heroAnimations.wordTransition}
-            >
-              {titles[currentTitle]}
-            </motion.span>
-          </motion.span>
+          <span className="text-highlight">Aaditya</span>
         </motion.h1>
         
         <motion.p 
