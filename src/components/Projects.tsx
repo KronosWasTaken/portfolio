@@ -96,7 +96,8 @@ const Projects = () => {
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/Eon",
       icon: Code,
-      featured: true
+      featured: true,
+      status: 85
     },
     {
       title: "Advent of Code",
@@ -105,7 +106,8 @@ const Projects = () => {
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/Advent_Of_Code",
       icon: Code,
-      featured: false
+      featured: false,
+      status: 100
     },
     {
       title: "AniRyu",
@@ -114,7 +116,8 @@ const Projects = () => {
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/AniRyu",
       icon: BookOpen,
-      featured: true
+      featured: true,
+      status: 90
     },
     {
       title: "VFlix",
@@ -123,7 +126,8 @@ const Projects = () => {
       demoLink: "https://vflix-mocha.vercel.app",
       githubLink: "https://github.com/KronosWasTaken/VFlix",
       icon: Play,
-      featured: true
+      featured: true,
+      status: 95
     },
     {
       title: "Xylem",
@@ -132,7 +136,8 @@ const Projects = () => {
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/Xylem",
       icon: Code,
-      featured: true
+      featured: true,
+      status: 80
     },
     {
       title: "GPG-Lite",
@@ -141,7 +146,8 @@ const Projects = () => {
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/GPG-Lite",
       icon: Lock,
-      featured: true
+      featured: true,
+      status: 90
     },
     {
       title: "Onyx",
@@ -150,7 +156,8 @@ const Projects = () => {
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/Onyx",
       icon: FileText,
-      featured: false
+      featured: false,
+      status: 75
     },
     {
       title: "Intrusion Detector",
@@ -159,7 +166,8 @@ const Projects = () => {
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/Intrusion_Detector",
       icon: Shield,
-      featured: false
+      featured: false,
+      status: 60
     },
     {
       title: "Pass-CLI",
@@ -168,7 +176,8 @@ const Projects = () => {
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/pass-cli",
       icon: Lock,
-      featured: false
+      featured: false,
+      status: 90
     },
   ];
 

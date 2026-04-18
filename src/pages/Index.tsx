@@ -11,8 +11,8 @@ const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const SectionLoader = () => (
-  <div className="h-40 flex items-center justify-center text-muted-foreground/30">
-    <div className="w-8 h-8 border-2 border-highlight/20 border-t-highlight rounded-full animate-spin" />
+  <div className="h-64 flex items-center justify-center py-10">
+    <div className="h-10 w-10 border-4 border-highlight border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 
