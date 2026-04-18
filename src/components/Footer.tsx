@@ -25,6 +25,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="GitHub Profile"
             >
               <SiGithub className="h-5 w-5" />
             </a>
@@ -33,6 +34,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn Profile"
             >
               <FiLinkedin className="h-5 w-5" />
             </a>
@@ -42,6 +44,7 @@ const Footer = () => {
                   variant="ghost" 
                   size="sm" 
                   className="text-muted-foreground hover:text-foreground p-2 h-auto"
+                  aria-label="Email Contact Options"
                 >
                   <Mail className="h-5 w-5" />
                   <ChevronDown className="h-3 w-3 ml-1" />

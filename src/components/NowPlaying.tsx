@@ -672,13 +672,19 @@ const NowPlaying = () => {
   };
 
   useEffect(() => {
-    cleanupExpiredCache();
-    loadAlbumImageCache();
-    fetchUserInfo();
-    fetchCurrentTrack();
+    // Defer non-critical music fetching to prioritize the main page render (Fixes Network Chaining)
+    const timer = setTimeout(() => {
+      cleanupExpiredCache();
+      loadAlbumImageCache();
+      fetchUserInfo();
+      fetchCurrentTrack();
+    }, 2000);
     
     const cleanupInterval = setInterval(cleanupExpiredCache, 3600000);
-    return () => clearInterval(cleanupInterval);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(cleanupInterval);
+    };
   }, []);
 
   useEffect(() => {
@@ -785,6 +791,7 @@ const NowPlaying = () => {
           variant="ghost" 
           size="icon" 
           className={`relative ${isNewTrack ? 'bg-highlight/10' : ''}`}
+          aria-label="Last.fm Music Activity"
         >
           <div className={`transition-colors duration-300 ${getIconColor()}`}>
             {getMusicIcon()}

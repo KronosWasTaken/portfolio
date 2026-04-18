@@ -68,29 +68,29 @@ const Header = () => {
             <ThemeToggle />
             
             <div className="hidden sm:flex items-center space-x-2">
-              <Button variant="ghost" size="icon" asChild>
+              <Button variant="ghost" size="icon" asChild aria-label="Github Profile">
                 <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
                   <SiGithub className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
+              <Button variant="ghost" size="icon" asChild aria-label="LinkedIn Profile">
                 <a href="https://linkedin.com/in/aaditya-raj-390113324" target="_blank" rel="noopener noreferrer">
                   <FiLinkedin className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
+              <Button variant="ghost" size="icon" asChild aria-label="Email Me">
                 <a href="mailto:aaditya12raj@gmail.com">
                   <Mail className="h-5 w-5" />
                 </a>
               </Button>
               <NowPlaying />
-              <Button variant="outline" className="border-highlight/30 text-highlight hover:bg-highlight/10 ml-2" asChild>
+              <Button variant="outline" className="border-highlight/30 text-highlight hover:bg-highlight/10 ml-2" asChild aria-label={isResumePage ? "Back to Portfolio" : "View Resume"}>
                 <Link to={isResumePage ? "/" : "/resume"}>
                   <FileText className="h-4 w-4 mr-2" />
                   {isResumePage ? "Portfolio" : "Resume"}
                 </Link>
               </Button>
-              <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2 btn-cv-glow" asChild>
+              <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2 btn-cv-glow" asChild aria-label="Download CV PDF">
                 <a href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf">
                   <Download className="h-4 w-4 mr-2" />
                   CV
@@ -99,28 +99,28 @@ const Header = () => {
             </div>
 
             <div className="flex sm:hidden items-center space-x-1">
-              <Button variant="ghost" size="icon" asChild>
+              <Button variant="ghost" size="icon" asChild aria-label="Github Profile">
                 <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
                   <SiGithub className="h-4 w-4" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
+              <Button variant="ghost" size="icon" asChild aria-label="LinkedIn Profile">
                 <a href="https://linkedin.com/in/aaditya-raj-390113324" target="_blank" rel="noopener noreferrer">
                   <FiLinkedin className="h-4 w-4" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
+              <Button variant="ghost" size="icon" asChild aria-label="Email Me">
                 <a href="mailto:aaditya12raj@gmail.com">
                   <Mail className="h-4 w-4" />
                 </a>
               </Button>
               <NowPlaying />
-              <Button variant="outline" size="icon" className="border-highlight/30 text-highlight hover:bg-highlight/10 ml-1" asChild>
+              <Button variant="outline" size="icon" className="border-highlight/30 text-highlight hover:bg-highlight/10 ml-1" asChild aria-label={isResumePage ? "Back to Portfolio" : "View Resume"}>
                 <Link to={isResumePage ? "/" : "/resume"}>
                   <FileText className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="icon" className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-1" asChild>
+              <Button size="icon" className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-1" asChild aria-label="Download CV PDF">
                 <a href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf">
                   <Download className="h-4 w-4" />
                 </a>

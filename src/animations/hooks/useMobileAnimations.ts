@@ -14,13 +14,15 @@ export const useMobileAnimations = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Use matchMedia instead of window.innerWidth to avoid forced reflows
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+      setIsMobile(mediaQuery.matches || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    mediaQuery.addEventListener('change', checkMobile);
+    return () => mediaQuery.removeEventListener('change', checkMobile);
   }, []);
 
   const mobileAnimations = getMobileAnimations();
