@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, FileText } from "lucide-react";
+import { Mail, FileText, Download } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { FiLinkedin } from "react-icons/fi";
 import ThemeToggle from "./ThemeToggle";
@@ -84,11 +84,17 @@ const Header = () => {
                 </a>
               </Button>
               <NowPlaying />
-              <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2" asChild>
+              <Button variant="outline" className="border-highlight/30 text-highlight hover:bg-highlight/10 ml-2" asChild>
                 <Link to={isResumePage ? "/" : "/resume"}>
                   <FileText className="h-4 w-4 mr-2" />
                   {isResumePage ? "Portfolio" : "Resume"}
                 </Link>
+              </Button>
+              <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2 btn-cv-glow" asChild>
+                <a href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf">
+                  <Download className="h-4 w-4 mr-2" />
+                  CV
+                </a>
               </Button>
             </div>
 
@@ -109,10 +115,15 @@ const Header = () => {
                 </a>
               </Button>
               <NowPlaying />
-              <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-1" asChild>
+              <Button variant="outline" size="icon" className="border-highlight/30 text-highlight hover:bg-highlight/10 ml-1" asChild>
                 <Link to={isResumePage ? "/" : "/resume"}>
                   <FileText className="h-4 w-4" />
                 </Link>
+              </Button>
+              <Button size="icon" className="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-1" asChild>
+                <a href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf">
+                  <Download className="h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>

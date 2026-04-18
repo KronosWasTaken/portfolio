@@ -91,14 +91,6 @@
   }
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -108,10 +100,6 @@
     border-color: var(--color-gray-200, currentcolor);
   }
 }
-
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
 
 @layer base {
   :root {
@@ -145,8 +133,7 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
-    /* Custom portfolio colors - Deep Blue cybersecurity theme for light mode */
-    --highlight: 217 71% 41%; /* Deep blue accent */
+    --highlight: 217 71% 41%; 
     --highlight-foreground: 0 0% 98%;
     --gray-50: 0 0% 98%;
     --gray-100: 0 0% 96.1%;
@@ -198,8 +185,7 @@ All colors MUST be HSL.
     --input: 0 0% 12%;
     --ring: 0 84% 60%;
 
-    /* Custom portfolio colors for dark mode - Red and Black cybersecurity theme */
-    --highlight: 0 84% 60%; /* Red accent in dark mode */
+    --highlight: 0 84% 60%; 
     --highlight-foreground: 0 0% 98%;
     --gray-50: 0 0% 7%;
     --gray-100: 0 0% 12%;
@@ -230,18 +216,15 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    /* Mobile touch optimizations */
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
   }
 
-  /* Optimize touch interactions */
   button, [role="button"], a {
     touch-action: manipulation;
   }
 
-  /* Prevent text selection on touch */
   .no-touch-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -251,48 +234,40 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom background grid pattern - theme adaptive */
 .bg-grid-pattern {
   background-size: 50px 50px;
 }
 
-/* Light mode grid */
 .bg-grid-pattern {
   background-image: 
     linear-gradient(rgba(30, 64, 175, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(30, 64, 175, 0.03) 1px, transparent 1px);
 }
 
-/* Dark mode grid */
 .dark .bg-grid-pattern {
   background-image: 
     linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px);
 }
 
-/* Mobile optimizations - simpler grid pattern */
 @media (max-width: 768px) {
   .bg-grid-pattern {
     background-size: 100px 100px;
     opacity: 0.3;
   }
   
-  /* Disable expensive CSS effects on mobile */
   * {
     will-change: auto !important;
   }
   
-  /* Reduce blur effects */
   .blur-3xl {
     filter: blur(8px);
   }
   
-  /* Optimize animations */
   .animate-pulse {
     animation-duration: 3s;
   }
   
-  /* Reduce shadow complexity */
   .shadow-lg {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
@@ -302,7 +277,6 @@ All colors MUST be HSL.
   }
 }
 
-/* Ultra-low-end mobile devices */
 @media (max-width: 480px) {
   .bg-grid-pattern {
     display: none;
@@ -317,12 +291,10 @@ All colors MUST be HSL.
   }
 }
 
-/* Animation delays */
 .delay-1000 {
   animation-delay: 1s;
 }
 
-/* Smooth word slide animation */
 @keyframes word-slide {
   0% {
     transform: translateY(0%) rotateX(0deg);
@@ -347,17 +319,15 @@ All colors MUST be HSL.
   transform-style: preserve-3d;
 }
 
-/* Elegant scrollbar alternatives */
 .scrollbar-none {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
 .scrollbar-none::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none; 
 }
 
-/* Custom scrollbar styling - ultra subtle (kept as fallback) */
 .scrollbar-thin {
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--muted-foreground) / 0.15) transparent;
@@ -385,7 +355,6 @@ All colors MUST be HSL.
   background-color: hsl(var(--muted-foreground) / 0.35);
 }
 
-/* Custom wave animation for loading dots */
 @keyframes wave {
   0%, 60%, 100% {
     transform: scaleY(1);
@@ -395,4 +364,46 @@ All colors MUST be HSL.
     transform: scaleY(2);
     opacity: 1;
   }
+}
+
+.btn-cv-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px hsl(var(--highlight) / 0.2);
+  border: 1px solid hsl(var(--highlight) / 0.2);
+}
+
+.btn-cv-glow:hover {
+  box-shadow: 0 0 20px hsl(var(--highlight) / 0.4);
+  transform: translateY(-1px);
+  border-color: hsl(var(--highlight) / 0.4);
+}
+
+.btn-cv-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--highlight-foreground) / 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.btn-cv-glow:hover::before {
+  left: 100%;
+}
+
+.dark .btn-cv-glow {
+  box-shadow: 0 0 15px hsl(var(--highlight) / 0.15);
+}
+
+.dark .btn-cv-glow:hover {
+  box-shadow: 0 0 25px hsl(var(--highlight) / 0.3);
 }
