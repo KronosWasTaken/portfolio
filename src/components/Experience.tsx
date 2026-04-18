@@ -8,12 +8,25 @@ const Experience = () => {
   const { experience: experienceAnimations } = useMobileAnimations();
   const experiences = [
     {
+      title: "Cybersecurity Trainee",
+      company: "Programiz",
+      period: "April 2026 - Present",
+      description: "",
+      technologies: ["Cybersecurity", "DevSecOps", "DevOps", "Network Security", "Cloud Security", "FinOps"],
+      icon: Shield,
+      logo: "/programiz.jpeg",
+      logoBg: "bg-white",
+      featured: true
+    },
+    {
       title: "Cybersecurity Research Intern",
       company: "Neelgai",
       period: "Aug 2025 - Jan 2025",
       description: "Designed and built an MCP server to explore secure integrations with various services. Researched and implemented defenses against prompt injection, authentication flaws, and insecure agent behaviors. Developed proof-of-concepts and documented security findings to support blue team use cases.",
       technologies: ["MCP Server", "Security Research", "Blue Team", "Documentation"],
       icon: Shield,
+      logo: "/neelgai.png",
+      logoBg: "bg-white",
       featured: false
     },
     {
@@ -23,6 +36,8 @@ const Experience = () => {
       description: "Monitored and maintained data center hardware, network, and IT systems. Performed preventive maintenance and daily infrastructure checks. Escalated and restored critical faults while maintaining reports and logs. Worked with Cisco Networking and Juniper Networks products.",
       technologies: ["Cisco", "Juniper", "Network Administration", "System Maintenance", "Infrastructure"],
       icon: Network,
+      logo: "/ics-logo.png",
+      logoBg: "bg-white",
       featured: false
     }
   ];
@@ -49,12 +64,20 @@ const Experience = () => {
               <Card className="group hover:shadow-xl border-border/50 overflow-hidden">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-start space-x-3">
                       <motion.div 
-                        className="w-10 h-10 bg-highlight/10 rounded-lg flex items-center justify-center"
+                        className={`w-10 h-10 mt-1 ${experience.logoBg || 'bg-white'} rounded-lg flex items-center justify-center overflow-hidden shrink-0 shadow-sm border border-border/50`}
                         {...experienceAnimations.iconHover}
                       >
-                        <experience.icon className="h-5 w-5 text-highlight" />
+                        {experience.logo ? (
+                          <img 
+                            src={experience.logo} 
+                            alt={`${experience.company} logo`} 
+                            className="w-full h-full object-contain p-1.5 group-hover:scale-110 transition-transform duration-300"
+                          />
+                        ) : (
+                          <experience.icon className="h-5 w-5 text-highlight" />
+                        )}
                       </motion.div>
                     <div>
                       <CardTitle className="text-xl group-hover:text-highlight transition-colors">
@@ -117,9 +140,9 @@ const Experience = () => {
               </motion.div>
               <h3 className="font-semibold mb-2">Career Objective</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Security-focused CSIT student with hands-on experience in network defense, Python scripting, and 
-                intrusion detection systems. Eager to contribute to a cybersecurity team through an internship or 
-                entry-level opportunity where I can apply my training and continue growing as a blue team analyst.
+                Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience in 
+                network defense, Python scripting, and intrusion detection systems. Eager to contribute to a 
+                cybersecurity team where I can apply my training and continue growing as a blue team analyst.
               </p>
             </CardContent>
           </Card>

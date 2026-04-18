@@ -24,6 +24,16 @@ import {
 const Resume = () => {
   const experience = [
     {
+      company: "Programiz",
+      position: "Cybersecurity Trainee",
+      duration: "April 2026 - Present",
+      location: "Nepal",
+      achievements: [],
+      technologies: ["Cybersecurity", "DevSecOps", "DevOps", "Network Security", "Cloud Security", "FinOps"],
+      logo: "/programiz.jpeg",
+      logoBg: "bg-white"
+    },
+    {
       company: "Neelgai",
       position: "Cybersecurity Research Intern",
       duration: "Aug 2025 - Jan 2025",
@@ -32,7 +42,10 @@ const Resume = () => {
         "Designed and built an MCP server to explore secure integrations with various services.",
         "Researched and implemented defenses against prompt injection, authentication flaws, and insecure agent behaviors.",
         "Developed proof-of-concepts and documented security findings to support blue team use cases."
-      ]
+      ],
+      technologies: ["MCP Server", "Security Research", "Blue Team", "Documentation"],
+      logo: "/neelgai.png",
+      logoBg: "bg-white"
     },
     {
       company: "Innovative Communication System Pvt. Ltd.",
@@ -44,7 +57,10 @@ const Resume = () => {
         "Performed preventive maintenance and daily infrastructure checks.",
         "Escalated and restored critical faults while maintaining reports and logs.",
         "Worked with Cisco Networking and Juniper Networks products."
-      ]
+      ],
+      technologies: ["Cisco", "Juniper", "Network Administration", "System Maintenance", "Infrastructure"],
+      logo: "/ics-logo.png",
+      logoBg: "bg-white"
     }
   ];
 
@@ -66,8 +82,8 @@ const Resume = () => {
   const skills = {
     "Programming Languages": ["Python", "Golang", "Rust", "Zig", "JavaScript", "TypeScript", "C#"],
     "Web Development": ["React", "Tailwind CSS", "Electron", "FastAPI", "Flask", "Gin"],
-    "Database & Cloud": ["PostgreSQL", "Supabase", "SQLAlchemy", "Oracle Cloud", "Docker"],
-    "Cybersecurity": ["Network Defense", "Ethical Hacking", "Cryptography", "Endpoint Security"],
+    "Database & Cloud": ["PostgreSQL", "Supabase", "SQLAlchemy", "Oracle Cloud", "Docker", "FinOps", "DevOps"],
+    "Cybersecurity": ["Network Defense", "Ethical Hacking", "Cryptography", "Endpoint Security", "Cloud Security", "Network Security", "DevSecOps"],
     "Systems & Tools": ["Linux", "Git", "Tauri", "Selenium"]
   };
 
@@ -154,7 +170,8 @@ const Resume = () => {
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">Aaditya Raj</h1>
             <p className="text-xl text-muted-foreground mb-6">
-              Security-focused CSIT student with hands-on experience in network defense, Python scripting, and intrusion detection systems
+              Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience in 
+              network defense, Python scripting, and intrusion detection systems
             </p>
             
             <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
@@ -235,9 +252,9 @@ const Resume = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                Security-focused CSIT student with hands-on experience in network defense, Python scripting, and 
-                intrusion detection systems. Eager to contribute to a cybersecurity team through an internship or 
-                entry-level opportunity where I can apply my training and continue growing as a blue team analyst.
+                Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience 
+                in network defense, Python scripting, and intrusion detection systems. Eager to contribute 
+                to a cybersecurity team where I can apply my training and continue growing as a blue team analyst.
               </p>
             </CardContent>
           </Card>
@@ -252,20 +269,34 @@ const Resume = () => {
                 {experience.map((exp, index) => (
                   <div key={index}>
                     <div className="flex justify-between items-start mb-2">
-                      <div>
-                        <h3 className="font-semibold text-lg">{exp.position}</h3>
-                        <p className="text-highlight">{exp.company}</p>
+                      <div className="flex items-start space-x-3">
+                        {exp.logo && (
+                          <div className={`w-10 h-10 mt-1 ${exp.logoBg || 'bg-white'} rounded-lg flex items-center justify-center overflow-hidden shrink-0 border border-border/50 shadow-sm`}>
+                            <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain p-1.5" />
+                          </div>
+                        )}
+                        <div>
+                          <h3 className="font-semibold text-lg">{exp.position}</h3>
+                          <p className="text-highlight">{exp.company}</p>
+                        </div>
                       </div>
                       <div className="text-right text-sm text-muted-foreground">
                         <p>{exp.duration}</p>
                         <p>{exp.location}</p>
                       </div>
                     </div>
-                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                    <ul className="list-disc list-inside space-y-1 text-muted-foreground mb-4">
                       {exp.achievements.map((achievement, i) => (
                         <li key={i}>{achievement}</li>
                       ))}
                     </ul>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {exp.technologies.map((tech, techIndex) => (
+                        <Badge key={techIndex} variant="outline" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
                     {index < experience.length - 1 && <Separator className="my-4" />}
                   </div>
                 ))}

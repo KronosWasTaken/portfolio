@@ -89,9 +89,9 @@ const Hero = () => {
           className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed"
           {...heroAnimations.description}
         >
-          Security-focused CSIT student with hands-on experience in network defense, Python scripting, and 
-          intrusion detection systems. Eager to contribute to cybersecurity teams through internships or 
-          entry-level opportunities where I can apply my training and continue growing as a blue team analyst.
+          Security-focused CSIT student and Cybersecurity Trainee at Programiz. Experienced in network 
+          defense, Python scripting, and intrusion detection systems, with a passion for building 
+          secure applications and protecting digital infrastructures.
         </motion.p>
         
         <motion.div 
