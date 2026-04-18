@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import { imagetools } from "vite-imagetools";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -11,6 +12,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(), 
       tailwindcss(),
+      imagetools(),
       ViteImageOptimizer({
         test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
         exclude: undefined,
@@ -23,13 +25,8 @@ export default defineConfig(({ mode }) => {
           plugins: [
             {
               name: 'preset-default',
-              params: {
-                overrides: {
-                  cleanupIds: false,
-                  removeViewBox: false,
-                },
-              },
             },
+            'removeViewBox',
             'sortAttrs',
             {
               name: 'addAttributesToSVGElement',

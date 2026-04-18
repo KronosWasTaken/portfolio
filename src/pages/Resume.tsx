@@ -12,8 +12,13 @@ import {
   ExternalLink,
   Download,
   ChevronDown,
-  GraduationCap
+  GraduationCap,
+  Shield,
+  Network
 } from "lucide-react";
+import neelgaiLogo from "@/assets/logos/neelgai.webp?width=80";
+import icsLogo from "@/assets/logos/ics-logo.webp?width=80";
+import programizLogo from "@/assets/logos/programiz.jpeg?width=80";
 import { SiGithub } from "react-icons/si";
 import { FiLinkedin } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
@@ -74,7 +79,7 @@ const Resume = () => {
         "Hardening system security through rigorous Access Management, Software Inventory Management (SBOM), and the implementation of organizational Compliance frameworks."
       ],
       technologies: ["Cybersecurity", "DevSecOps", "DevOps", "Network Security", "Cloud Security", "FinOps"],
-      logo: "/programiz.jpeg",
+      logo: programizLogo,
       logoBg: "bg-white"
     },
     {
@@ -88,7 +93,7 @@ const Resume = () => {
         "Developed proof-of-concepts and documented security findings to support blue team use cases."
       ],
       technologies: ["MCP Server", "Security Research", "Blue Team", "Documentation"],
-      logo: "/neelgai.webp",
+      logo: neelgaiLogo,
       logoBg: "bg-white"
     },
     {
@@ -103,7 +108,7 @@ const Resume = () => {
         "Worked with Cisco Networking and Juniper Networks products."
       ],
       technologies: ["Cisco", "Juniper", "Network Administration", "System Maintenance", "Infrastructure"],
-      logo: "/ics-logo.webp",
+      logo: icsLogo,
       logoBg: "bg-white"
     }
   ];

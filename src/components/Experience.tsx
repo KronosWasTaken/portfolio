@@ -3,6 +3,9 @@ import { Badge } from "@/components/ui/badge";
 import { Shield, Network, Calendar, Building } from "lucide-react";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
+import neelgaiLogo from "@/assets/logos/neelgai.webp?width=80";
+import icsLogo from "@/assets/logos/ics-logo.webp?width=80";
+import programizLogo from "@/assets/logos/programiz.jpeg?width=80";
 
 const Experience = () => {
   const { experience: experienceAnimations } = useMobileAnimations();
@@ -18,7 +21,7 @@ const Experience = () => {
       ],
       technologies: ["Cybersecurity", "DevSecOps", "DevOps", "Network Security", "Cloud Security", "FinOps"],
       icon: Shield,
-      logo: "/programiz.jpeg",
+      logo: programizLogo,
       logoBg: "bg-white",
       featured: true
     },
@@ -33,7 +36,7 @@ const Experience = () => {
       ],
       technologies: ["MCP Server", "Security Research", "Blue Team", "Documentation"],
       icon: Shield,
-      logo: "/neelgai.webp",
+      logo: neelgaiLogo,
       logoBg: "bg-white",
       featured: false
     },
@@ -49,7 +52,7 @@ const Experience = () => {
       ],
       technologies: ["Cisco", "Juniper", "Network Administration", "System Maintenance", "Infrastructure"],
       icon: Network,
-      logo: "/ics-logo.webp",
+      logo: icsLogo,
       logoBg: "bg-white",
       featured: false
     }
