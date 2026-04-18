@@ -11,7 +11,8 @@ import {
   Calendar,
   ExternalLink,
   Download,
-  ChevronDown
+  ChevronDown,
+  GraduationCap
 } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { FiLinkedin } from "react-icons/fi";
@@ -74,14 +75,16 @@ const Resume = () => {
   const education = [
     {
       institution: "Patan Multiple Campus",
-      degree: "B.Sc. in Computer Science and Information Technology",
-      duration: "2023 - 2027 (Ongoing)",
+      degree: "Bachelor of Science in Computer Science and Information Technology",
+      duration: "2023 - Present",
+      location: "Lalitpur, Nepal",
       details: ""
     },
     {
       institution: "Prasadi Academy",
       degree: "Senior Secondary (+2), NEB – Science",
       duration: "Graduated 2022",
+      location: "Nepal",
       details: "CGPA: 3.36 / 4.0"
     }
   ];
@@ -276,40 +279,44 @@ const Resume = () => {
               Education
               <Separator className="flex-1 ml-4" />
             </h2>
-            <div className="space-y-6">
-              <motion.div {...resumeAnimations.item}>
-                <Card className="border-border/50 hover:border-highlight/30 transition-colors">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
+            <div className="space-y-10 pl-2">
+              {education.map((edu, index) => (
+                <motion.div key={index} {...resumeAnimations.item}>
+                  <div className="relative pl-8 border-l border-border hover:border-highlight transition-colors duration-300 group">
+                    {/* The Dot on the line */}
+                    <div className="absolute left-[-5px] top-[10px] w-2.5 h-2.5 rounded-full bg-border group-hover:bg-highlight transition-all duration-300 border-2 border-background" />
+                    
+                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-2">
                       <div>
-                        <CardTitle className="text-xl">Bachelor of Science in CSIT</CardTitle>
-                        <p className="text-muted-foreground">Kathmandu College of Technology (TU)</p>
+                        <h3 className="text-xl font-bold group-hover:text-highlight transition-colors leading-tight">
+                          {edu.degree}
+                        </h3>
+                        <p className="text-muted-foreground font-medium mt-1 uppercase tracking-tight text-xs opacity-80">
+                          {edu.institution}
+                        </p>
                       </div>
-                      <div className="text-right">
-                        <Badge variant="outline" className="mb-1">2022 - 2026</Badge>
-                        <p className="text-xs text-muted-foreground">Lalitpur, Nepal</p>
+                      <div className="md:text-right shrink-0">
+                        <div className="inline-flex items-center text-highlight font-bold text-sm">
+                           <Calendar className="h-3 w-3 mr-1.5" />
+                           {edu.duration}
+                        </div>
+                        <div className="flex items-center text-xs text-muted-foreground mt-1 md:justify-end opacity-70">
+                           <MapPin className="h-3 w-3 mr-1" />
+                           {edu.location}
+                        </div>
                       </div>
                     </div>
-                  </CardHeader>
-                </Card>
-              </motion.div>
-              <motion.div {...resumeAnimations.item}>
-                <Card className="border-border/50 hover:border-highlight/30 transition-colors">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-xl">Senior Secondary (Science)</CardTitle>
-                        <p className="text-muted-foreground">Orchid International College</p>
+                    
+                    {edu.details && (
+                      <div className="mt-4">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-highlight/90 bg-highlight/10 px-2.5 py-1 rounded-sm">
+                          {edu.details}
+                        </span>
                       </div>
-                      <div className="text-right">
-                        <Badge variant="outline" className="mb-1">2020 - 2022</Badge>
-                        <p className="text-xs text-muted-foreground">Kathmandu, Nepal</p>
-                        <p className="text-xs font-semibold mt-1">GPA: 3.46/4.0</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-              </motion.div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.section>
 

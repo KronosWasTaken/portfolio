@@ -64,6 +64,12 @@ export const getMobileAnimations = () => {
         objectiveIconHover: { hover: {} },
         timelineLine: { initial: { height: "100%", opacity: 1 }, whileInView: { height: "100%", opacity: 1 } },
         timelineDot: () => ({ initial: { scale: 1, opacity: 1 }, whileInView: { scale: 1, opacity: 1 } })
+      },
+      resume: {
+        container: { initial: { opacity: 1 }, animate: { opacity: 1 } },
+        header: { initial: { opacity: 1 }, whileInView: { opacity: 1 } },
+        section: { initial: { opacity: 1 }, whileInView: { opacity: 1 } },
+        item: { variants: { initial: { opacity: 1 }, animate: { opacity: 1 } } }
       }
     };
   }
@@ -183,6 +189,17 @@ export const getMobileAnimations = () => {
         initial: { ...mobileOptimizedCard(index).initial, scale: 1 },
         whileInView: { ...mobileOptimizedCard(index).whileInView, scale: 1 }
       })
+    },
+    resume: {
+      container: { initial: "initial", animate: "animate" },
+      header: mobileOptimizedFadeIn,
+      section: mobileOptimizedFadeIn,
+      item: { 
+        variants: { 
+          initial: { opacity: 0 }, 
+          animate: { opacity: 1, transition: { duration: 0.2 } } 
+        } 
+      }
     }
   };
 };
