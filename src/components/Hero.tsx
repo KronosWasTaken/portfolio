@@ -23,7 +23,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20 relative overflow-hidden">
+    <section className="min-h-dvh flex items-center justify-center px-4 sm:px-6 pt-20 relative overflow-hidden contain-layout">
       {/* Elegant background - theme adaptive */}
       <div className="absolute inset-0 bg-linear-to-br from-background via-background to-muted/20"></div>
       <div className="absolute inset-0 bg-grid-pattern"></div>

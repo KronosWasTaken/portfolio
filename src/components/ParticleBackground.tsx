@@ -185,9 +185,15 @@ const ParticleBackground: React.FC = () => {
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    const timer = setTimeout(() => {
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      initParticles();
+      animate();
+    }, 5000);
 
     return () => {
+      clearTimeout(timer);
       observer.disconnect();
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
