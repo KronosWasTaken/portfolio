@@ -6,6 +6,86 @@ import { SiGithub } from "react-icons/si";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 
+const ProjectCard = ({ project, index, animations }: { project: any, index: number, animations: any }) => {
+  return (
+    <motion.div
+      {...animations.projectCard(index)}
+      className="group"
+    >
+      <Card className="bg-background hover:shadow-xl border-border/50 overflow-hidden h-full transition-all duration-300 hover:border-highlight/30">
+        <CardHeader className="pb-4 relative z-10">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center space-x-3">
+              <motion.div 
+                className="w-10 h-10 bg-highlight/10 rounded-lg flex items-center justify-center"
+                {...animations.iconHover}
+              >
+                <project.icon className="h-5 w-5 text-highlight" />
+              </motion.div>
+              <div>
+                <CardTitle className="text-xl group-hover:text-highlight transition-colors">
+                  {project.title}
+                </CardTitle>
+                {project.featured && (
+                <motion.div
+                  {...animations.featuredBadge(index)}
+                >
+                    <Badge variant="secondary" className="mt-1 bg-highlight/15 text-highlight border border-highlight/30">
+                      Featured
+                    </Badge>
+                  </motion.div>
+                )}
+              </div>
+            </div>
+          </div>
+        </CardHeader>
+        
+        <CardContent className="space-y-4 relative z-10 h-full flex flex-col">
+          <CardDescription className="text-muted-foreground leading-relaxed">
+            {project.description}
+          </CardDescription>
+          
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech: string, techIndex: number) => (
+                <motion.div
+                  key={techIndex}
+                  {...animations.techBadge(techIndex)}
+                >
+                <Badge variant="outline" className="text-[10px] h-5 bg-background/50 border-border/40">
+                  {tech}
+                </Badge>
+              </motion.div>
+            ))}
+          </div>
+          
+           <div className="flex items-center space-x-3 pt-4 mt-auto">
+            {project.githubLink && (
+              <motion.div {...animations.buttonHover}>
+                <Button variant="outline" size="sm" asChild className="h-8 text-xs">
+                  <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                    <SiGithub className="h-3 w-3 mr-2" />
+                    View Code
+                  </a>
+                </Button>
+              </motion.div>
+            )}
+            {project.demoLink && (
+              <motion.div {...animations.buttonHover}>
+                <Button variant="default" size="sm" asChild className="h-8 text-xs bg-highlight text-highlight-foreground hover:bg-highlight/90 shadow-sm">
+                  <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="h-3 w-3 mr-2" />
+                    Live Demo
+                  </a>
+                </Button>
+              </motion.div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
+
 const Projects = () => {
   const { projects: projectsAnimations } = useMobileAnimations();
   const projects = [
@@ -29,7 +109,7 @@ const Projects = () => {
     },
     {
       title: "AniRyu",
-      description: "A modern, full-stack anime and manga tracking application with beautiful statistics, bulk management features, and seamless AniList import functionality. Features responsive design, dark theme, and comprehensive progress tracking.",
+      description: "A modern, full-stack anime and manga tracking application with beautiful statistics, bulk management features, and seamless AniList import functionality.",
       technologies: ["React", "TypeScript", "Go", "Gin", "GORM", "SQLite", "Tailwind CSS", "shadcn/ui", "Framer Motion"],
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/AniRyu",
@@ -38,7 +118,7 @@ const Projects = () => {
     },
     {
       title: "VFlix",
-      description: "A sophisticated, full-stack streaming platform built with cutting-edge technologies. Features real-time data synchronization, user authentication, and comprehensive movie/TV show database integration.",
+      description: "A sophisticated, full-stack streaming platform built with cutting-edge technologies. Features real-time data synchronization and TMDb integration.",
       technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion", "TMDb API", "Vercel"],
       demoLink: "https://vflix-mocha.vercel.app",
       githubLink: "https://github.com/KronosWasTaken/VFlix",
@@ -47,7 +127,7 @@ const Projects = () => {
     },
     {
       title: "Xylem",
-      description: "Statically-typed, block-structured programming language with functions and type checking. Built in Rust with a focus on security and performance.",
+      description: "Statically-typed, block-structured programming language with functions and type checking. Built in Rust.",
       technologies: ["Rust", "Programming Language", "Type System", "Compiler"],
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/Xylem",
@@ -56,7 +136,7 @@ const Projects = () => {
     },
     {
       title: "GPG-Lite",
-      description: "A simple, modular, and educational GPG-like encryption tool in Python supporting AES, Argon2, and RSA hybrid encryption for secure communications.",
+      description: "A simple, modular, and educational GPG-like encryption tool in Python supporting AES, Argon2, and RSA hybrid encryption.",
       technologies: ["Python", "Cryptography", "AES", "Argon2", "RSA", "Security"],
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/GPG-Lite",
@@ -65,7 +145,7 @@ const Projects = () => {
     },
     {
       title: "Onyx",
-      description: "A modern, fast, and beautiful note-taking application built with Electron and React. Features rich text editing, customizable themes, local data storage with encryption, and offline functionality.",
+      description: "A modern, fast, and beautiful note-taking application built with Electron and React. Features rich text editing and local encryption.",
       technologies: ["React", "TypeScript", "Electron", "Tailwind CSS", "Better-SQLite3", "SQLCipher", "TipTap", "Zustand", "Vite", "pnpm"],
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/Onyx",
@@ -74,7 +154,7 @@ const Projects = () => {
     },
     {
       title: "Intrusion Detector",
-      description: "Go-based client with Python server for real-time threat detection and network monitoring, providing comprehensive security analysis.",
+      description: "Go-based client with Python server for real-time threat detection and network monitoring.",
       technologies: ["Go", "Python", "Network Security", "Threat Detection", "Real-time Monitoring"],
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/Intrusion_Detector",
@@ -83,7 +163,7 @@ const Projects = () => {
     },
     {
       title: "Pass-CLI",
-      description: "Secure CLI password manager using Python, SQLite3, Argon2, and Fernet encryption for safe credential storage and management.",
+      description: "Secure CLI password manager using Python, SQLite3, Argon2, and Fernet encryption for safe credential storage.",
       technologies: ["Python", "CLI", "SQLite3", "Argon2", "Fernet", "Password Management"],
       demoLink: null,
       githubLink: "https://github.com/KronosWasTaken/pass-cli",
@@ -107,82 +187,12 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              {...projectsAnimations.projectCard(index)}
-              {...projectsAnimations.cardHover}
-            >
-              <Card className="group hover:shadow-xl border-border/50 overflow-hidden h-full">
-                <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center space-x-3">
-                      <motion.div 
-                        className="w-10 h-10 bg-highlight/10 rounded-lg flex items-center justify-center"
-                        {...projectsAnimations.iconHover}
-                      >
-                        <project.icon className="h-5 w-5 text-highlight" />
-                      </motion.div>
-                      <div>
-                        <CardTitle className="text-xl group-hover:text-highlight transition-colors">
-                          {project.title}
-                        </CardTitle>
-                        {project.featured && (
-                        <motion.div
-                          {...projectsAnimations.featuredBadge(index)}
-                        >
-                            <Badge variant="secondary" className="mt-1 bg-highlight/15 text-highlight border border-highlight/30">
-                              Featured
-                            </Badge>
-                          </motion.div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                
-                <CardContent className="space-y-4">
-                  <CardDescription className="text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </CardDescription>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                        <motion.div
-                          key={techIndex}
-                          {...projectsAnimations.techBadge(techIndex)}
-                        >
-                        <Badge variant="outline" className="text-xs">
-                          {tech}
-                        </Badge>
-                      </motion.div>
-                    ))}
-                  </div>
-                  
-                   <div className="flex items-center space-x-3 pt-4">
-                    {project.githubLink && (
-                      <motion.div {...projectsAnimations.buttonHover}>
-                        <Button variant="outline" size="sm" asChild>
-                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                            <SiGithub className="h-4 w-4 mr-2" />
-                            View Code
-                          </a>
-                        </Button>
-                      </motion.div>
-                    )}
-                    {project.demoLink && (
-                      <motion.div {...projectsAnimations.buttonHover}>
-                        <Button variant="default" size="sm" asChild className="bg-highlight text-highlight-foreground hover:bg-highlight/90">
-                          <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            Live Demo
-                          </a>
-                        </Button>
-                      </motion.div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+            <ProjectCard 
+              key={index} 
+              project={project} 
+              index={index} 
+              animations={projectsAnimations} 
+            />
           ))}
         </div>
 

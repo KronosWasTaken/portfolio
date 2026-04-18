@@ -134,6 +134,7 @@
     --radius: 0.5rem;
 
     --highlight: 217 71% 41%; 
+    --highlight-rgb: 31, 81, 153;
     --highlight-foreground: 0 0% 98%;
     --gray-50: 0 0% 98%;
     --gray-100: 0 0% 96.1%;
@@ -186,6 +187,7 @@
     --ring: 0 84% 60%;
 
     --highlight: 0 84% 60%; 
+    --highlight-rgb: 246, 60, 60;
     --highlight-foreground: 0 0% 98%;
     --gray-50: 0 0% 7%;
     --gray-100: 0 0% 12%;

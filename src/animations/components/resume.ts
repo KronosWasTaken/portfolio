@@ -2,8 +2,9 @@ import { fadeInUp } from "../variants/fadeInUp";
 
 export const resumeAnimations = {
   header: {
-    ...fadeInUp,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }
+    initial: fadeInUp.initial,
+    animate: fadeInUp.whileInView,
+    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const }
   },
   
   container: {
@@ -12,24 +13,25 @@ export const resumeAnimations = {
     variants: {
       animate: {
         transition: {
-          staggerChildren: 0.1
+          staggerChildren: 0.05
         }
       }
     }
   },
   
   section: {
-    ...fadeInUp,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const }
+    initial: fadeInUp.initial,
+    animate: fadeInUp.whileInView,
+    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const }
   },
   
   item: {
     variants: {
-      initial: { opacity: 0, y: 20 },
+      initial: { opacity: 0, y: 15 },
       animate: { 
         opacity: 1, 
         y: 0,
-        transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const }
+        transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const }
       }
     }
   }

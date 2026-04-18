@@ -24,6 +24,42 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+const ResumeProjectCard = ({ project, index, animations }: { project: any, index: number, animations: any }) => {
+  return (
+    <motion.div
+      key={index}
+      {...animations.item}
+      className="group h-full"
+    >
+      <Card className="h-full border-border/50 hover:border-highlight/30 transition-all duration-300 flex flex-col overflow-hidden bg-background shadow-xs">
+        
+        <CardHeader className="pb-2 relative z-10">
+          <div className="flex justify-between items-start mb-2">
+            <CardTitle className="text-lg group-hover:text-highlight transition-colors flex items-center">
+              {project.name}
+              {project.link && (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="ml-2">
+                  <ExternalLink className="h-3 w-3 text-muted-foreground hover:text-highlight transition-colors" />
+                </a>
+              )}
+            </CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col relative z-10">
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">{project.description}</p>
+          <div className="flex flex-wrap gap-2 mt-auto pt-2">
+            {project.technologies.map((tech: string, i: number) => (
+              <Badge key={i} variant="outline" className="text-[10px] border-border/40 bg-background/50">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
+
 const Resume = () => {
   const { resume: resumeAnimations } = useMobileAnimations();
   const experience = [
@@ -174,13 +210,16 @@ const Resume = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <motion.div 
-        className="pt-24 pb-12 px-6"
-        {...resumeAnimations.container}
-      >
+      <div className="pt-24 pb-12 px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <motion.div className="text-center mb-12" {...resumeAnimations.header}>
+            <motion.div 
+              className="text-center mb-12" 
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={resumeAnimations.header}
+            >
             <h1 className="text-4xl font-bold mb-4">Aaditya Raj</h1>
             <p className="text-xl text-muted-foreground mb-6">
               Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience in
@@ -259,21 +298,34 @@ const Resume = () => {
           </motion.div>
 
           {/* Career Objective */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Career Objective</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed">
-                Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience
-                in network defense, Python scripting, and intrusion detection systems. Eager to contribute
-                to a cybersecurity team where I can apply my training and continue growing as a blue team analyst.
-              </p>
-            </CardContent>
-          </Card>
+          <motion.div 
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={resumeAnimations.item.variants}
+          >
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle>Career Objective</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground leading-relaxed">
+                  Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience
+                  in network defense, Python scripting, and intrusion detection systems. Eager to contribute
+                  to a cybersecurity team where I can apply my training and continue growing as a blue team analyst.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* Education */}
-          <motion.section className="mb-12" {...resumeAnimations.section}>
+          <motion.section 
+            className="mb-12" 
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-20px" }}
+            variants={resumeAnimations.section}
+          >
             <h2 className="text-2xl font-bold mb-6 flex items-center">
               <Separator className="flex-1 mr-4" />
               Education
@@ -321,7 +373,13 @@ const Resume = () => {
           </motion.section>
 
           {/* Experience */}
-          <motion.section className="mb-12" {...resumeAnimations.section}>
+          <motion.section 
+            className="mb-12" 
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-20px" }}
+            variants={resumeAnimations.section}
+          >
             <h2 className="text-2xl font-bold mb-6 flex items-center">
               <Separator className="flex-1 mr-4" />
               Work Experience
@@ -375,7 +433,13 @@ const Resume = () => {
           </motion.section>
 
           {/* Projects */}
-          <motion.section className="mb-12" {...resumeAnimations.section}>
+          <motion.section 
+            className="mb-12" 
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-20px" }}
+            variants={resumeAnimations.section}
+          >
             <h2 className="text-2xl font-bold mb-6 flex items-center">
               <Separator className="flex-1 mr-4" />
               Selected Projects
@@ -383,36 +447,34 @@ const Resume = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
-                <motion.div key={index} {...resumeAnimations.item}>
-                  <Card className="h-full border-border/50 hover:border-highlight/30 transition-all duration-300 flex flex-col group">
-                    <CardHeader className="pb-2">
-                      <div className="flex justify-between items-start mb-2">
-                        <CardTitle className="text-lg group-hover:text-highlight transition-colors flex items-center">
-                          {project.name}
-                          {project.link && (
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="ml-2">
-                              <ExternalLink className="h-3 w-3 text-muted-foreground hover:text-highlight transition-colors" />
-                            </a>
-                          )}
-                        </CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="flex-1 flex flex-col">
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">{project.description}</p>
-                      <div className="flex flex-wrap gap-2 mt-auto pt-2">
-                        {project.technologies.map((tech, i) => (
-                          <Badge key={i} variant="outline" className="text-[10px]">{tech}</Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                <ResumeProjectCard 
+                  key={index} 
+                  project={project} 
+                  index={index} 
+                  animations={resumeAnimations} 
+                />
               ))}
             </div>
           </motion.section>
 
           {/* Certifications & Training */}
-          <motion.section className="mb-12" {...resumeAnimations.section}>
+          <motion.section 
+            className="mb-12" 
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              initial: { opacity: 0, y: 15 },
+              animate: { 
+                opacity: 1, 
+                y: 0,
+                transition: { 
+                  duration: 0.4,
+                  staggerChildren: 0.03
+                } 
+              }
+            }}
+          >
             <h2 className="text-2xl font-bold mb-6 flex items-center">
               <Separator className="flex-1 mr-4" />
               Certifications & Training
@@ -434,7 +496,23 @@ const Resume = () => {
           </motion.section>
 
           {/* Technical Skills */}
-          <motion.section className="mb-12" {...resumeAnimations.section}>
+          <motion.section 
+            className="mb-12" 
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              initial: { opacity: 0, y: 15 },
+              animate: { 
+                opacity: 1, 
+                y: 0,
+                transition: { 
+                  duration: 0.4,
+                  staggerChildren: 0.02 // Very fast stagger for skills
+                } 
+              }
+            }}
+          >
             <h2 className="text-2xl font-bold mb-6 flex items-center">
               <Separator className="flex-1 mr-4" />
               Technical Skills
@@ -456,7 +534,7 @@ const Resume = () => {
             </div>
           </motion.section>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

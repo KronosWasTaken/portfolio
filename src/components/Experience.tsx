@@ -169,27 +169,7 @@ const Experience = () => {
           </div>
         </div>
 
-        <motion.div 
-          className="mt-12 text-center"
-          {...experienceAnimations.careerObjective}
-        >
-          <Card className="max-w-3xl mx-auto group hover:shadow-lg border-border/50">
-            <CardContent className="p-6 text-center">
-              <motion.div 
-                className="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20 transition-colors"
-                {...experienceAnimations.objectiveIconHover}
-              >
-                <Shield className="h-6 w-6 text-highlight" />
-              </motion.div>
-              <h3 className="font-semibold mb-2">Career Objective</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience in 
-                network defense, Python scripting, and intrusion detection systems. Eager to contribute to a 
-                cybersecurity team where I can apply my training and continue growing as a blue team analyst.
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
+        {/* Removed Career Objective Section */}
       </div>
     </section>
   );
