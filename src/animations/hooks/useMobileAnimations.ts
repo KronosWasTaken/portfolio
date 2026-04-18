@@ -6,7 +6,8 @@ import {
   techStackAnimations, 
   projectsAnimations, 
   aboutAnimations, 
-  experienceAnimations 
+  experienceAnimations,
+  resumeAnimations
 } from '../index';
 
 export const useMobileAnimations = () => {
@@ -31,6 +32,7 @@ export const useMobileAnimations = () => {
     projects: isMobile && mobileAnimations ? mobileAnimations.projects : projectsAnimations,
     about: isMobile && mobileAnimations ? mobileAnimations.about : aboutAnimations,
     experience: isMobile && mobileAnimations ? mobileAnimations.experience : experienceAnimations,
+    resume: resumeAnimations,
     isMobile
   };
 };

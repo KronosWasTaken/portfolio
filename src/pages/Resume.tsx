@@ -1,4 +1,6 @@
 import Header from "@/components/Header";
+import { motion } from "motion/react";
+import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -22,6 +24,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const Resume = () => {
+  const { resume: resumeAnimations } = useMobileAnimations();
   const experience = [
     {
       company: "Programiz",
@@ -168,10 +171,13 @@ const Resume = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <div className="pt-24 pb-12 px-6">
+      <motion.div 
+        className="pt-24 pb-12 px-6"
+        {...resumeAnimations.container}
+      >
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <motion.div className="text-center mb-12" {...resumeAnimations.header}>
             <h1 className="text-4xl font-bold mb-4">Aaditya Raj</h1>
             <p className="text-xl text-muted-foreground mb-6">
               Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience in
@@ -247,7 +253,7 @@ const Resume = () => {
                 </a>
               </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Career Objective */}
           <Card className="mb-8">
@@ -263,152 +269,187 @@ const Resume = () => {
             </CardContent>
           </Card>
 
+          {/* Education */}
+          <motion.section className="mb-12" {...resumeAnimations.section}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <Separator className="flex-1 mr-4" />
+              Education
+              <Separator className="flex-1 ml-4" />
+            </h2>
+            <div className="space-y-6">
+              <motion.div {...resumeAnimations.item}>
+                <Card className="border-border/50 hover:border-highlight/30 transition-colors">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-xl">Bachelor of Science in CSIT</CardTitle>
+                        <p className="text-muted-foreground">Kathmandu College of Technology (TU)</p>
+                      </div>
+                      <div className="text-right">
+                        <Badge variant="outline" className="mb-1">2022 - 2026</Badge>
+                        <p className="text-xs text-muted-foreground">Lalitpur, Nepal</p>
+                      </div>
+                    </div>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+              <motion.div {...resumeAnimations.item}>
+                <Card className="border-border/50 hover:border-highlight/30 transition-colors">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-xl">Senior Secondary (Science)</CardTitle>
+                        <p className="text-muted-foreground">Orchid International College</p>
+                      </div>
+                      <div className="text-right">
+                        <Badge variant="outline" className="mb-1">2020 - 2022</Badge>
+                        <p className="text-xs text-muted-foreground">Kathmandu, Nepal</p>
+                        <p className="text-xs font-semibold mt-1">GPA: 3.46/4.0</p>
+                      </div>
+                    </div>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            </div>
+          </motion.section>
+
           {/* Experience */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Experience</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                {experience.map((exp, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between items-start mb-2">
-                      <div className="flex items-start space-x-3">
-                        {exp.logo && (
+          <motion.section className="mb-12" {...resumeAnimations.section}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <Separator className="flex-1 mr-4" />
+              Work Experience
+              <Separator className="flex-1 ml-4" />
+            </h2>
+            <div className="space-y-6">
+              {experience.map((exp, index) => (
+                <motion.div key={index} {...resumeAnimations.item}>
+                  <Card className="group border-border/50 hover:border-highlight/30 transition-all duration-300">
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-start space-x-4">
                           <div className={`w-10 h-10 mt-1 ${exp.logoBg || 'bg-white'} rounded-lg flex items-center justify-center overflow-hidden shrink-0 border border-border/50 shadow-sm`}>
                             <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain p-1.5" />
                           </div>
-                        )}
-                        <div>
-                          <h3 className="font-semibold text-lg">{exp.position}</h3>
-                          <p className="text-highlight">{exp.company}</p>
+                          <div>
+                            <CardTitle className="text-xl group-hover:text-highlight transition-colors">{exp.position}</CardTitle>
+                            <p className="text-muted-foreground font-medium">{exp.company}</p>
+                            <div className="flex items-center gap-4 mt-1">
+                              <div className="flex items-center text-xs text-muted-foreground">
+                                <Calendar className="h-3 w-3 mr-1" />
+                                {exp.duration}
+                              </div>
+                              <div className="flex items-center text-xs text-muted-foreground">
+                                <MapPin className="h-3 w-3 mr-1" />
+                                {exp.location}
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div className="text-right text-sm text-muted-foreground">
-                        <p>{exp.duration}</p>
-                        <p>{exp.location}</p>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="list-disc list-inside space-y-2 mb-4 text-sm text-muted-foreground leading-relaxed">
+                        {exp.achievements.map((achievement, i) => (
+                          <li key={i} className="pl-1">{achievement}</li>
+                        ))}
+                      </ul>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, i) => (
+                          <Badge key={i} variant="secondary" className="text-[10px] h-5 bg-highlight/5 text-highlight hover:bg-highlight/10 border-highlight/10">
+                            {tech}
+                          </Badge>
+                        ))}
                       </div>
-                    </div>
-                    <ul className="list-disc list-inside space-y-1 text-muted-foreground mb-4">
-                      {exp.achievements.map((achievement, i) => (
-                        <li key={i}>{achievement}</li>
-                      ))}
-                    </ul>
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      {exp.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="outline" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    {index < experience.length - 1 && <Separator className="my-4" />}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Education */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Education</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {education.map((edu, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-semibold">{edu.degree}</h3>
-                        <p className="text-highlight">{edu.institution}</p>
-                        {edu.details && <p className="text-sm text-muted-foreground">{edu.details}</p>}
-                      </div>
-                      <p className="text-sm text-muted-foreground">{edu.duration}</p>
-                    </div>
-                    {index < education.length - 1 && <Separator className="my-4" />}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Skills */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Skills</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {Object.entries(skills).map(([category, skillList]) => (
-                  <div key={category}>
-                    <h3 className="font-semibold mb-2">{category}</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {skillList.map((skill, index) => (
-                        <Badge key={index} variant="secondary">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
 
           {/* Projects */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Projects</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {projects.map((project, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-semibold">{project.name}</h3>
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          View
-                        </a>
-                      </Button>
-                    </div>
-                    <p className="text-muted-foreground mb-2">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, i) => (
-                        <Badge key={i} variant="outline" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    {index < projects.length - 1 && <Separator className="my-4" />}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          <motion.section className="mb-12" {...resumeAnimations.section}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <Separator className="flex-1 mr-4" />
+              Selected Projects
+              <Separator className="flex-1 ml-4" />
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {projects.map((project, index) => (
+                <motion.div key={index} {...resumeAnimations.item}>
+                  <Card className="h-full border-border/50 hover:border-highlight/30 transition-all duration-300 flex flex-col group">
+                    <CardHeader className="pb-2">
+                      <div className="flex justify-between items-start mb-2">
+                        <CardTitle className="text-lg group-hover:text-highlight transition-colors flex items-center">
+                          {project.name}
+                          {project.link && (
+                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="ml-2">
+                              <ExternalLink className="h-3 w-3 text-muted-foreground hover:text-highlight transition-colors" />
+                            </a>
+                          )}
+                        </CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="flex-1 flex flex-col">
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mt-auto pt-2">
+                        {project.technologies.map((tech, i) => (
+                          <Badge key={i} variant="outline" className="text-[10px]">{tech}</Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
 
-          {/* Certifications */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Certifications</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {certifications.map((cert, index) => (
-                  <div key={index} className="flex justify-between items-center p-3 border rounded-lg">
+          {/* Certifications & Training */}
+          <motion.section className="mb-12" {...resumeAnimations.section}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <Separator className="flex-1 mr-4" />
+              Certifications & Training
+              <Separator className="flex-1 ml-4" />
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {certifications.map((cert, index) => (
+                <motion.div key={index} {...resumeAnimations.item}>
+                  <div className="flex justify-between items-center p-3 border rounded-lg hover:border-highlight/40 transition-colors">
                     <div>
-                      <p className="font-medium">{cert.name}</p>
-                      <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+                      <p className="font-medium text-sm">{cert.name}</p>
+                      <p className="text-xs text-muted-foreground">{cert.issuer}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground">{cert.date}</p>
+                    <p className="text-xs text-muted-foreground shrink-0 ml-2">{cert.date}</p>
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* Technical Skills */}
+          <motion.section className="mb-12" {...resumeAnimations.section}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <Separator className="flex-1 mr-4" />
+              Technical Skills
+              <Separator className="flex-1 ml-4" />
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {Object.entries(skills).map(([category, skillList], index) => (
+                <motion.div key={category} {...resumeAnimations.item}>
+                  <h3 className="font-semibold mb-3 text-highlight uppercase tracking-wider text-xs">{category}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skillList.map((skill, i) => (
+                      <Badge key={i} variant="secondary" className="bg-muted/50 hover:bg-muted text-foreground transition-colors">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -68,79 +68,105 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-8">
-          {experiences.map((experience, index) => (
-            <motion.div
-              key={index}
-              {...experienceAnimations.experienceCard(index)}
-            >
-              <Card className="group hover:shadow-xl border-border/50 overflow-hidden">
-                <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start space-x-3">
-                      <motion.div 
-                        className={`w-10 h-10 mt-1 ${experience.logoBg || 'bg-white'} rounded-lg flex items-center justify-center overflow-hidden shrink-0 shadow-sm border border-border/50`}
-                        {...experienceAnimations.iconHover}
-                      >
-                        {experience.logo ? (
-                          <img 
-                            src={experience.logo} 
-                            alt={`${experience.company} logo`} 
-                            className="w-full h-full object-contain p-1.5 group-hover:scale-110 transition-transform duration-300"
-                          />
-                        ) : (
-                          <experience.icon className="h-5 w-5 text-highlight" />
-                        )}
-                      </motion.div>
-                    <div>
-                      <CardTitle className="text-xl group-hover:text-highlight transition-colors">
-                        {experience.title}
-                      </CardTitle>
-                      <div className="flex items-center space-x-2 mt-1">
-                        <Building className="h-4 w-4 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">{experience.company}</span>
-                        <Calendar className="h-4 w-4 text-muted-foreground ml-2" />
-                        <span className="text-sm text-muted-foreground">{experience.period}</span>
-                      </div>
-                      {experience.featured && (
-                        <motion.div
-                          {...experienceAnimations.featuredBadge(index)}
-                        >
-                          <Badge variant="secondary" className="mt-2 bg-highlight/15 text-highlight border border-highlight/30">
-                            Current Role
-                          </Badge>
-                        </motion.div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              
-              <CardContent className="space-y-4">
-                <div className="text-sm text-muted-foreground leading-relaxed">
-                  <ul className="list-disc list-inside space-y-1">
-                    {experience.achievements.map((achievement, i) => (
-                      <li key={i}>{achievement}</li>
-                    ))}
-                  </ul>
-                </div>
+        <div className="relative max-w-4xl mx-auto">
+          {/* Vertical Timeline Line */}
+          <motion.div 
+            className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-linear-to-b from-highlight/5 via-highlight/40 to-highlight/5 hidden md:block"
+            {...experienceAnimations.timelineLine}
+          />
+
+          <div className="space-y-12">
+            {experiences.map((experience, index) => (
+              <div key={index} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                 
-                <div className="flex flex-wrap gap-2">
-                  {experience.technologies.map((tech, techIndex) => (
-                    <motion.div
-                      key={techIndex}
-                      {...experienceAnimations.techBadge(techIndex, index)}
-                    >
-                      <Badge variant="outline" className="text-xs">
-                        {tech}
-                      </Badge>
-                    </motion.div>
-                  ))}
+                {/* Timeline Dot */}
+                <motion.div 
+                  className="absolute left-[-6px] md:left-1/2 md:ml-[-6px] top-8 w-3 h-3 rounded-full bg-highlight shadow-[0_0_15px_hsl(var(--highlight))] z-10 hidden md:block"
+                  {...experienceAnimations.timelineDot(index)}
+                />
+
+                {/* Card Side */}
+                <div className="w-full md:w-[45%]">
+                  <motion.div
+                    {...experienceAnimations.experienceCard(index)}
+                  >
+                    <Card className="group hover:shadow-xl border-border/50 overflow-hidden transition-all duration-300 hover:border-highlight/30">
+                      <CardHeader className="pb-4">
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-start space-x-3">
+                            <motion.div 
+                              className={`w-10 h-10 mt-1 ${experience.logoBg || 'bg-white'} rounded-lg flex items-center justify-center overflow-hidden shrink-0 shadow-sm border border-border/50`}
+                              {...experienceAnimations.iconHover}
+                            >
+                              {experience.logo ? (
+                                <img 
+                                  src={experience.logo} 
+                                  alt={`${experience.company} logo`} 
+                                  className="w-full h-full object-contain p-1.5 group-hover:scale-110 transition-transform duration-300"
+                                />
+                              ) : (
+                                <experience.icon className="h-5 w-5 text-highlight" />
+                              )}
+                            </motion.div>
+                            <div>
+                              <CardTitle className="text-xl group-hover:text-highlight transition-colors">
+                                {experience.title}
+                              </CardTitle>
+                              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:space-x-2 mt-1">
+                                <div className="flex items-center space-x-1">
+                                  <Building className="h-4 w-4 text-muted-foreground" />
+                                  <span className="text-sm text-muted-foreground">{experience.company}</span>
+                                </div>
+                                <div className="flex items-center space-x-1">
+                                  <Calendar className="h-4 w-4 text-muted-foreground sm:ml-2" />
+                                  <span className="text-sm text-muted-foreground">{experience.period}</span>
+                                </div>
+                              </div>
+                              {experience.featured && (
+                                <motion.div
+                                  {...experienceAnimations.featuredBadge(index)}
+                                >
+                                  <Badge variant="secondary" className="mt-2 bg-highlight/15 text-highlight border border-highlight/30">
+                                    Current Role
+                                  </Badge>
+                                </motion.div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      
+                      <CardContent className="space-y-4">
+                        <div className="text-sm text-muted-foreground leading-relaxed">
+                          <ul className="list-disc list-inside space-y-1">
+                            {experience.achievements.map((achievement, i) => (
+                              <li key={i} className="pl-1">{achievement}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        <div className="flex flex-wrap gap-2">
+                          {experience.technologies.map((tech, techIndex) => (
+                            <motion.div
+                              key={techIndex}
+                              {...experienceAnimations.techBadge(techIndex, index)}
+                            >
+                              <Badge variant="outline" className="text-[10px] py-0 h-5 border-border/50">
+                                {tech}
+                              </Badge>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 </div>
-              </CardContent>
-            </Card>
-            </motion.div>
-          ))}
+
+                {/* Empty Side (for Desktop Timeline) */}
+                <div className="hidden md:block md:w-[45%]" />
+              </div>
+            ))}
+          </div>
         </div>
 
         <motion.div 

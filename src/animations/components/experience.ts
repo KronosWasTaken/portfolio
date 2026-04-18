@@ -74,5 +74,24 @@ export const experienceAnimations = {
       rotate: 8,
       transition: { duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] as const }
     }
-  }
+  },
+
+  timelineLine: {
+    initial: { opacity: 0 },
+    whileInView: { 
+      opacity: 1,
+      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const } 
+    },
+    viewport: { once: false }
+  },
+
+  timelineDot: (index: number) => ({
+    initial: { scale: 0, opacity: 0 },
+    whileInView: { 
+      scale: 1, 
+      opacity: 1,
+      transition: { delay: index * 0.1, duration: 0.3 } 
+    },
+    viewport: { once: false }
+  })
 };

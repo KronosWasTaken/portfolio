@@ -61,7 +61,9 @@ export const getMobileAnimations = () => {
         techBadge: () => ({ initial: { opacity: 1 }, whileInView: { opacity: 1 } }),
         careerObjective: { initial: { opacity: 1 }, whileInView: { opacity: 1 } },
         objectiveCardHover: {},
-        objectiveIconHover: { hover: {} }
+        objectiveIconHover: { hover: {} },
+        timelineLine: { initial: { height: "100%", opacity: 1 }, whileInView: { height: "100%", opacity: 1 } },
+        timelineDot: () => ({ initial: { scale: 1, opacity: 1 }, whileInView: { scale: 1, opacity: 1 } })
       }
     };
   }
@@ -170,7 +172,17 @@ export const getMobileAnimations = () => {
       techBadge: (index: number, cardIndex: number) => mobileOptimizedCard(cardIndex + index),
       careerObjective: mobileOptimizedFadeIn,
       objectiveCardHover: {},
-      objectiveIconHover: {}
+      objectiveIconHover: {},
+      timelineLine: {
+        ...mobileOptimizedFadeIn,
+        initial: { ...mobileOptimizedFadeIn.initial, height: "100%" },
+        whileInView: { ...mobileOptimizedFadeIn.whileInView, height: "100%" }
+      },
+      timelineDot: (index: number) => ({
+        ...mobileOptimizedCard(index),
+        initial: { ...mobileOptimizedCard(index).initial, scale: 1 },
+        whileInView: { ...mobileOptimizedCard(index).whileInView, scale: 1 }
+      })
     }
   };
 };

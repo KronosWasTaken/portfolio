@@ -19,3 +19,4 @@ export * from "./components/techStack";
 export * from "./components/projects";
 export * from "./components/about";
 export * from "./components/experience";
+export * from "./components/resume";
