@@ -12,6 +12,7 @@ import { GrOracle } from "react-icons/gr";
 import { Shield } from "lucide-react";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
+import LiquidProgress from "./ui/LiquidProgress";
 
 const Certifications = () => {
   const { certifications: certificationsAnimations } = useMobileAnimations();
@@ -157,8 +158,13 @@ const Certifications = () => {
                 {...certificationsAnimations.card(index)}
                 {...certificationsAnimations.cardHover}
               >
-                <Card className="group hover:shadow-lg border-border/50 h-full">
-                  <CardHeader className="pb-4">
+                <Card className="relative group hover:shadow-lg border-border/50 h-full overflow-hidden transition-all duration-300 hover:border-highlight/30">
+                  <LiquidProgress
+                    progress={100}
+                    color="hsl(var(--highlight) / 0.15)"
+                    secondaryColor="transparent"
+                  />
+                  <CardHeader className="relative z-10 pb-4">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start space-x-3">
                          <motion.div 
@@ -190,7 +196,7 @@ const Certifications = () => {
                     </div>
                   </CardHeader>
                 
-                  <CardContent className="space-y-4">
+                  <CardContent className="relative z-10 space-y-4">
                     <CardDescription className="text-muted-foreground leading-relaxed">
                       {cert.description}
                     </CardDescription>

@@ -3,6 +3,7 @@ import { SiPython, SiLinux, SiDocker, SiGithub } from "react-icons/si";
 import { Shield, Network, Code, Lock, Brain } from "lucide-react";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
+import LiquidProgress from "./ui/LiquidProgress";
 
 const About = () => {
   const { about: aboutAnimations } = useMobileAnimations();
@@ -49,8 +50,13 @@ const About = () => {
               {...aboutAnimations.expertiseCard(index)}
               {...aboutAnimations.cardHover}
             >
-              <Card className="group hover:shadow-lg border-border/50 h-full">
-                <CardContent className="p-6 text-center">
+              <Card className="relative group hover:shadow-lg border-border/50 h-full overflow-hidden transition-all duration-300 hover:border-highlight/30">
+                <LiquidProgress
+                  progress={100}
+                  color="hsl(var(--highlight) / 0.15)"
+                  secondaryColor="transparent"
+                />
+                <CardContent className="relative z-10 p-6 text-center">
                   <motion.div 
                     className="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20"
                     {...aboutAnimations.iconHover}
@@ -69,8 +75,13 @@ const About = () => {
           className="mt-16 text-center"
           {...aboutAnimations.learningCard}
         >
-          <Card className="max-w-3xl mx-auto group hover:shadow-lg border-border/50">
-            <CardContent className="p-6 text-center">
+          <Card className="relative max-w-3xl mx-auto group hover:shadow-lg border-border/50 overflow-hidden transition-all duration-300 hover:border-highlight/30">
+            <LiquidProgress
+              progress={100}
+              color="hsl(var(--highlight) / 0.15)"
+              secondaryColor="transparent"
+            />
+            <CardContent className="relative z-10 p-6 text-center">
               <motion.div 
                 className="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20"
                 {...aboutAnimations.iconHover}

@@ -5,6 +5,7 @@ import { ExternalLink, Shield, Lock, Code, Play, BookOpen, FileText } from "luci
 import { SiGithub } from "react-icons/si";
 import { motion } from "motion/react";
 import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
+import LiquidProgress from "./ui/LiquidProgress";
 
 const ProjectCard = ({ project, index, animations }: { project: any, index: number, animations: any }) => {
   return (
@@ -12,7 +13,12 @@ const ProjectCard = ({ project, index, animations }: { project: any, index: numb
       {...animations.projectCard(index)}
       className="group"
     >
-      <Card className="bg-background hover:shadow-xl border-border/50 overflow-hidden h-full transition-all duration-300 hover:border-highlight/30">
+      <Card className="relative bg-background hover:shadow-xl border-border/50 overflow-hidden h-full transition-all duration-300 hover:border-highlight/30">
+        <LiquidProgress
+          progress={100}
+          color="hsl(var(--highlight) / 0.15)"
+          secondaryColor="transparent"
+        />
         <CardHeader className="pb-4 relative z-10">
           <div className="flex items-start justify-between">
             <div className="flex items-center space-x-3">

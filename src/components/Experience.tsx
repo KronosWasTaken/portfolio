@@ -6,6 +6,7 @@ import { useMobileAnimations } from "@/animations/hooks/useMobileAnimations";
 import neelgaiLogo from "@/assets/logos/neelgai.webp?width=80&format=webp";
 import icsLogo from "@/assets/logos/ics-logo.webp?width=80&format=webp";
 import programizLogo from "@/assets/logos/programiz.jpeg?width=80&format=webp";
+import LiquidProgress from "./ui/LiquidProgress";
 
 const Experience = () => {
   const { experience: experienceAnimations } = useMobileAnimations();
@@ -93,8 +94,13 @@ const Experience = () => {
                   <motion.div
                     {...experienceAnimations.experienceCard(index)}
                   >
-                    <Card className="group hover:shadow-xl border-border/50 overflow-hidden transition-all duration-300 hover:border-highlight/30">
-                      <CardHeader className="pb-4">
+                    <Card className="relative group hover:shadow-xl border-border/50 overflow-hidden transition-all duration-300 hover:border-highlight/30">
+                      <LiquidProgress
+                        progress={100}
+                        color="hsl(var(--highlight) / 0.15)"
+                        secondaryColor="transparent"
+                      />
+                      <CardHeader className="relative z-10 pb-4">
                         <div className="flex items-start justify-between">
                           <div className="flex items-start space-x-3">
                             <motion.div 
@@ -143,7 +149,7 @@ const Experience = () => {
                         </div>
                       </CardHeader>
                       
-                      <CardContent className="space-y-4">
+                      <CardContent className="relative z-10 space-y-4">
                         <div className="text-sm text-muted-foreground leading-relaxed">
                           <ul className="list-disc list-inside space-y-1">
                             {experience.achievements.map((achievement, i) => (

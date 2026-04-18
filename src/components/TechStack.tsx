@@ -32,30 +32,21 @@ import { useState } from "react";
 import LiquidProgress from "./ui/LiquidProgress";
 
 const TechCard = ({ tech, activeTab }: { tech: any, activeTab: number }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const IconComponent = tech.icon;
 
   return (
     <div 
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative flex flex-col items-center p-6 bg-card rounded-xl border overflow-hidden cursor-default transition-colors hover:border-highlight/50"
+      className="group relative flex flex-col items-center p-6 bg-card rounded-xl border overflow-hidden cursor-default transition-colors hover:border-highlight/50"
     >
-      <AnimatePresence>
-        {isHovered && (
-          <div className="absolute inset-0 pointer-events-none">
-            <LiquidProgress
-              progress={100}
-              color="hsl(var(--highlight) / 0.15)"
-              secondaryColor="transparent"
-            />
-          </div>
-        )}
-      </AnimatePresence>
+      <LiquidProgress
+        progress={100}
+        color="hsl(var(--highlight) / 0.15)"
+        secondaryColor="transparent"
+      />
 
       <div className="z-10 flex flex-col items-center">
         <div className="relative mb-4">
-          <IconComponent className={`h-10 w-10 transition-colors duration-300 ${isHovered ? 'text-primary' : 'text-highlight'}`} />
+          <IconComponent className="h-10 w-10 transition-colors duration-300 text-highlight group-hover:text-primary" />
         </div>
 
         <span className="text-sm font-bold tracking-tight text-center z-10">{tech.name}</span>
