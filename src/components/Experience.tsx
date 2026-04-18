@@ -11,7 +11,11 @@ const Experience = () => {
       title: "Cybersecurity Trainee",
       company: "Programiz",
       period: "April 2026 - Present",
-      description: "",
+      achievements: [
+        "Managing granular access control levels across Production, Staging, and Dev environments to ensure security compliance.",
+        "Optimizing DevOps workflows and resource transparency via cloud API integrations and DevContainer orchestration.",
+        "Hardening system security through rigorous Access Management, Software Inventory Management (SBOM), and the implementation of organizational Compliance frameworks."
+      ],
       technologies: ["Cybersecurity", "DevSecOps", "DevOps", "Network Security", "Cloud Security", "FinOps"],
       icon: Shield,
       logo: "/programiz.jpeg",
@@ -22,7 +26,11 @@ const Experience = () => {
       title: "Cybersecurity Research Intern",
       company: "Neelgai",
       period: "Aug 2025 - Jan 2025",
-      description: "Designed and built an MCP server to explore secure integrations with various services. Researched and implemented defenses against prompt injection, authentication flaws, and insecure agent behaviors. Developed proof-of-concepts and documented security findings to support blue team use cases.",
+      achievements: [
+        "Designed and built an MCP server to explore secure integrations with various services.",
+        "Researched and implemented defenses against prompt injection, authentication flaws, and insecure agent behaviors.",
+        "Developed proof-of-concepts and documented security findings to support blue team use cases."
+      ],
       technologies: ["MCP Server", "Security Research", "Blue Team", "Documentation"],
       icon: Shield,
       logo: "/neelgai.png",
@@ -33,7 +41,12 @@ const Experience = () => {
       title: "Network and System Administrator Intern",
       company: "Innovative Communication System Pvt. Ltd.",
       period: "Feb 2025 - Aug 2025",
-      description: "Monitored and maintained data center hardware, network, and IT systems. Performed preventive maintenance and daily infrastructure checks. Escalated and restored critical faults while maintaining reports and logs. Worked with Cisco Networking and Juniper Networks products.",
+      achievements: [
+        "Monitored and maintained data center hardware, network, and IT systems.",
+        "Performed preventive maintenance and daily infrastructure checks.",
+        "Escalated and restored critical faults while maintaining reports and logs.",
+        "Worked with Cisco Networking and Juniper Networks products."
+      ],
       technologies: ["Cisco", "Juniper", "Network Administration", "System Maintenance", "Infrastructure"],
       icon: Network,
       logo: "/ics-logo.png",
@@ -104,9 +117,13 @@ const Experience = () => {
               </CardHeader>
               
               <CardContent className="space-y-4">
-                <CardDescription className="text-muted-foreground leading-relaxed">
-                  {experience.description}
-                </CardDescription>
+                <div className="text-sm text-muted-foreground leading-relaxed">
+                  <ul className="list-disc list-inside space-y-1">
+                    {experience.achievements.map((achievement, i) => (
+                      <li key={i}>{achievement}</li>
+                    ))}
+                  </ul>
+                </div>
                 
                 <div className="flex flex-wrap gap-2">
                   {experience.technologies.map((tech, techIndex) => (

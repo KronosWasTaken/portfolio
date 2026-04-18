@@ -2,10 +2,10 @@ import Header from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
+import {
+  MapPin,
+  Phone,
+  Mail,
   Calendar,
   ExternalLink,
   Download,
@@ -28,7 +28,11 @@ const Resume = () => {
       position: "Cybersecurity Trainee",
       duration: "April 2026 - Present",
       location: "Nepal",
-      achievements: [],
+      achievements: [
+        "Managing granular access control levels across Production, Staging, and Dev environments to ensure security compliance.",
+        "Optimizing DevOps workflows and resource transparency via cloud API integrations and DevContainer orchestration.",
+        "Hardening system security through rigorous Access Management, Software Inventory Management (SBOM), and the implementation of organizational Compliance frameworks."
+      ],
       technologies: ["Cybersecurity", "DevSecOps", "DevOps", "Network Security", "Cloud Security", "FinOps"],
       logo: "/programiz.jpeg",
       logoBg: "bg-white"
@@ -163,25 +167,25 @@ const Resume = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <div className="pt-24 pb-12 px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">Aaditya Raj</h1>
             <p className="text-xl text-muted-foreground mb-6">
-              Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience in 
+              Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience in
               network defense, Python scripting, and intrusion detection systems
             </p>
-            
+
             <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
+                    <Button
+                      variant="ghost"
+                      size="sm"
                       className="text-muted-foreground hover:text-foreground p-0 h-auto font-normal"
                     >
                       <span>aaditya12raj@gmail.com</span>
@@ -190,7 +194,7 @@ const Resume = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="center">
                     <DropdownMenuItem asChild>
-                      <a 
+                      <a
                         href="mailto:aaditya12raj@gmail.com"
                         className="flex items-center space-x-2 w-full"
                       >
@@ -199,7 +203,7 @@ const Resume = () => {
                       </a>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <a 
+                      <a
                         href="mailto:aaditya12raj@tuta.io"
                         className="flex items-center space-x-2 w-full"
                       >
@@ -208,7 +212,7 @@ const Resume = () => {
                       </a>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <a 
+                      <a
                         href="mailto:InfiniteEcl1pse@protonmail.com"
                         className="flex items-center space-x-2 w-full"
                       >
@@ -228,7 +232,7 @@ const Resume = () => {
                 <span>Lalitpur, Nepal</span>
               </div>
             </div>
-            
+
             <div className="flex justify-center space-x-4 mt-4">
               <Button variant="outline" size="sm" asChild>
                 <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
@@ -252,8 +256,8 @@ const Resume = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience 
-                in network defense, Python scripting, and intrusion detection systems. Eager to contribute 
+                Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience
+                in network defense, Python scripting, and intrusion detection systems. Eager to contribute
                 to a cybersecurity team where I can apply my training and continue growing as a blue team analyst.
               </p>
             </CardContent>
