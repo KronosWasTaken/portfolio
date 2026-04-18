@@ -4,12 +4,25 @@ import { SiGithub } from "react-icons/si";
 import { FiLinkedin } from "react-icons/fi";
 import ThemeToggle from "./ThemeToggle";
 import { useLocation, Link } from "react-router";
+import { motion, useScroll, useSpring } from "motion/react";
 
 const Header = () => {
   const location = useLocation();
   const isResumePage = location.pathname === '/resume';
+  
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-lg will-change-transform">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 rounded-full border border-border/30 shadow-2xl bg-background/20 backdrop-blur-2xl will-change-transform overflow-hidden">
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-highlight origin-left z-50 pointer-events-none"
+        style={{ scaleX }}
+      />
       <div className="container mx-auto px-4 sm:px-6 py-4">
         <nav className="flex items-center justify-between">
           <div className="text-2xl font-bold text-foreground" style={{ fontFamily: 'Kaushan Script, cursive' }}>
