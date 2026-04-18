@@ -8,9 +8,9 @@ export const heroAnimations = {
   },
   
   title: {
-    initial: { y: 20 },
-    animate: { y: 0 },
-    transition: { duration: 0.5, ease: [0.2, 0.65, 0.3, 0.9] as const }
+    initial: { opacity: 1, y: 10 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.3, ease: [0.2, 0.65, 0.3, 0.9] as const }
   },
   
   name: {

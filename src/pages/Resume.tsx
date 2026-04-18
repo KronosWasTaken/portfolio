@@ -88,7 +88,7 @@ const Resume = () => {
         "Developed proof-of-concepts and documented security findings to support blue team use cases."
       ],
       technologies: ["MCP Server", "Security Research", "Blue Team", "Documentation"],
-      logo: "/neelgai.png",
+      logo: "/neelgai.webp",
       logoBg: "bg-white"
     },
     {
@@ -103,7 +103,7 @@ const Resume = () => {
         "Worked with Cisco Networking and Juniper Networks products."
       ],
       technologies: ["Cisco", "Juniper", "Network Administration", "System Maintenance", "Infrastructure"],
-      logo: "/ics-logo.png",
+      logo: "/ics-logo.webp",
       logoBg: "bg-white"
     }
   ];

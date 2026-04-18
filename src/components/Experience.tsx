@@ -33,7 +33,7 @@ const Experience = () => {
       ],
       technologies: ["MCP Server", "Security Research", "Blue Team", "Documentation"],
       icon: Shield,
-      logo: "/neelgai.png",
+      logo: "/neelgai.webp",
       logoBg: "bg-white",
       featured: false
     },
@@ -49,7 +49,7 @@ const Experience = () => {
       ],
       technologies: ["Cisco", "Juniper", "Network Administration", "System Maintenance", "Infrastructure"],
       icon: Network,
-      logo: "/ics-logo.png",
+      logo: "/ics-logo.webp",
       logoBg: "bg-white",
       featured: false
     }

@@ -672,19 +672,35 @@ const NowPlaying = () => {
   };
 
   useEffect(() => {
-    // Defer non-critical music fetching to prioritize the main page render (Fixes Network Chaining)
-    const timer = setTimeout(() => {
+    // Completely isolate music fetching from the critical path (Fixes Network Chaining)
+    const initMusic = () => {
       cleanupExpiredCache();
       loadAlbumImageCache();
       fetchUserInfo();
       fetchCurrentTrack();
-    }, 2000);
-    
-    const cleanupInterval = setInterval(cleanupExpiredCache, 3600000);
-    return () => {
-      clearTimeout(timer);
-      clearInterval(cleanupInterval);
     };
+
+    let timer: any;
+    const cleanupInterval = setInterval(cleanupExpiredCache, 3600000);
+
+    if ('requestIdleCallback' in window) {
+      // Wait for the browser to be bored before starting music logic
+      const handle = (window as any).requestIdleCallback(() => {
+        timer = setTimeout(initMusic, 3000);
+      }, { timeout: 10000 });
+      
+      return () => {
+        (window as any).cancelIdleCallback(handle);
+        if (timer) clearTimeout(timer);
+        clearInterval(cleanupInterval);
+      };
+    } else {
+      timer = setTimeout(initMusic, 4000);
+      return () => {
+        clearTimeout(timer);
+        clearInterval(cleanupInterval);
+      };
+    }
   }, []);
 
   useEffect(() => {
