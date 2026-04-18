@@ -5,7 +5,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const apiKey = process.env.VITE_LASTFM_API_KEY;
 
   if (!apiKey) {
-    return res.status(500).json({ error: 'Last.fm API key not configured' });
+    console.error('Environment variable VITE_LASTFM_API_KEY is missing');
+    return res.status(500).json({ 
+      error: 'Last.fm API key not configured',
+      debug: 'Check Vercel environment variables'
+    });
   }
 
   // Construct query string with secure API key
