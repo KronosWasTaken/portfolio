@@ -1,25 +1,35 @@
+import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Experience from "@/components/Experience";
-import TechStack from "@/components/TechStack";
-import Projects from "@/components/Projects";
-import Certifications from "@/components/Certifications";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+
+const About = lazy(() => import("@/components/About"));
+const Experience = lazy(() => import("@/components/Experience"));
+const TechStack = lazy(() => import("@/components/TechStack"));
+const Projects = lazy(() => import("@/components/Projects"));
+const Certifications = lazy(() => import("@/components/Certifications"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+const SectionLoader = () => (
+  <div className="h-40 flex items-center justify-center text-muted-foreground/30">
+    <div className="w-8 h-8 border-2 border-highlight/20 border-t-highlight rounded-full animate-spin" />
+  </div>
+);
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
-      <About />
-      <Experience />
-      <TechStack />
-      <Projects />
-      <Certifications />
-      <Contact />
-      <Footer />
+      <Suspense fallback={<SectionLoader />}>
+        <About />
+        <Experience />
+        <TechStack />
+        <Projects />
+        <Certifications />
+        <Contact />
+        <Footer />
+      </Suspense>
     </div>
   );
 };
