@@ -55,6 +55,7 @@ const Footer = () => {
                   <a 
                     href="mailto:aaditya12raj@gmail.com"
                     className="flex items-center space-x-2 w-full"
+                    aria-label="Send email via Gmail"
                   >
                     <Mail className="h-4 w-4" />
                     <span>Gmail</span>
@@ -64,6 +65,7 @@ const Footer = () => {
                   <a 
                     href="mailto:aaditya12raj@tuta.io"
                     className="flex items-center space-x-2 w-full"
+                    aria-label="Send email via Tutanota"
                   >
                     <Mail className="h-4 w-4" />
                     <span>Tutanota</span>
@@ -73,6 +75,7 @@ const Footer = () => {
                   <a 
                     href="mailto:InfiniteEcl1pse@protonmail.com"
                     className="flex items-center space-x-2 w-full"
+                    aria-label="Send email via ProtonMail"
                   >
                     <Mail className="h-4 w-4" />
                     <span>ProtonMail</span>

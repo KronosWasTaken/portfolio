@@ -39,7 +39,7 @@ const Hero = () => {
         </>
       )}
       
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+      <div className="max-w-4xl mx-auto text-center relative z-10 will-change-transform">
         <motion.div 
           className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-highlight/15 text-highlight border border-highlight/30 mb-8"
           {...heroAnimations.statusBadge}

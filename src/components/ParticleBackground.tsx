@@ -119,19 +119,23 @@ const ParticleBackground: React.FC = () => {
             const p2 = particles[j];
             const dx = p1.x - p2.x;
             const dy = p1.y - p2.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // Fast distance check before Math.sqrt
+            if (Math.abs(dx) < linkDistance && Math.abs(dy) < linkDistance) {
+              const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < linkDistance) {
-              const distanceFactor = 1 - distance / linkDistance;
-              const mouseFactor = 1 - distMouse / mouseRadius;
-              const opacity = distanceFactor * mouseFactor * 0.5;
-              
-              ctx.beginPath();
-              ctx.strokeStyle = isDarkMode ? `rgba(255, 255, 255, ${opacity})` : `rgba(60, 60, 60, ${opacity})`;
-              ctx.lineWidth = 0.8;
-              ctx.moveTo(p1.x, p1.y);
-              ctx.lineTo(p2.x, p2.y);
-              ctx.stroke();
+              if (distance < linkDistance) {
+                const distanceFactor = 1 - distance / linkDistance;
+                const mouseFactor = 1 - distMouse / mouseRadius;
+                const opacity = distanceFactor * mouseFactor * 0.5;
+                
+                ctx.beginPath();
+                ctx.strokeStyle = isDarkMode ? `rgba(255, 255, 255, ${opacity})` : `rgba(60, 60, 60, ${opacity})`;
+                ctx.lineWidth = 0.8;
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+              }
             }
           }
         }

@@ -3,7 +3,6 @@ import { Mail, FileText, Download } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { FiLinkedin } from "react-icons/fi";
 import ThemeToggle from "./ThemeToggle";
-import NowPlaying from "./NowPlaying";
 import { useLocation, Link } from "react-router";
 
 const Header = () => {
@@ -83,7 +82,6 @@ const Header = () => {
                   <Mail className="h-5 w-5" />
                 </a>
               </Button>
-              <NowPlaying />
               <Button variant="outline" className="border-highlight/30 text-highlight hover:bg-highlight/10 ml-2" asChild aria-label={isResumePage ? "Back to Portfolio" : "View Resume"}>
                 <Link to={isResumePage ? "/" : "/resume"}>
                   <FileText className="h-4 w-4 mr-2" />
@@ -114,7 +112,6 @@ const Header = () => {
                   <Mail className="h-4 w-4" />
                 </a>
               </Button>
-              <NowPlaying />
               <Button variant="outline" size="icon" className="border-highlight/30 text-highlight hover:bg-highlight/10 ml-1" asChild aria-label={isResumePage ? "Back to Portfolio" : "View Resume"}>
                 <Link to={isResumePage ? "/" : "/resume"}>
                   <FileText className="h-4 w-4" />
