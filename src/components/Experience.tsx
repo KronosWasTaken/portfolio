@@ -104,6 +104,8 @@ const Experience = () => {
                                   alt={`${experience.company} logo`} 
                                   loading="lazy"
                                   decoding="async"
+                                  width="40"
+                                  height="40"
                                   className="w-full h-full object-contain p-1.5 group-hover:scale-110 transition-transform duration-300"
                                 />
                               ) : (

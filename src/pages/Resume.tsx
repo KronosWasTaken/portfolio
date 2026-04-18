@@ -398,6 +398,8 @@ const Resume = () => {
                               alt={exp.company} 
                               loading="lazy"
                               decoding="async"
+                              width="40"
+                              height="40"
                               className="w-full h-full object-contain p-1.5" 
                             />
                           </div>
