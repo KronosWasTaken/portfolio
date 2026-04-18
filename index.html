@@ -17,8 +17,36 @@
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kaushan+Script&display=swap" rel="stylesheet">
     </noscript>
     <style>
-      /* Prevent FOUC by setting fallback fonts */
-      body { font-family: system-ui, -apple-system, sans-serif; }
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 3.9%;
+        --highlight: 217 71% 41%;
+      }
+      .dark {
+        --background: 0 0% 3.9%;
+        --foreground: 0 0% 98%;
+        --highlight: 0 84% 60%;
+      }
+      body {
+        margin: 0;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      }
+      .bg-grid-pattern {
+        background-size: 50px 50px;
+        background-image: 
+          linear-gradient(rgba(30, 64, 175, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(30, 64, 175, 0.03) 1px, transparent 1px);
+        position: absolute;
+        inset: 0;
+      }
+      .dark .bg-grid-pattern {
+        background-image: 
+          linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px);
+      }
+      .min-h-dvh { min-height: 100dvh; }
     </style>
     
     <!-- Mobile optimizations -->

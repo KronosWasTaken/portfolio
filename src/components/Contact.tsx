@@ -34,7 +34,7 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             Ready to collaborate on innovative cybersecurity projects? 
             Let's discuss how we can build something secure and amazing together.
           </p>
@@ -46,7 +46,7 @@ const Contact = () => {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="text-foreground/80 mb-6">
                     Whether you're looking for a cybersecurity analyst, network security specialist, or just want to chat about 
                     security technology, I'm always open to new opportunities and conversations.
                   </p>
@@ -55,7 +55,7 @@ const Contact = () => {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <MapPin className="h-5 w-5 text-highlight" />
-                    <span className="text-muted-foreground">Lalitpur, Nepal</span>
+                    <span className="text-foreground/80">Lalitpur, Nepal</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-highlight" />
@@ -64,14 +64,14 @@ const Contact = () => {
                         <motion.a
                           key={currentEmailIndex}
                           href={`mailto:${emails[currentEmailIndex].address}`}
-                          className="text-muted-foreground hover:text-foreground transition-colors block"
+                          className="text-foreground/80 hover:text-foreground transition-colors block"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -20 }}
                           transition={{ duration: 0.5, ease: "easeInOut" }}
                         >
                           <span className="font-medium">{emails[currentEmailIndex].address}</span>
-                          <span className="text-sm text-muted-foreground ml-2">({emails[currentEmailIndex].provider})</span>
+                          <span className="text-sm text-foreground/70 ml-2">({emails[currentEmailIndex].provider})</span>
                         </motion.a>
                       </AnimatePresence>
                     </div>
