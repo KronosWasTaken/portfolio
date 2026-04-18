@@ -24,7 +24,6 @@ const ParticleBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -33,7 +32,6 @@ const ParticleBackground: React.FC = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Detect theme - improved detection
     const getIsDarkMode = () => {
       return document.documentElement.classList.contains('dark') || 
              (!document.documentElement.classList.contains('light') && 
@@ -42,25 +40,23 @@ const ParticleBackground: React.FC = () => {
     
     let isDarkMode = getIsDarkMode();
 
-    // Initialize particles
     const initParticles = () => {
       const particles: Particle[] = [];
-      // Mobile optimization: reduce particle count significantly on mobile devices
       const isMobile = window.innerWidth < 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      const densityFactor = isMobile ? 20000 : 8000; // Much fewer particles on mobile
+      const densityFactor = isMobile ? 20000 : 8000;
       const numParticles = Math.floor((canvas.width * canvas.height) / densityFactor);
 
       for (let i = 0; i < numParticles; i++) {
-        const baseOpacity = Math.random() * 0.4 + 0.2; // More visible
+        const baseOpacity = Math.random() * 0.4 + 0.2;
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           vx: (Math.random() - 0.5) * 0.2,
           vy: (Math.random() - 0.5) * 0.2,
-          size: Math.random() * 1.5 + 0.5, // Slightly larger for visibility
+          size: Math.random() * 1.5 + 0.5,
           opacity: baseOpacity,
           baseOpacity,
-          hue: 0, // White/gray particles only
+          hue: 0,
         });
       }
       particlesRef.current = particles;
@@ -68,7 +64,6 @@ const ParticleBackground: React.FC = () => {
 
     initParticles();
 
-    // Mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = {
         x: e.clientX,
@@ -76,7 +71,6 @@ const ParticleBackground: React.FC = () => {
       };
     };
 
-    // Touch move handler with passive listener for better performance
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         mouseRef.current = {
@@ -89,69 +83,89 @@ const ParticleBackground: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
-    // Animation loop with mobile optimization
     let lastTime = 0;
-    const targetFPS = window.innerWidth < 768 ? 30 : 60; // Lower FPS on mobile
+    const targetFPS = window.innerWidth < 768 ? 30 : 60;
     const frameInterval = 1000 / targetFPS;
     
     const animate = (currentTime: number = 0) => {
-      // Throttle animation on mobile devices
       if (currentTime - lastTime < frameInterval) {
         animationRef.current = requestAnimationFrame(animate);
         return;
       }
       lastTime = currentTime;
       
-      // Update theme detection on each frame
       isDarkMode = getIsDarkMode();
       
-      // Clear canvas completely to let CSS background show through
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particlesRef.current.forEach((particle) => {
-        // Calculate distance from mouse
-        const dx = mouseRef.current.x - particle.x;
-        const dy = mouseRef.current.y - particle.y;
+      const particles = particlesRef.current;
+      const mouseX = mouseRef.current.x;
+      const mouseY = mouseRef.current.y;
+      const linkDistance = 150;
+      const mouseRadius = 200;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        const dxMouse = mouseX - p1.x;
+        const dyMouse = mouseY - p1.y;
+        const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+        
+        if (distMouse < mouseRadius) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < linkDistance) {
+              const distanceFactor = 1 - distance / linkDistance;
+              const mouseFactor = 1 - distMouse / mouseRadius;
+              const opacity = distanceFactor * mouseFactor * 0.5;
+              
+              ctx.beginPath();
+              ctx.strokeStyle = isDarkMode ? `rgba(255, 255, 255, ${opacity})` : `rgba(60, 60, 60, ${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      particles.forEach((particle) => {
+        const dx = mouseX - particle.x;
+        const dy = mouseY - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         const maxDistance = 120;
 
-        // Mouse interaction - attract particles
         if (distance < maxDistance && distance > 0) {
           const force = (maxDistance - distance) / maxDistance * 0.01;
           const angle = Math.atan2(dy, dx);
           particle.vx += Math.cos(angle) * force;
           particle.vy += Math.sin(angle) * force;
-          
-          // Opacity increase when near mouse
-          particle.opacity = Math.min(particle.baseOpacity * 1.8, 0.8);
+          particle.opacity = Math.min(particle.baseOpacity * 2, 0.8);
         } else {
-          // Return to base opacity
           particle.opacity = particle.baseOpacity;
         }
 
-        // Continuous floating motion
         particle.vx += (Math.random() - 0.5) * 0.002;
         particle.vy += (Math.random() - 0.5) * 0.002;
 
-        // Apply gentle friction
         particle.vx *= 0.995;
         particle.vy *= 0.995;
 
-        // Update position with wrapping
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        // Wrap around edges for continuous flow
         if (particle.x < 0) particle.x = canvas.width;
         if (particle.x > canvas.width) particle.x = 0;
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
 
-        // Simple elegant particles - no glow, just subtle dots
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         
-        // Theme-adaptive simple colors - more visible
         if (isDarkMode) {
           ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
         } else {
@@ -165,7 +179,6 @@ const ParticleBackground: React.FC = () => {
 
     animate();
 
-    // Cleanup
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
