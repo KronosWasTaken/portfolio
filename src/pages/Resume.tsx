@@ -393,7 +393,13 @@ const Resume = () => {
                       <div className="flex items-start justify-between">
                         <div className="flex items-start space-x-4">
                           <div className={`w-10 h-10 mt-1 ${exp.logoBg || 'bg-white'} rounded-lg flex items-center justify-center overflow-hidden shrink-0 border border-border/50 shadow-sm`}>
-                            <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain p-1.5" />
+                            <img 
+                              src={exp.logo} 
+                              alt={exp.company} 
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-full object-contain p-1.5" 
+                            />
                           </div>
                           <div>
                             <CardTitle className="text-xl group-hover:text-highlight transition-colors">{exp.position}</CardTitle>

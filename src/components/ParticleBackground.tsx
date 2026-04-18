@@ -40,6 +40,12 @@ const ParticleBackground: React.FC = () => {
     
     let isDarkMode = getIsDarkMode();
 
+    // Use MutationObserver instead of polling theme every frame
+    const observer = new MutationObserver(() => {
+      isDarkMode = getIsDarkMode();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
     const initParticles = () => {
       const particles: Particle[] = [];
       const isMobile = window.innerWidth < 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -93,8 +99,6 @@ const ParticleBackground: React.FC = () => {
         return;
       }
       lastTime = currentTime;
-      
-      isDarkMode = getIsDarkMode();
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -180,6 +184,7 @@ const ParticleBackground: React.FC = () => {
     animate();
 
     return () => {
+      observer.disconnect();
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('touchmove', handleTouchMove);

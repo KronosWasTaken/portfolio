@@ -102,6 +102,8 @@ const Experience = () => {
                                 <img 
                                   src={experience.logo} 
                                   alt={`${experience.company} logo`} 
+                                  loading="lazy"
+                                  decoding="async"
                                   className="w-full h-full object-contain p-1.5 group-hover:scale-110 transition-transform duration-300"
                                 />
                               ) : (
