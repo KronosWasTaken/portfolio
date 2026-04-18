@@ -33,11 +33,11 @@ const ParticleBackground: React.FC = () => {
     window.addEventListener('resize', resizeCanvas);
 
     const getIsDarkMode = () => {
-      return document.documentElement.classList.contains('dark') || 
-             (!document.documentElement.classList.contains('light') && 
-              window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return document.documentElement.classList.contains('dark') ||
+        (!document.documentElement.classList.contains('light') &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
     };
-    
+
     let isDarkMode = getIsDarkMode();
 
     // Use MutationObserver instead of polling theme every frame
@@ -92,13 +92,13 @@ const ParticleBackground: React.FC = () => {
     let lastTime = 0;
     const targetFPS = window.innerWidth < 768 ? 30 : 60;
     const frameInterval = 1000 / targetFPS;
-    
+
     const animate = (currentTime: number = 0) => {
       if (currentTime - lastTime < frameInterval) {
         animationRef.current = requestAnimationFrame(animate);
         return;
       }
-      
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const particles = particlesRef.current;
@@ -114,7 +114,7 @@ const ParticleBackground: React.FC = () => {
 
       for (let i = 0; i < pCount; i++) {
         const p = particles[i];
-        
+
         const dx = mouseX - p.x;
         const dy = mouseY - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -173,7 +173,7 @@ const ParticleBackground: React.FC = () => {
             if (r < 0 || r >= rows) continue;
             for (let c = col - 1; c <= col + 1; c++) {
               if (c < 0 || c >= cols) continue;
-              
+
               const cellContent = grid[r * cols + c];
               if (!cellContent) continue;
 
@@ -189,7 +189,7 @@ const ParticleBackground: React.FC = () => {
                   const dM = Math.sqrt(dMSq);
                   const d = Math.sqrt(dSq);
                   const op = (1 - d / linkDistance) * (1 - dM / mouseRadius) * 0.5;
-                  
+
                   ctx.beginPath();
                   ctx.strokeStyle = isDarkMode ? `rgba(255, 255, 255, ${op})` : `rgba(60, 60, 60, ${op})`;
                   ctx.lineWidth = 0.8;
@@ -212,7 +212,7 @@ const ParticleBackground: React.FC = () => {
       resizeCanvas();
       initParticles();
       animate();
-    }, 5000);
+    }, 200);
 
     return () => {
       clearTimeout(timer);

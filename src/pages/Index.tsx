@@ -1,8 +1,8 @@
 import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 
-const About = lazy(() => import("@/components/About"));
 const Experience = lazy(() => import("@/components/Experience"));
 const TechStack = lazy(() => import("@/components/TechStack"));
 const Projects = lazy(() => import("@/components/Projects"));
@@ -21,8 +21,8 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
+      <About />
       <Suspense fallback={<SectionLoader />}>
-        <About />
         <Experience />
         <TechStack />
         <Projects />
