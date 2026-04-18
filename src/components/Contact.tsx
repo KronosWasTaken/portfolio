@@ -35,7 +35,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
           <p className="text-lg text-foreground/90 max-w-2xl mx-auto">
-            Ready to collaborate on innovative cybersecurity projects? 
+            Ready to collaborate on innovative cybersecurity projects?
             Let's discuss how we can build something secure and amazing together.
           </p>
         </div>
@@ -47,7 +47,7 @@ const Contact = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
                   <p className="text-foreground/90 mb-6">
-                    Whether you're looking for a cybersecurity analyst, network security specialist, or just want to chat about 
+                    Whether you're looking for a cybersecurity analyst, network security specialist, or just want to chat about
                     security technology, I'm always open to new opportunities and conversations.
                   </p>
                 </div>
@@ -93,7 +93,7 @@ const Contact = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="start" className="w-full">
                         <DropdownMenuItem asChild>
-                          <a 
+                          <a
                             href="mailto:aaditya12raj@gmail.com"
                             className="flex items-center space-x-2 w-full"
                           >
@@ -102,7 +102,7 @@ const Contact = () => {
                           </a>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                          <a 
+                          <a
                             href="mailto:aaditya12raj@tuta.io"
                             className="flex items-center space-x-2 w-full"
                           >
@@ -111,7 +111,7 @@ const Contact = () => {
                           </a>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                          <a 
+                          <a
                             href="mailto:InfiniteEcl1pse@protonmail.com"
                             className="flex items-center space-x-2 w-full"
                           >
@@ -121,14 +121,14 @@ const Contact = () => {
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                    
+
                     <Button variant="outline" className="w-full justify-start" asChild>
                       <a href="https://linkedin.com/in/aaditya-raj-390113324" target="_blank" rel="noopener noreferrer">
                         <FiLinkedin className="h-5 w-5 mr-3" />
                         LinkedIn Profile
                       </a>
                     </Button>
-                    
+
                     <Button variant="outline" className="w-full justify-start" asChild>
                       <a href="https://github.com/KronosWasTaken" target="_blank" rel="noopener noreferrer">
                         <SiGithub className="h-5 w-5 mr-3" />
@@ -148,7 +148,7 @@ const Contact = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start" className="w-full">
                       <DropdownMenuItem asChild>
-                        <a 
+                        <a
                           href="mailto:aaditya12raj@gmail.com"
                           className="flex items-center space-x-2 w-full"
                         >
@@ -157,7 +157,7 @@ const Contact = () => {
                         </a>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <a 
+                        <a
                           href="mailto:aaditya12raj@tuta.io"
                           className="flex items-center space-x-2 w-full"
                         >
@@ -166,7 +166,7 @@ const Contact = () => {
                         </a>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <a 
+                        <a
                           href="mailto:InfiniteEcl1pse@protonmail.com"
                           className="flex items-center space-x-2 w-full"
                         >
