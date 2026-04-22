@@ -1,6 +1,7 @@
 <script lang="ts">
   import LiquidProgress from './LiquidProgress.svelte';
   import { reveal } from '$lib/actions/reveal';
+  import { tilt } from '$lib/actions/tilt';
   import ReactIcon from '~icons/simple-icons/react';
   import TypeScriptIcon from '~icons/simple-icons/typescript';
   import JavaScriptIcon from '~icons/simple-icons/javascript';
@@ -129,10 +130,13 @@
         {#each techCategories[activeTab].technologies as tech, i (activeTab + '-' + tech.name)}
           <div 
             use:reveal={{ delay: i * 30 }} 
-            class="group relative perspective-1000"
+            class="group relative"
           >
-            <!-- 3D Tech Card -->
-            <div class="relative transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] transform-3d group-hover:transform-[rotateX(8deg)_rotateY(-8deg)_translateZ(15px)]">
+            <!-- Dynamic 3D Tech Card -->
+            <div 
+              use:tilt={{ max: 15, perspective: 1000, scale: 1.05 }}
+              class="relative transition-all duration-300 ease-out transform-3d"
+            >
               <div class="rounded-xl border border-border/80 bg-card/40 backdrop-blur-md p-5 lg:p-6 overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/50 group-hover:shadow-[0_15px_40px_-15px_rgba(0,0,0,0.6)]">
                 
                 <!-- Scanning Line Effect (Replaces Glow Bleed) -->

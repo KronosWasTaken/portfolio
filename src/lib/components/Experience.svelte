@@ -5,6 +5,7 @@
   import CardContent from './ui/card-content.svelte';
   import Badge from './ui/badge.svelte';
   import LiquidProgress from './LiquidProgress.svelte';
+  import { tilt } from '$lib/actions/tilt';
   import { reveal } from '$lib/actions/reveal';
   import { experiences } from '$lib/data';
   import BuildingIcon from '~icons/lucide/building';
@@ -31,10 +32,13 @@
             <div class="w-full md:w-[45%]">
                 <div 
                   use:reveal={{ delay: i * 100 }} 
-                  class="group perspective-2000"
+                  class="group"
                 >
-                  <!-- Refined 3D Card -->
-                  <div class="relative transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] transform-3d group-hover:transform-[rotateX(5deg)_rotateY(-5deg)_translateZ(12px)]">
+                  <!-- Dynamic 3D Card -->
+                  <div 
+                    use:tilt={{ max: 8, perspective: 1500, scale: 1.01 }}
+                    class="relative transition-all duration-300 ease-out transform-3d"
+                  >
                     <div class="rounded-2xl border border-border/80 bg-card/40 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/50 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]">
                       
                       <!-- Scanning Line Effect -->

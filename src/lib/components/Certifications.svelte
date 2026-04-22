@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tilt } from '$lib/actions/tilt';
   import Card from './ui/card.svelte';
   import CardHeader from './ui/card-header.svelte';
   import CardTitle from './ui/card-title.svelte';
@@ -45,9 +46,12 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {#each certifications as cert, i}
-        <div use:reveal={{ delay: (i % 3) * 100 }} class="group perspective-2000 h-full">
-          <!-- Refined 3D Card -->
-          <div class="h-full relative transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] transform-3d group-hover:transform-[rotateX(5deg)_rotateY(-5deg)_translateZ(12px)]">
+        <div use:reveal={{ delay: (i % 3) * 100 }} class="group h-full">
+          <!-- Dynamic 3D Card -->
+          <div 
+            use:tilt={{ max: 10, perspective: 1200, scale: 1.02 }}
+            class="h-full relative transition-all duration-300 ease-out transform-3d"
+          >
             <div class="h-full rounded-2xl border border-border/80 bg-card/40 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/50 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]">
               
               <!-- Scanning Line Effect -->
