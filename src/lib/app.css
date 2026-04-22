@@ -250,6 +250,17 @@
     linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px);
 }
 
+.bg-grid-bold {
+  background-image:
+    linear-gradient(rgba(30, 64, 175, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 64, 175, 0.12) 1px, transparent 1px);
+}
+.dark .bg-grid-bold {
+  background-image:
+    linear-gradient(rgba(255, 0, 0, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.12) 1px, transparent 1px);
+}
+
 @media (max-width: 768px) {
   .bg-grid-pattern { background-size: 100px 100px; opacity: 0.3; }
   * { will-change: auto !important; }

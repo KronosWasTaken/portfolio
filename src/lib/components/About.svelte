@@ -26,40 +26,147 @@
       </p>
     </div>
 
+    <!-- Even Grid (Aesthetic Consistency) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {#each expertise as item, i}
-        <div use:reveal={{ delay: i * 80 }} class="group h-full">
-          <Card class="relative group hover:shadow-lg border-border/50 h-full overflow-hidden transition-all duration-300 hover:border-highlight/30">
-            <LiquidProgress progress={100} color="hsl(var(--highlight) / 0.15)" secondaryColor="transparent" />
-            <CardContent class="relative z-10 p-6 text-center">
-              <div class="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20 transition-colors">
-                <item.icon class="h-6 w-6 text-highlight" />
+        <div 
+          use:reveal={{ delay: i * 120 }} 
+          class="group relative perspective-2000"
+        >
+          <!-- Refined 3D Card (Even Size) -->
+          <div class="h-full relative transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] transform-3d group-hover:transform-[rotateX(3deg)_rotateY(-3deg)_translateZ(10px)]">
+            <div class="h-full rounded-2xl border border-border/50 bg-card/20 backdrop-blur-xl p-7 overflow-hidden transition-all duration-500 group-hover:border-highlight/40 group-hover:bg-card/30 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5),0_0_30px_-15px_hsl(var(--highlight)/0.3)]">
+              
+              <!-- Subtle Background Mesh -->
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(30,64,175,0.03)_1px,transparent_1px)] bg-size-[20px_20px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+              <!-- Refined Scanning Line -->
+              <div class="absolute top-0 left-0 w-full h-[100px] bg-linear-to-b from-highlight/10 via-highlight/5 to-transparent -translate-y-full group-hover:animate-scan z-20 pointer-events-none"></div>
+              <div class="absolute top-0 left-0 w-full h-px bg-highlight/40 -translate-y-full group-hover:animate-scan z-21 pointer-events-none"></div>
+
+              <!-- Decryption Text Effect -->
+              <div class="absolute bottom-4 right-4 opacity-[0.02] font-mono text-[8px] select-none pointer-events-none break-all max-w-[100px] leading-none transition-opacity duration-500 group-hover:opacity-[0.05]">
+                {item.description.repeat(5)}
               </div>
-              <h3 class="font-semibold mb-2">{item.title}</h3>
-              <p class="text-sm text-muted-foreground">{item.description}</p>
-            </CardContent>
-          </Card>
+
+              <div class="relative z-10 h-full flex flex-col">
+                <div class="flex items-start justify-between mb-6">
+                  <div class="relative">
+                    <!-- Expansive Glassy Glow -->
+                    <div class="absolute -inset-6 bg-highlight/30 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                    <div class="relative w-12 h-12 bg-linear-to-br from-highlight/35 to-highlight/15 rounded-xl flex items-center justify-center border border-highlight/50 group-hover:border-highlight/70 transition-all duration-500 shadow-inner backdrop-blur-sm">
+                      <item.icon class="h-6 w-6 text-highlight group-hover:scale-110 transition-transform duration-500" />
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-end gap-1">
+                    <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-highlight/15 border border-highlight/30">
+                      <div class="w-1 h-1 rounded-full bg-highlight animate-pulse"></div>
+                      <span class="text-[8px] font-mono text-highlight/80 uppercase tracking-widest">Active</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <h3 class="text-lg font-bold mb-3 tracking-tight group-hover:text-highlight transition-colors duration-300">
+                  {item.title}
+                </h3>
+                
+                <p class="text-muted-foreground/80 leading-relaxed text-sm flex-1">
+                  {item.description}
+                </p>
+
+                <!-- Polished Integrity Metric -->
+                <div class="mt-6 flex items-center gap-2">
+                  <div class="flex gap-0.5 h-1 flex-1">
+                    {#each Array(10) as _, j}
+                      <div 
+                        class="h-full flex-1 rounded-full bg-highlight/10 transition-all duration-500 {j < 7 ? 'group-hover:bg-highlight/40' : ''}"
+                        style="transition-delay: {j * 30}ms;"
+                      ></div>
+                    {/each}
+                  </div>
+                  <span class="text-[8px] font-mono text-highlight/40 uppercase tracking-tighter">Integrity_OK</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       {/each}
-    </div>
 
-    <div use:reveal={{ delay: 200 }} class="mt-16 text-center">
-      <div class="group">
-        <Card class="relative max-w-3xl mx-auto hover:shadow-lg border-border/50 overflow-hidden transition-all duration-300 hover:border-highlight/30">
-          <LiquidProgress progress={100} color="hsl(var(--highlight) / 0.15)" secondaryColor="transparent" />
-          <CardContent class="relative z-10 p-6 text-center">
-            <div class="w-12 h-12 bg-highlight/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-highlight/20 transition-colors">
-              <BrainIcon class="h-6 w-6 text-highlight" />
+      <!-- Refined Neural Feed Banner (Full Width) -->
+      <div 
+        use:reveal={{ delay: 500 }} 
+        class="lg:col-span-4 group relative mt-6"
+      >
+        <div class="relative rounded-3xl border border-border/50 bg-linear-to-br from-card/30 via-card/20 to-highlight/5 backdrop-blur-2xl p-8 lg:p-12 overflow-hidden transition-all duration-700 hover:border-highlight/30 hover:shadow-[0_30px_70px_-30px_rgba(0,0,0,0.6),0_0_50px_-20px_hsl(var(--highlight)/0.2)]">
+          
+          <!-- Bold Grid Background for Expertise -->
+          <div class="absolute inset-0 bg-grid-pattern bg-grid-bold pointer-events-none transition-opacity duration-700"></div>
+
+          <div class="relative z-10 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            <div class="relative shrink-0">
+              <!-- Expansive Glassy Glow -->
+              <div class="absolute -inset-10 bg-highlight/30 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+              <div class="w-24 h-24 bg-linear-to-br from-highlight/35 to-highlight/15 rounded-2xl flex items-center justify-center border border-highlight/50 shadow-2xl relative backdrop-blur-sm">
+                <BrainIcon class="h-10 w-10 text-highlight group-hover:scale-110 transition-transform duration-700" />
+                <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-highlight rounded-full animate-ping"></div>
+              </div>
             </div>
-            <h3 class="font-semibold mb-2">Continuous Learning Journey</h3>
-            <p class="text-sm text-muted-foreground leading-relaxed">
-              I embrace the mindset of a perpetual learner in the rapidly evolving field of cybersecurity.
-              Every project is an opportunity to explore new security concepts, implement innovative defenses, and push
-              the boundaries of what's possible with modern security tools and technologies.
-            </p>
-          </CardContent>
-        </Card>
+            
+            <div class="flex-1 text-center lg:text-left">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-highlight/10 border border-highlight/20 text-[10px] font-mono text-highlight mb-4 uppercase tracking-[0.2em]">
+                <span class="w-1.5 h-1.5 rounded-full bg-highlight animate-pulse"></span>
+                Evolutionary_Engine_Core
+              </div>
+              <h3 class="text-2xl lg:text-3xl font-bold mb-4 tracking-tighter bg-linear-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
+                Continuous Learning Journey
+              </h3>
+              <p class="text-muted-foreground/90 leading-relaxed text-base lg:text-lg italic font-medium max-w-4xl">
+                "I embrace the mindset of a perpetual learner in the rapidly evolving field of cybersecurity. Every project is an opportunity to explore new security concepts, implement innovative defenses, and push the boundaries of modern security tools."
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Refined Status Ticker -->
+          <div class="absolute bottom-0 left-0 w-full bg-highlight/5 border-t border-white/5 px-6 py-2 flex justify-between items-center text-[9px] font-mono text-muted-foreground/50 overflow-hidden">
+            <div class="flex gap-6 whitespace-nowrap animate-marquee md:animate-none">
+              <span class="flex items-center gap-1.5"><div class="w-1 h-1 bg-highlight/40 rounded-full"></div> AUTH_LEVEL: ELEVATED</span>
+              <span class="flex items-center gap-1.5"><div class="w-1 h-1 bg-highlight/40 rounded-full"></div> NEURAL_SYNC: 0.9982ms</span>
+              <span class="hidden md:flex items-center gap-1.5"><div class="w-1 h-1 bg-highlight/40 rounded-full"></div> KERNEL_LOAD: OPTIMAL</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-2 text-highlight/60">
+              <span class="animate-pulse">STABLE_V8.4</span>
+              <div class="w-12 h-1 bg-highlight/20 rounded-full overflow-hidden">
+                <div class="h-full bg-highlight/60 w-3/4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+<style>
+  :global(.perspective-2000) {
+    perspective: 2000px;
+  }
+  
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(500%); }
+  }
+
+  .animate-scan {
+    animation: scan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @media (max-width: 768px) {
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      animation: marquee 10s linear infinite;
+    }
+  }
+</style>
   </div>
 </section>
