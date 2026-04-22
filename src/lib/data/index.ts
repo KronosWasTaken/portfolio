@@ -38,6 +38,10 @@ import IconLock from '~icons/lucide/lock';
 import IconFileText from '~icons/lucide/file-text';
 import IconShield from '~icons/lucide/shield';
 
+import programizLogo from '$lib/assets/logos/programiz.jpeg';
+import neelgaiLogo from '$lib/assets/logos/neelgai.webp';
+import icsLogo from '$lib/assets/logos/ics-logo.webp';
+
 export const socialLinks = {
   github: 'https://github.com/KronosWasTaken',
   linkedin: 'https://linkedin.com/in/aaditya-raj-390113324'
@@ -55,7 +59,7 @@ export const experiences: Experience[] = [
       'Hardening system security through rigorous Access Management, Software Inventory Management (SBOM), and the implementation of organizational Compliance frameworks.'
     ],
     technologies: ['Cybersecurity', 'DevSecOps', 'DevOps', 'Network Security', 'Cloud Security', 'FinOps'],
-    logo: '/logos/programiz.jpeg',
+    logo: programizLogo,
     current: true
   },
   {
@@ -69,7 +73,7 @@ export const experiences: Experience[] = [
       'Developed proof-of-concepts and documented security findings to support blue team use cases.'
     ],
     technologies: ['MCP Server', 'Security Research', 'Blue Team', 'Documentation'],
-    logo: '/logos/neelgai.webp',
+    logo: neelgaiLogo,
     current: false
   },
   {
@@ -84,7 +88,7 @@ export const experiences: Experience[] = [
       'Worked with Cisco Networking and Juniper Networks products.'
     ],
     technologies: ['Cisco', 'Juniper', 'Network Administration', 'System Maintenance', 'Infrastructure'],
-    logo: '/logos/ics-logo.webp',
+    logo: icsLogo,
     current: false
   }
 ];
