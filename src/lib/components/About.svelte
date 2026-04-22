@@ -34,11 +34,16 @@
           class="group relative perspective-2000"
         >
           <!-- Refined 3D Card (Even Size) -->
-          <div class="h-full relative transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] transform-3d group-hover:transform-[rotateX(3deg)_rotateY(-3deg)_translateZ(10px)]">
-            <div class="h-full rounded-2xl border border-border/50 bg-card/20 backdrop-blur-xl p-7 overflow-hidden transition-all duration-500 group-hover:border-highlight/40 group-hover:bg-card/30 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5),0_0_30px_-15px_hsl(var(--highlight)/0.3)]">
+          <div class="h-full relative transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] transform-3d group-hover:transform-[rotateX(3deg)_rotateY(-3deg)_translateZ(12px)]">
+            <div class="h-full rounded-2xl border border-border/80 bg-card/40 backdrop-blur-xl p-7 overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/50 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]">
               
               <!-- Subtle Background Mesh -->
               <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(30,64,175,0.03)_1px,transparent_1px)] bg-size-[20px_20px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+              <!-- Scanning Line Effect -->
+              <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-highlight/20 to-transparent skew-x-[-20deg] group-hover:animate-shimmer"></div>
+              </div>
 
               <!-- Refined Scanning Line -->
               <div class="absolute top-0 left-0 w-full h-[100px] bg-linear-to-b from-highlight/10 via-highlight/5 to-transparent -translate-y-full group-hover:animate-scan z-20 pointer-events-none"></div>
@@ -52,39 +57,41 @@
               <div class="relative z-10 h-full flex flex-col">
                 <div class="flex items-start justify-between mb-6">
                   <div class="relative">
-                    <!-- Expansive Glassy Glow -->
-                    <div class="absolute -inset-6 bg-highlight/30 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                    <div class="relative w-12 h-12 bg-linear-to-br from-highlight/35 to-highlight/15 rounded-xl flex items-center justify-center border border-highlight/50 group-hover:border-highlight/70 transition-all duration-500 shadow-inner backdrop-blur-sm">
+                    <div class="relative w-12 h-12 bg-linear-to-br from-highlight/20 to-highlight/5 rounded-xl flex items-center justify-center border border-highlight/30 group-hover:border-highlight/60 transition-all duration-500 shadow-inner backdrop-blur-sm">
                       <item.icon class="h-6 w-6 text-highlight group-hover:scale-110 transition-transform duration-500" />
                     </div>
                   </div>
                   <div class="flex flex-col items-end gap-1">
-                    <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-highlight/15 border border-highlight/30">
+                    <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-highlight/10 border border-highlight/20">
                       <div class="w-1 h-1 rounded-full bg-highlight animate-pulse"></div>
                       <span class="text-[8px] font-mono text-highlight/80 uppercase tracking-widest">Active</span>
                     </div>
                   </div>
                 </div>
-                
+
                 <h3 class="text-lg font-bold mb-3 tracking-tight group-hover:text-highlight transition-colors duration-300">
                   {item.title}
                 </h3>
                 
-                <p class="text-muted-foreground/80 leading-relaxed text-sm flex-1">
+                <p class="text-muted-foreground leading-relaxed text-sm flex-1">
                   {item.description}
                 </p>
+
+                <!-- Technical Corner Accents -->
+                <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-highlight/0 group-hover:border-highlight/40 transition-all duration-500"></div>
+                <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-highlight/0 group-hover:border-highlight/40 transition-all duration-500"></div>
 
                 <!-- Polished Integrity Metric -->
                 <div class="mt-6 flex items-center gap-2">
                   <div class="flex gap-0.5 h-1 flex-1">
                     {#each Array(10) as _, j}
                       <div 
-                        class="h-full flex-1 rounded-full bg-highlight/10 transition-all duration-500 {j < 7 ? 'group-hover:bg-highlight/40' : ''}"
+                        class="h-full flex-1 rounded-full bg-highlight/15 transition-all duration-500 {j < 7 ? 'group-hover:bg-highlight/40' : ''}"
                         style="transition-delay: {j * 30}ms;"
                       ></div>
                     {/each}
                   </div>
-                  <span class="text-[8px] font-mono text-highlight/40 uppercase tracking-tighter">Integrity_OK</span>
+                  <span class="text-[8px] font-mono text-highlight/60 uppercase tracking-tighter">Integrity_OK</span>
                 </div>
               </div>
             </div>
@@ -120,7 +127,7 @@
               <h3 class="text-2xl lg:text-3xl font-bold mb-4 tracking-tighter bg-linear-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
                 Continuous Learning Journey
               </h3>
-              <p class="text-muted-foreground/90 leading-relaxed text-base lg:text-lg italic font-medium max-w-4xl">
+              <p class="text-muted-foreground leading-relaxed text-base lg:text-lg italic font-medium max-w-4xl">
                 "I embrace the mindset of a perpetual learner in the rapidly evolving field of cybersecurity. Every project is an opportunity to explore new security concepts, implement innovative defenses, and push the boundaries of modern security tools."
               </p>
             </div>

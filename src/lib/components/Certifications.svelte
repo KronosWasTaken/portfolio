@@ -43,42 +43,72 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {#each certifications as cert, i}
-        <div use:reveal={{ delay: (i % 3) * 80 }} class="group h-full">
-          <Card class="relative hover:shadow-lg border-border/50 h-full overflow-hidden transition-all duration-300 hover:border-highlight/30">
-            <LiquidProgress progress={100} color="hsl(var(--highlight) / 0.15)" secondaryColor="transparent" />
-            <CardHeader class="relative z-10 pb-4">
-              <div class="flex items-start space-x-3">
-                <div class="shrink-0 mt-1">
-                  {#if cert.icon}
-                    <cert.icon width="32" height="32" class="text-highlight" />
-                  {:else}
-                    <ShieldIcon width="32" height="32" class="text-highlight" />
-                  {/if}
-                </div>
-                <div class="flex-1 min-w-0">
-                  <CardTitle class="text-lg group-hover:text-highlight transition-colors">{cert.title}</CardTitle>
-                  <div class="flex items-center space-x-2 mt-1">
-                    <span class="text-sm text-muted-foreground">{cert.issuer}</span>
-                    <CalendarIcon class="h-3 w-3 text-muted-foreground" />
-                    <span class="text-sm text-muted-foreground">{cert.date}</span>
+        <div use:reveal={{ delay: (i % 3) * 100 }} class="group perspective-2000 h-full">
+          <!-- Refined 3D Card -->
+          <div class="h-full relative transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] transform-3d group-hover:transform-[rotateX(5deg)_rotateY(-5deg)_translateZ(12px)]">
+            <div class="h-full rounded-2xl border border-border/80 bg-card/40 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/50 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]">
+              
+              <!-- Scanning Line Effect -->
+              <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-highlight/20 to-transparent skew-x-[-20deg] group-hover:animate-shimmer"></div>
+              </div>
+
+              <!-- Wave Background -->
+              <LiquidProgress progress={100} color="hsl(var(--highlight) / 0.1)" secondaryColor="transparent" />
+
+              <div class="relative z-10 p-6 lg:p-8 flex flex-col h-full">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="relative">
+                    <div class="absolute -inset-2 bg-highlight/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative w-12 h-12 bg-linear-to-br from-highlight/20 to-highlight/5 rounded-xl flex items-center justify-center border border-highlight/30 group-hover:border-highlight/50 transition-all duration-500 shadow-inner backdrop-blur-sm">
+                      {#if cert.icon}
+                        <cert.icon class="h-6 w-6 text-highlight group-hover:scale-110 transition-transform duration-500" />
+                      {:else}
+                        <ShieldIcon class="h-6 w-6 text-highlight group-hover:scale-110 transition-transform duration-500" />
+                      {/if}
+                    </div>
                   </div>
                   {#if cert.featured}
-                    <Badge variant="secondary" class="mt-2 bg-highlight/15 text-highlight border border-highlight/30">Featured</Badge>
+                    <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-highlight/10 border border-highlight/20">
+                      <div class="w-1 h-1 rounded-full bg-highlight animate-pulse"></div>
+                      <span class="text-[9px] font-mono text-highlight uppercase tracking-widest">Featured</span>
+                    </div>
                   {/if}
                 </div>
-              </div>
-            </CardHeader>
 
-            <CardContent class="relative z-10 space-y-4">
-              <CardDescription class="text-muted-foreground leading-relaxed">{cert.description}</CardDescription>
-              <Button variant="outline" size="sm" href={cert.credentialLink} target="_blank" rel="noopener noreferrer">
-                <ExternalLinkIcon class="h-4 w-4 mr-2" />
-                View Credential
-              </Button>
-            </CardContent>
-          </Card>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-2 leading-tight group-hover:text-highlight transition-colors duration-300">
+                    {cert.title}
+                  </h3>
+                  
+                  <div class="flex items-center gap-3 text-sm text-muted-foreground mb-4 font-medium">
+                    <span class="flex items-center gap-1.5 whitespace-nowrap">
+                      {cert.issuer}
+                    </span>
+                    <span class="w-1 h-1 rounded-full bg-muted-foreground/40"></span>
+                    <span class="flex items-center gap-1.5">
+                      <CalendarIcon class="h-3.5 w-3.5" />
+                      {cert.date}
+                    </span>
+                  </div>
+                  
+                  <p class="text-muted-foreground leading-relaxed text-sm lg:text-[15px] mb-4">
+                    {cert.description}
+                  </p>
+                </div>
+
+                <div class="mt-auto pt-4 flex items-center justify-between border-t border-border/30">
+                  <Button variant="outline" size="sm" href={cert.credentialLink} target="_blank" rel="noopener noreferrer" class="rounded-lg border-border/50 hover:border-highlight/50 hover:bg-highlight/5 transition-all duration-300">
+                    <ExternalLinkIcon class="h-4 w-4 mr-2" />
+                    Verify_Credential
+                  </Button>
+                  <div class="text-[9px] font-mono opacity-60 uppercase tracking-tighter">ID: CERT_{i + 1}</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       {/each}
     </div>

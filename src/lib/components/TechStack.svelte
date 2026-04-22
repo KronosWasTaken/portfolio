@@ -68,7 +68,7 @@
         { name: 'Supabase', icon: SupabaseIcon },
         { name: 'SQLAlchemy', icon: SQLAlchemyIcon },
         { name: 'Alembic', icon: DatabaseIcon },
-        { name: 'GORM', icon: GoIcon }
+        { name: 'GORM', icon: DatabaseIcon }
       ]
     },
     {
@@ -125,13 +125,43 @@
         <p class="text-muted-foreground max-w-2xl mx-auto">{techCategories[activeTab].description}</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-6xl mx-auto">
-        {#each techCategories[activeTab].technologies as tech (activeTab + '-' + tech.name)}
-          <div class="group relative flex flex-col items-center p-6 bg-card rounded-xl border overflow-hidden cursor-default transition-colors hover:border-highlight/50">
-            <LiquidProgress progress={100} color="hsl(var(--highlight) / 0.15)" secondaryColor="transparent" />
-            <div class="z-10 flex flex-col items-center">
-                <tech.icon width="40" height="40" class="transition-colors duration-300 text-highlight group-hover:text-primary" />
-              <span class="text-sm font-bold tracking-tight text-center z-10">{tech.name}</span>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-5 max-w-6xl mx-auto">
+        {#each techCategories[activeTab].technologies as tech, i (activeTab + '-' + tech.name)}
+          <div 
+            use:reveal={{ delay: i * 30 }} 
+            class="group relative perspective-1000"
+          >
+            <!-- 3D Tech Card -->
+            <div class="relative transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] transform-3d group-hover:transform-[rotateX(8deg)_rotateY(-8deg)_translateZ(15px)]">
+              <div class="rounded-xl border border-border/80 bg-card/40 backdrop-blur-md p-5 lg:p-6 overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/50 group-hover:shadow-[0_15px_40px_-15px_rgba(0,0,0,0.6)]">
+                
+                <!-- Scanning Line Effect (Replaces Glow Bleed) -->
+                <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div class="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-highlight/30 to-transparent skew-x-[-20deg] group-hover:animate-shimmer"></div>
+                </div>
+
+                <!-- Wave Background -->
+                <LiquidProgress progress={100} color="hsl(var(--highlight) / 0.08)" secondaryColor="transparent" />
+
+                <div class="relative z-10 flex flex-col items-center">
+                  <div class="mb-4">
+                    <tech.icon class="h-10 w-10 text-highlight transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_hsl(var(--highlight)/0.3)]" />
+                  </div>
+                  <span class="text-[10px] lg:text-[11px] font-mono font-bold tracking-[0.15em] text-center uppercase text-muted-foreground group-hover:text-highlight transition-colors duration-300">
+                    {tech.name}
+                  </span>
+                </div>
+
+                <!-- Technical Corner Accents -->
+                <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-highlight/0 group-hover:border-highlight/40 transition-all duration-500"></div>
+                <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-highlight/0 group-hover:border-highlight/40 transition-all duration-500"></div>
+
+                <!-- Active Indicator -->
+                <div class="absolute top-2 right-2 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div class="w-0.5 h-0.5 rounded-full bg-highlight"></div>
+                  <div class="w-0.5 h-0.5 rounded-full bg-highlight/40"></div>
+                </div>
+              </div>
             </div>
           </div>
         {/each}
