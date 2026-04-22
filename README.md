@@ -1,138 +1,60 @@
-# Aaditya Raj's Portfolio
+# Aaditya Raj — Cybersecurity Portfolio
 
-A modern, responsive portfolio website showcasing cybersecurity expertise, projects, and professional experience.
+A state-of-the-art, high-performance portfolio website engineered for speed and a premium user experience. Built with **Svelte 5 (Runes)**, **Tailwind CSS 4**, and **Vite 8**.
 
-## 🚀 Features
+![Svelte](https://img.shields.io/badge/Svelte_5-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite_8-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-- **Modern Design**: Built with React, TypeScript, and Tailwind CSS
-- **Responsive Layout**: Optimized for all devices and screen sizes
-- **Dark/Light Theme**: Toggle between themes with smooth transitions
-- **Interactive Components**: Engaging UI elements with hover effects
-- **SEO Optimized**: Meta tags and structured data for better search visibility
-- **Fast Performance**: Optimized with Vite for quick loading times
+## 🛠️ Technology Stack
 
-## 🛠️ Tech Stack
+- **Framework**: [SvelteKit](https://kit.svelte.dev/) (Svelte 5 with Runes)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Build Tool**: [Vite 8](https://vitejs.dev/)
+- **Icons**: [unplugin-icons](https://github.com/unplugin/unplugin-icons) (Iconify Lucide & Simple Icons)
+- **State Management**: Svelte 5 Native Runes ($state, $derived)
+- **Typography**: Inter Variable & Outfit Variable via Fontsource
 
-- **Frontend**: React, TypeScript, Tailwind CSS
-- **UI Components**: Shadcn/ui component library
-- **Build Tool**: Vite
-- **Styling**: CSS-in-JS with Tailwind CSS
-- **Icons**: Lucide React, React Icons
+## 📂 Project Structure
 
-## 📁 Project Structure
-
-```
+```text
 src/
-├── components/          # Reusable UI components
-│   ├── ui/             # Shadcn/ui components
-│   ├── Header.tsx      # Navigation header
-│   ├── Hero.tsx        # Hero section
-│   ├── About.tsx       # About section
-│   ├── Experience.tsx  # Work experience
-│   ├── TechStack.tsx   # Technology stack
-│   ├── Projects.tsx    # Project showcase
-│   ├── Certifications.tsx # Professional certifications
-│   ├── Contact.tsx     # Contact information
-│   └── Footer.tsx      # Site footer
-├── pages/              # Page components
-│   ├── Index.tsx       # Main portfolio page
-│   ├── Resume.tsx      # Resume page
-│   └── NotFound.tsx    # 404 error page
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions
-└── main.tsx           # Application entry point
+├── lib/
+│   ├── actions/      # Performance-optimized Svelte actions (reveal, clickOutside)
+│   ├── components/   # UI System (LiquidProgress, ParticleBackground, Shadcn-like components)
+│   ├── data/         # Centralized portfolio content and experience data
+│   └── utils.ts      # Tailwind merging and utility logic
+├── routes/
+│   ├── resume/       # Comprehensive professional resume page
+│   ├── +layout.svelte # Global providers and ModeWatcher
+│   └── +page.svelte  # Section-based landing page with lazy mounting
+static/               # Optimized assets, logos, and CV PDF
 ```
 
-## 🚀 Getting Started
+## 🛠️ Development
 
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
+### Setup
 ```bash
-git clone https://github.com/KronosWasTaken/portfolio.git
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
 ```
 
-2. Install dependencies
+### Build & Validate
 ```bash
-cd portfolio
-npm install
+# Production build
+pnpm build
+
+# Preview production build locally
+pnpm preview
 ```
-
-3. Start development server
-```bash
-npm run dev
-```
-
-4. Open your browser and navigate to `http://localhost:5173`
-
-## 📝 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## 🎨 Customization
-
-### Colors and Themes
-
-The color scheme can be customized in `tailwind.config.ts`:
-
-```typescript
-theme: {
-  extend: {
-    colors: {
-      highlight: "hsl(var(--highlight))",
-      "highlight-foreground": "hsl(var(--highlight-foreground))",
-      // ... other custom colors
-    }
-  }
-}
-```
-
-### Content Updates
-
-- **Personal Information**: Update `src/components/Hero.tsx` and other components
-- **Projects**: Modify `src/components/Projects.tsx`
-- **Experience**: Edit `src/components/Experience.tsx`
-- **Skills**: Update `src/components/TechStack.tsx`
-
-## 📱 Responsive Design
-
-The portfolio is fully responsive and optimized for:
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
-
-## 🔧 Performance Optimizations
-
-- **Code Splitting**: Automatic route-based code splitting
-- **Image Optimization**: Optimized images and lazy loading
-- **Bundle Analysis**: Built-in bundle analyzer for optimization
-- **Tree Shaking**: Unused code elimination
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## 📄 License
+MIT License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
+## 📬 Contact
 - **Email**: aaditya12raj@gmail.com
+- **LinkedIn**: [Aaditya Raj](https://linkedin.com/in/aaditya-raj-390113324)
 - **GitHub**: [@KronosWasTaken](https://github.com/KronosWasTaken)
-
----
-
-Built with ❤️ using React, TypeScript, and Tailwind CSS

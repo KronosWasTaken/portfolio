@@ -168,3 +168,6 @@ temp/
 # Local development
 *.local
 readme.txt
+
+# SvelteKit
+.svelte-kit/
