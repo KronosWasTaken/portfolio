@@ -60,9 +60,9 @@
 
 <svelte:window onscroll={handleScroll} onresize={updateScrollHeight} />
 
-<header class="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 rounded-full border border-border/30 shadow-2xl bg-background/60 overflow-hidden antialiased">
+<header class="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 rounded-full border border-border/30 shadow-2xl bg-background/60 antialiased">
   <!-- Dedicated Blur Layer to prevent text blurriness -->
-  <div class="absolute inset-0 -z-10 backdrop-blur-2xl"></div>
+  <div class="absolute inset-0 -z-10 backdrop-blur-2xl rounded-full"></div>
   <div
     class="absolute bottom-0 left-0 right-0 h-[2px] bg-highlight origin-left z-50 pointer-events-none"
     style="transform: scaleX({scrollProgress})"
