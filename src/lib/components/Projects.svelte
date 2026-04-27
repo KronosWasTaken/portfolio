@@ -31,7 +31,7 @@
             use:tilt={{ max: 8, perspective: 1500, scale: 1.01 }}
             class="h-full relative transition-all duration-300 ease-out transform-3d"
           >
-            <div class="h-full rounded-2xl border border-border/80 bg-card/40 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/50 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]">
+            <div class="h-full rounded-2xl border border-border bg-card/80 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/90 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]">
               
               <!-- Scanning Line Effect -->
               <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">

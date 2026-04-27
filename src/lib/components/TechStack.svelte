@@ -137,7 +137,7 @@
               use:tilt={{ max: 15, perspective: 1000, scale: 1.05 }}
               class="relative transition-all duration-300 ease-out transform-3d"
             >
-              <div class="rounded-xl border border-border/80 bg-card/40 backdrop-blur-md p-5 lg:p-6 overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/50 group-hover:shadow-[0_15px_40px_-15px_rgba(0,0,0,0.6)]">
+              <div class="rounded-xl border border-border bg-card/80 backdrop-blur-md p-5 lg:p-6 overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/90 group-hover:shadow-[0_15px_40px_-15px_rgba(0,0,0,0.6)]">
                 
                 <!-- Scanning Line Effect (Replaces Glow Bleed) -->
                 <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
