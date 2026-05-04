@@ -5,8 +5,8 @@
   import { onMount } from 'svelte';
 
   const themes: { id: Theme; name: string; color: string }[] = [
-    { id: 'default', name: 'Default', color: '#1e40af' },
     { id: 'mocha', name: 'Mocha', color: '#f38ba8' },
+    { id: 'blue', name: 'Blue', color: '#1e40af' },
     { id: 'dracula', name: 'Dracula', color: '#bd93f9' },
     { id: 'everforest', name: 'Everforest', color: '#a7c080' },
     { id: 'rosepine', name: 'Rose Pine', color: '#ebbcba' },

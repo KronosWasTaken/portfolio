@@ -1,12 +1,12 @@
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
-export type Theme = 'default' | 'mocha' | 'dracula' | 'everforest' | 'rosepine' | 'nord';
+export type Theme = 'blue' | 'mocha' | 'dracula' | 'everforest' | 'rosepine' | 'nord';
 
 const STORAGE_KEY = 'portfolio-theme';
 
 function createThemeStore() {
-  const initialTheme = (browser && (localStorage.getItem(STORAGE_KEY) as Theme)) || 'default';
+  const initialTheme = (browser && (localStorage.getItem(STORAGE_KEY) as Theme)) || 'mocha';
   const { subscribe, set } = writable<Theme>(initialTheme);
 
   return {
@@ -15,7 +15,7 @@ function createThemeStore() {
       const update = () => {
         if (browser) {
           localStorage.setItem(STORAGE_KEY, newTheme);
-          if (newTheme === 'default') {
+          if (newTheme === 'mocha') {
             document.documentElement.removeAttribute('data-theme');
           } else {
             document.documentElement.setAttribute('data-theme', newTheme);
@@ -36,9 +36,9 @@ function createThemeStore() {
     },
     init: () => {
       if (browser) {
-        const theme = (localStorage.getItem(STORAGE_KEY) as Theme) || 'default';
-        if (theme !== 'default') {
-          document.documentElement.setAttribute('data-theme', theme);
+        const current = (localStorage.getItem(STORAGE_KEY) as Theme) || 'mocha';
+        if (current !== 'mocha') {
+          document.documentElement.setAttribute('data-theme', current);
         }
       }
     }

@@ -92,8 +92,8 @@
           <div class="flex items-center space-x-2">
             <MailIcon class="h-4 w-4" />
             <div class="relative" use:clickOutside={handleEmailClose}>
-              <button
-                class="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1"
+                <button
+                  class="text-muted-foreground hover:text-accent text-sm flex items-center gap-1 transition-colors"
                 aria-expanded={emailDropdownOpen}
                 aria-haspopup="menu"
                 aria-label="Select email address"
@@ -105,13 +105,13 @@
               {#if emailDropdownOpen}
                 <div role="menu" class="absolute top-full left-0 z-50 mt-1 rounded-md border bg-popover text-popover-foreground shadow-md p-1 min-w-[200px]">
                   {#each emails as email}
-                    <a
-                      role="menuitem"
-                      href="mailto:{email.address}"
-                      class="flex items-center space-x-2 w-full rounded-sm px-2 py-1.5 text-sm hover:bg-accent transition-colors"
-                      onclick={handleEmailClose}
-                      aria-label="Send email via {email.provider}"
-                    >
+                      <a
+                        role="menuitem"
+                        href="mailto:{email.address}"
+                        class="flex items-center space-x-2 w-full rounded-sm px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                        onclick={handleEmailClose}
+                        aria-label="Send email via {email.provider}"
+                      >
                       <MailIcon class="h-4 w-4" />
                       <span>{email.provider}</span>
                     </a>
@@ -131,11 +131,11 @@
         </div>
 
         <div class="flex justify-center space-x-4 mt-4">
-          <Button variant="outline" size="sm" href={socialLinks.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+          <Button variant="outline" size="sm" class="rounded-full hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all" href={socialLinks.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
             <GithubIcon width="16" height="16" class="mr-2" />
             GitHub
           </Button>
-          <Button variant="outline" size="sm" href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+          <Button variant="outline" size="sm" class="rounded-full hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all" href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
             <LinkedinIcon width="16" height="16" class="mr-2" />
             LinkedIn Profile
           </Button>
@@ -200,7 +200,7 @@
         <div class="space-y-6">
           {#each experiences as exp, i}
             <div use:reveal={{ delay: i * 60 }} class="group">
-              <Card class="border-border/50 hover:border-highlight/30 transition-all duration-300">
+              <Card class="border-border/50 hover:border-accent/30 transition-all duration-300">
                 <CardHeader>
                   <div class="flex items-start space-x-4">
                     <div class="w-10 h-10 mt-1 bg-white rounded-lg flex items-center justify-center overflow-hidden shrink-0 border border-border/50 shadow-sm">
@@ -245,7 +245,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {#each projects as project, i}
             <div use:reveal={{ delay: (i % 2) * 60 }} class="group h-full">
-              <Card class="h-full border-border/50 hover:border-highlight/30 transition-all duration-300 flex flex-col">
+              <Card class="h-full border-border/50 hover:border-accent/30 transition-all duration-300 flex flex-col">
                 <CardHeader class="pb-2">
                   <CardTitle class="text-lg group-hover:text-highlight transition-colors flex items-center">
                     {project.title}
@@ -276,7 +276,7 @@
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           {#each certifications as cert, i}
-            <div use:reveal={{ delay: (i % 2) * 40 }} class="flex justify-between items-center p-3 border rounded-lg hover:border-highlight/40 transition-colors">
+            <div use:reveal={{ delay: (i % 2) * 40 }} class="flex justify-between items-center p-3 border rounded-lg hover:border-accent/40 transition-colors">
               <div>
                 <p class="font-medium text-sm">{cert.name}</p>
                 <p class="text-xs text-muted-foreground">{cert.issuer}</p>
@@ -299,7 +299,7 @@
               <h3 class="font-semibold mb-3 text-highlight uppercase tracking-wider text-xs">{category}</h3>
               <div class="flex flex-wrap gap-2">
                 {#each skillList as skill}
-                  <Badge variant="secondary" class="bg-muted/50 hover:bg-muted text-foreground transition-colors">{skill}</Badge>
+                  <Badge variant="secondary" class="rounded-full bg-muted/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300">{skill}</Badge>
                 {/each}
               </div>
             </div>

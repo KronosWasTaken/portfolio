@@ -75,12 +75,6 @@
     <div class="absolute top-[10%] right-[-10%] w-[120%] h-[60%] bg-highlight rounded-full blur-[220px] transition-all duration-1000" style="opacity: calc(var(--glow-intensity, 0.1) * 0.25); transform: rotate(-15deg);"></div>
     <div class="absolute bottom-[20%] right-[10%] w-[80%] h-[40%] bg-primary rounded-full blur-[180px] transition-all duration-1000" style="opacity: calc(var(--glow-intensity, 0.1) * 0.2);"></div>
   </div>
-
-  <!-- Layer 4: Interactive Center Glow -->
-  <div class="absolute inset-0 pointer-events-none flex items-center justify-center -z-10">
-    <div class="w-[600px] h-[600px] bg-highlight rounded-full blur-[250px] transition-all duration-1000 animate-pulse-slow" style="opacity: calc(var(--glow-intensity, 0.1) * 0.15); transform: translate(-25%, 0);"></div>
-  </div>
-
   <div class="container mx-auto relative z-10">
     <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
       <!-- Left Column: Content -->
@@ -97,7 +91,9 @@
         >
           Hi, I'm <span class="text-highlight relative">
             Aaditya
-            <span class="absolute -inset-1 bg-highlight/20 blur-2xl rounded-full -z-10 animate-pulse-slow"></span>
+            <span class="absolute -inset-1 bg-highlight/20 blur-2xl rounded-full -z-10 animate-pulse-slow">
+              <span class="absolute inset-0 opacity-[0.15] mix-blend-overlay rounded-full bg-[url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E')]"></span>
+            </span>
           </span>
         </h1>
 
@@ -119,7 +115,7 @@
             <CalendarIcon height="20" class="mr-2" />
             Get in Touch
           </Button>
-          <Button variant="outline" size="lg" class="rounded-2xl px-10 h-14 text-base font-bold border-border/50 backdrop-blur-sm hover:bg-white/5 transition-all hover:scale-105 active:scale-95" onclick={() => scrollTo('projects')}>
+          <Button variant="outline" size="lg" class="rounded-2xl px-10 h-14 text-base font-bold border-border/50 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all hover:scale-105 active:scale-95" onclick={() => scrollTo('projects')}>
             View Projects
             <ArrowRightIcon height="20" class="ml-2" />
           </Button>

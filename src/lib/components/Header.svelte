@@ -60,30 +60,33 @@
 
 <svelte:window onscroll={handleScroll} onresize={updateScrollHeight} />
 
-<header class="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 rounded-full border border-border/30 shadow-2xl bg-background/60 antialiased">
-  <!-- Dedicated Blur Layer to prevent text blurriness -->
-  <div class="absolute inset-0 -z-10 backdrop-blur-2xl rounded-full"></div>
-  <div
-    class="absolute bottom-0 left-0 right-0 h-[2px] bg-highlight origin-left z-50 pointer-events-none"
-    style="transform: scaleX({scrollProgress})"
-  ></div>
+<header class="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 rounded-full border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] bg-card/80 backdrop-blur-2xl antialiased transition-all duration-500">
+  <!-- Dedicated Layer for background, blur and progress bar clipping -->
+  <div class="absolute inset-0 -z-10 backdrop-blur-2xl rounded-full overflow-hidden">
+    <div
+      class="absolute bottom-0 left-0 right-0 h-[2px] bg-highlight origin-left z-50 pointer-events-none"
+      style="transform: scaleX({scrollProgress})"
+    ></div>
+  </div>
 
   <div class="container mx-auto px-4 sm:px-6 py-4">
-    <nav class="flex items-center justify-between">
-      <div class="text-2xl font-bold text-foreground" style="font-family: var(--font-signature)">
+    <nav class="flex items-center gap-8">
+      <!-- Logo -->
+      <div class="text-2xl font-bold text-foreground translate-y-[-3px]" style="font-family: var(--font-signature)">
         {#if isResumePage}
           <a href="/" class="hover:text-highlight transition-colors">Aaditya</a>
         {:else}
-          Aaditya
+          <span class="cursor-default">Aaditya</span>
         {/if}
       </div>
 
+      <!-- Navigation Links -->
       {#if !isResumePage}
-        <div class="hidden lg:flex items-center space-x-8">
+        <div class="hidden lg:flex items-center space-x-5">
           {#each [['about','About'],['experience','Experience'],['tech-stack','Tech Stack'],['projects','Projects'],['certifications','Certifications'],['contact','Contact']] as [id, label]}
             <button
               onclick={() => scrollTo(id)}
-              class="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+              class="text-muted-foreground hover:text-foreground transition-all text-sm font-medium hover:scale-105 active:scale-95 whitespace-nowrap"
             >
               {label}
             </button>
@@ -91,6 +94,10 @@
         </div>
       {/if}
 
+      <!-- Spacer to push actions to the right -->
+      <div class="flex-1"></div>
+
+      <!-- Right Side Actions -->
       <div class="flex items-center space-x-1 sm:space-x-2">
         <ThemeSelector />
 
@@ -104,11 +111,11 @@
           <Button variant="ghost" size="icon" href="mailto:aaditya12raj@gmail.com" aria-label="Email Me">
             <MailIcon height="20" />
           </Button>
-          <Button variant="outline" class="border-highlight/30 text-highlight hover:bg-highlight/10 ml-2" href={isResumePage ? '/' : '/resume'} aria-label={isResumePage ? 'Back to Portfolio' : 'View Resume'}>
+          <Button variant="outline" class="rounded-full border-highlight/30 text-highlight hover:bg-accent hover:text-accent-foreground hover:border-accent ml-2 transition-all" href={isResumePage ? '/' : '/resume'} aria-label={isResumePage ? 'Back to Portfolio' : 'View Resume'}>
             <FileTextIcon height="16" class="mr-2" />
             {isResumePage ? 'Portfolio' : 'Resume'}
           </Button>
-          <Button class="bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2 btn-cv-glow" href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf" aria-label="Download CV PDF">
+          <Button class="rounded-full bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2 btn-cv-glow" href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf" aria-label="Download CV PDF">
             <DownloadIcon height="16" class="mr-2" />
             CV
           </Button>
@@ -157,11 +164,11 @@
         
         <div class="pt-4 border-t border-border/50 flex flex-col gap-3">
           <div class="flex gap-2">
-            <Button variant="outline" class="flex-1 h-12 rounded-xl border-highlight/30 text-highlight font-bold" href="/resume">
+            <Button variant="outline" class="flex-1 h-12 rounded-full border-highlight/30 text-highlight font-bold" href="/resume">
               <FileTextIcon height="16" class="mr-2" />
               Resume
             </Button>
-            <Button class="flex-1 h-12 rounded-xl bg-highlight text-highlight-foreground font-bold" href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf">
+            <Button class="flex-1 h-12 rounded-full bg-highlight text-highlight-foreground font-bold" href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf">
               <DownloadIcon height="16" class="mr-2" />
               CV
             </Button>
