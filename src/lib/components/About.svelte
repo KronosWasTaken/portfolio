@@ -107,7 +107,7 @@
                         class="w-1 h-1 rounded-full bg-highlight animate-pulse"
                       ></div>
                       <span
-                        class="text-[8px] font-mono text-highlight/80 uppercase tracking-widest"
+                        class="text-[10px] font-mono text-highlight uppercase tracking-widest"
                         >Active</span
                       >
                     </div>
@@ -146,7 +146,7 @@
                     {/each}
                   </div>
                   <span
-                    class="text-[8px] font-mono text-highlight/60 uppercase tracking-tighter"
+                    class="text-[10px] font-mono text-highlight uppercase tracking-tighter"
                     >Integrity_OK</span
                   >
                 </div>
@@ -216,7 +216,7 @@
 
           <!-- Bottom Refined Status Ticker -->
           <div
-            class="absolute bottom-0 left-0 w-full bg-highlight/5 border-t border-white/5 px-6 py-2 flex justify-between items-center text-[9px] font-mono text-muted-foreground/50 overflow-hidden"
+            class="absolute bottom-0 left-0 w-full bg-highlight/5 border-t border-white/5 px-6 py-2 flex justify-between items-center text-[10px] font-mono text-muted-foreground overflow-hidden"
           >
             <div
               class="flex gap-6 whitespace-nowrap animate-marquee md:animate-none"
@@ -234,7 +234,7 @@
                 KERNEL_LOAD: OPTIMAL</span
               >
             </div>
-            <div class="hidden sm:flex items-center gap-2 text-highlight/60">
+            <div class="hidden sm:flex items-center gap-2 text-highlight">
               <span class="animate-pulse">STABLE_V8.4</span>
               <div
                 class="w-12 h-1 bg-highlight/20 rounded-full overflow-hidden"

@@ -86,7 +86,7 @@
                           {#if exp.current}
                             <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-highlight/10 border border-highlight/20 shrink-0">
                               <div class="w-1.5 h-1.5 rounded-full bg-highlight animate-pulse"></div>
-                              <span class="text-[10px] font-mono text-highlight uppercase tracking-widest font-bold">Live</span>
+                              <span class="text-xs font-mono text-highlight uppercase tracking-widest font-bold">Live</span>
                             </div>
                           {/if}
                         </div>
@@ -102,7 +102,7 @@
 
                         <div class="flex flex-wrap gap-2 pt-4 border-t border-border/30">
                           {#each exp.technologies as tech}
-                            <div class="px-2.5 py-0.5 rounded-md bg-highlight/10 border border-highlight/20 text-[10px] font-mono text-highlight uppercase tracking-tighter">
+                            <div class="px-2.5 py-0.5 rounded-md bg-highlight/10 border border-highlight/20 text-xs font-mono text-highlight uppercase tracking-tighter">
                               {tech}
                             </div>
                           {/each}

@@ -49,7 +49,7 @@
   <meta name="twitter:image" content="{page.url.origin}/thumbnail_x.png" />
 </svelte:head>
 
-<div class="min-h-screen bg-background">
+<main class="min-h-screen bg-background">
   <Header />
   <Hero />
   <div style="content-visibility: auto; contain-intrinsic-size: 0 600px">
@@ -71,4 +71,4 @@
     {#if Contact}<Contact />{/if}
   </div>
   {#if Footer}<Footer />{/if}
-</div>
+</main>

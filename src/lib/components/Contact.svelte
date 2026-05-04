@@ -107,7 +107,7 @@
                 <div class="relative" use:clickOutside={handleSendEmailClose}>
                   <Button
                     variant="outline"
-                    class="w-full justify-start"
+                    class="w-full justify-start rounded-full hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all"
                     aria-expanded={sendEmailOpen}
                     aria-haspopup="menu"
                     onclick={handleSendEmailToggle}
@@ -139,7 +139,7 @@
 
                 <Button
                   variant="outline"
-                  class="w-full justify-start"
+                  class="w-full justify-start rounded-full hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all"
                   href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -154,7 +154,7 @@
 
                 <Button
                   variant="outline"
-                  class="w-full justify-start"
+                  class="w-full justify-start rounded-full hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all"
                   href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -173,7 +173,7 @@
               <div class="relative" use:clickOutside={handleGetInTouchClose}>
                 <Button
                   size="lg"
-                  class="w-full bg-highlight text-highlight-foreground hover:bg-highlight/90"
+                  class="w-full bg-highlight text-highlight-foreground hover:bg-highlight/90 rounded-full"
                   aria-expanded={getInTouchOpen}
                   aria-haspopup="menu"
                   onclick={handleGetInTouchToggle}
