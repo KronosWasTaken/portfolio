@@ -44,8 +44,8 @@
 
   const skills: Record<string, string[]> = {
     'Programming Languages': ['Python', 'Golang', 'Rust', 'Zig', 'JavaScript', 'TypeScript', 'C#'],
-    'Web Development': ['React', 'Tailwind CSS', 'Electron', 'FastAPI', 'Flask', 'Gin'],
-    'Database & Cloud': ['PostgreSQL', 'Supabase', 'SQLAlchemy', 'Oracle Cloud', 'Docker', 'FinOps', 'DevOps'],
+    'Web Development': ['SvelteKit / Svelte 5', 'React', 'Tailwind CSS', 'Electron', 'FastAPI', 'Flask', 'Gin', 'Zustand'],
+    'Database & Cloud': ['PostgreSQL', 'Supabase', 'SQLAlchemy', 'Oracle Cloud', 'Vercel', 'Docker', 'FinOps', 'DevOps'],
     'Cybersecurity': ['Network Defense', 'Ethical Hacking', 'Cryptography', 'Endpoint Security', 'Cloud Security', 'Network Security', 'DevSecOps'],
     'Systems & Tools': ['Linux', 'Git', 'Tauri', 'Selenium']
   };

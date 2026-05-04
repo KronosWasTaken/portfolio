@@ -11,6 +11,9 @@
   import FramerIcon from '~icons/simple-icons/framer';
   import ElectronIcon from '~icons/simple-icons/electron';
   import CapacitorIcon from '~icons/simple-icons/capacitor';
+  import SvelteIcon from '~icons/simple-icons/svelte';
+  import VercelIcon from '~icons/simple-icons/vercel';
+  import ZustandIcon from '~icons/lucide/paw-print';
 
   import PythonIcon from '~icons/simple-icons/python';
   import FastAPIIcon from '~icons/simple-icons/fastapi';
@@ -52,7 +55,9 @@
         { name: 'Radix UI', icon: RadixUIIcon },
         { name: 'Framer Motion', icon: FramerIcon },
         { name: 'Electron', icon: ElectronIcon },
-        { name: 'Capacitor', icon: CapacitorIcon }
+        { name: 'Capacitor', icon: CapacitorIcon },
+        { name: 'SvelteKit / Svelte 5', icon: SvelteIcon },
+        { name: 'Zustand', icon: ZustandIcon }
       ]
     },
     {
@@ -79,6 +84,7 @@
         { name: 'Linux', icon: LinuxIcon },
         { name: 'Docker', icon: DockerIcon },
         { name: 'Oracle Cloud', icon: OracleIcon },
+        { name: 'Vercel', icon: VercelIcon },
         { name: 'Tauri', icon: TauriIcon },
         { name: 'Rust', icon: RustIcon },
         { name: 'Zig', icon: ZigIcon },
