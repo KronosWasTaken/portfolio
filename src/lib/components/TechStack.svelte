@@ -37,6 +37,7 @@
   import JuniperIcon from '~icons/simple-icons/junipernetworks';
   import NetworkIcon from '~icons/lucide/network';
   import LockIcon from '~icons/lucide/lock';
+  import ShieldIcon from '~icons/lucide/shield';
   import SeleniumIcon from '~icons/simple-icons/selenium';
   import GitIcon from '~icons/simple-icons/git';
 
@@ -94,6 +95,7 @@
         { name: 'Network Security', icon: NetworkIcon },
         { name: 'Cryptography', icon: LockIcon },
         { name: 'Selenium', icon: SeleniumIcon },
+        { name: 'Ethical Hacking', icon: ShieldIcon },
         { name: 'Git', icon: GitIcon }
       ]
     }

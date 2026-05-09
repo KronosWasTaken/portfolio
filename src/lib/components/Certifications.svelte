@@ -19,6 +19,15 @@
   import ExternalLinkIcon from '~icons/lucide/external-link';
 
   const certifications = [
+    { 
+      title: 'Ethical Hacker', 
+      issuer: 'Cisco Networking Academy', 
+      date: 'May 09, 2026', 
+      description: 'Advanced certification in ethical hacking covering legal compliance, vulnerability assessment scoping, and execution using Kali Linux and specialized security tools.', 
+      credentialLink: 'https://www.credly.com/badges/70bc2207-39e7-4363-8871-4c2bdc8ea14c', 
+      icon: CiscoIcon, 
+      featured: true 
+    },
     { title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional', issuer: 'Oracle', date: 'September 2025', description: 'Professional certification in Oracle Cloud Infrastructure networking services and solutions', credentialLink: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=AAD114450C5C2A72ABF108B067E8420E9C80CB8C985ACB75FD8103F137B49A12', icon: OracleIcon, featured: true },
     { title: 'Oracle Cloud Infrastructure 2025 Certified DevOps Professional', issuer: 'Oracle', date: 'September 2025', description: 'Professional certification in Oracle Cloud Infrastructure DevOps practices and solutions', credentialLink: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=682D36DF25A1F92246D19E905BE1A7B607EE5CE04BA24304CE18184580FC1E27', icon: OracleIcon, featured: true },
     { title: 'Google Cybersecurity Professional', issuer: 'Google', date: 'August 2025', description: 'Comprehensive cybersecurity certification covering fundamental security concepts and practices', credentialLink: 'https://coursera.org/share/a55bf7c9a80544e82a22ae5f3e6228a7', icon: GoogleIcon, featured: true },
@@ -104,7 +113,7 @@
                 </div>
 
                 <div class="mt-auto pt-4 flex items-center justify-between border-t border-border/30">
-                  <Button variant="outline" size="sm" href={cert.credentialLink} target="_blank" rel="noopener noreferrer" class="rounded-lg border-border/50 hover:border-highlight/50 hover:bg-highlight/5 transition-all duration-300">
+                  <Button variant="outline" size="sm" href={cert.credentialLink} target="_blank" rel="noopener noreferrer" class="rounded-lg border-highlight/40 text-highlight hover:border-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 shadow-[0_0_15px_-5px_hsl(var(--highlight)/0.2)]">
                     <ExternalLinkIcon class="h-4 w-4 mr-2" />
                     Verify_Credential
                   </Button>
