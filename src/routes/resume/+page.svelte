@@ -51,6 +51,7 @@
   };
 
   const certifications = [
+    { name: 'Ethical Hacker', issuer: 'Cisco Networking Academy', date: 'May 09, 2026' },
     { name: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional', issuer: 'Oracle', date: 'September 2025' },
     { name: 'Oracle Cloud Infrastructure 2025 Certified DevOps Professional', issuer: 'Oracle', date: 'September 2025' },
     { name: 'Google Cybersecurity Professional', issuer: 'Google', date: 'August 2025' },
