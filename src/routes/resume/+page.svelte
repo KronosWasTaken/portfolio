@@ -51,20 +51,21 @@
   };
 
   const certifications = [
-    { name: 'Ethical Hacker', issuer: 'Cisco Networking Academy', date: 'May 09, 2026' },
-    { name: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional', issuer: 'Oracle', date: 'September 2025' },
-    { name: 'Oracle Cloud Infrastructure 2025 Certified DevOps Professional', issuer: 'Oracle', date: 'September 2025' },
-    { name: 'Google Cybersecurity Professional', issuer: 'Google', date: 'August 2025' },
-    { name: 'Juniper Networks Certified Associate - Junos (JNCIA-Junos)', issuer: 'Juniper Networks', date: 'August 2025' },
-    { name: 'Junior Cybersecurity Analyst Career Path', issuer: 'Cisco Networking Academy', date: 'June 2025' },
-    { name: 'Blue Team Junior Analyst (BTJA)', issuer: 'Security Blue Team', date: 'July 2025' },
-    { name: 'Network Technician Career Path', issuer: 'Cisco Networking Academy', date: 'June 2025' },
-    { name: 'Cyber Threat Management', issuer: 'Cisco Networking Academy', date: 'June 2025' },
-    { name: 'Network Defense', issuer: 'Cisco Networking Academy', date: 'June 2025' },
-    { name: 'Endpoint Security', issuer: 'Cisco Networking Academy', date: 'June 2025' },
-    { name: 'Networking Devices and Initial Configuration', issuer: 'Cisco Networking Academy', date: 'June 2025' },
-    { name: 'Python Essentials 2', issuer: 'Cisco Networking Academy', date: 'Jan-Feb 2025' },
-    { name: 'Fortinet Certified Associate in Cybersecurity', issuer: 'Fortinet', date: 'December 2024' }
+    { name: 'Certified in Cybersecurity (CC)', issuer: 'ISC2', date: 'May 2026', link: 'https://linkedin.com/in/aaditya-raj-390113324' },
+    { name: 'Ethical Hacker', issuer: 'Cisco Networking Academy', date: 'May 09, 2026', link: 'https://www.credly.com/badges/70bc2207-39e7-4363-8871-4c2bdc8ea14c' },
+    { name: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional', issuer: 'Oracle', date: 'September 2025', link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=AAD114450C5C2A72ABF108B067E8420E9C80CB8C985ACB75FD8103F137B49A12' },
+    { name: 'Oracle Cloud Infrastructure 2025 Certified DevOps Professional', issuer: 'Oracle', date: 'September 2025', link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=682D36DF25A1F92246D19E905BE1A7B607EE5CE04BA24304CE18184580FC1E27' },
+    { name: 'Google Cybersecurity Professional', issuer: 'Google', date: 'August 2025', link: 'https://coursera.org/share/a55bf7c9a80544e82a22ae5f3e6228a7' },
+    { name: 'Juniper Networks Certified Associate - Junos (JNCIA-Junos)', issuer: 'Juniper Networks', date: 'August 2025', link: 'https://linkedin.com/in/aaditya-raj-390113324' },
+    { name: 'Junior Cybersecurity Analyst Career Path', issuer: 'Cisco Networking Academy', date: 'June 2025', link: 'https://www.credly.com/badges/a3419572-06e9-4379-a275-df0a58e9ba1b' },
+    { name: 'Blue Team Junior Analyst (BTJA)', issuer: 'Security Blue Team', date: 'July 2025', link: 'https://linkedin.com/in/aaditya-raj-390113324' },
+    { name: 'Network Technician Career Path', issuer: 'Cisco Networking Academy', date: 'June 2025', link: 'https://www.credly.com/badges/42093463-8938-4b15-9bc1-5473d495c652' },
+    { name: 'Cyber Threat Management', issuer: 'Cisco Networking Academy', date: 'June 2025', link: 'https://www.credly.com/badges/b93779cf-371d-4bf9-8b93-325028a9a542' },
+    { name: 'Network Defense', issuer: 'Cisco Networking Academy', date: 'June 2025', link: 'https://www.credly.com/badges/32a3503f-c359-4600-b433-af5eae2bb7e3' },
+    { name: 'Endpoint Security', issuer: 'Cisco Networking Academy', date: 'June 2025', link: 'https://www.credly.com/badges/166adc4c-afa6-45d3-82c2-fdf92c11c086' },
+    { name: 'Networking Devices and Initial Configuration', issuer: 'Cisco Networking Academy', date: 'June 2025', link: 'https://www.credly.com/badges/1046b94b-8720-4540-a0f1-7adb1c645b45/linked_in_profile' },
+    { name: 'Python Essentials 2', issuer: 'Cisco Networking Academy', date: 'Jan-Feb 2025', link: 'https://www.credly.com/badges/10c2d2f2-470e-453f-9a63-4719adbd5396/public_url' },
+    { name: 'Fortinet Certified Associate in Cybersecurity', issuer: 'Fortinet', date: 'December 2024', link: 'https://www.credly.com/badges/7ed3bf86-585a-45fe-b9b7-fbf738802cf8/linked_in_profile' }
   ];
 </script>
 
@@ -277,12 +278,24 @@
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           {#each certifications as cert, i}
-            <div use:reveal={{ delay: (i % 2) * 40 }} class="flex justify-between items-center p-3 border rounded-lg hover:border-accent/40 transition-colors">
-              <div>
-                <p class="font-medium text-sm">{cert.name}</p>
-                <p class="text-xs text-muted-foreground">{cert.issuer}</p>
-              </div>
-              <p class="text-xs text-muted-foreground shrink-0 ml-2">{cert.date}</p>
+            <div use:reveal={{ delay: (i % 2) * 40 }}>
+              <a 
+                href={cert.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex justify-between items-center p-3 border rounded-lg hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 group h-full"
+              >
+                <div>
+                  <p class="font-medium text-sm group-hover:text-highlight transition-colors flex items-center gap-2">
+                    {cert.name}
+                    {#if cert.link}
+                      <ExternalLinkIcon class="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {/if}
+                  </p>
+                  <p class="text-xs text-muted-foreground">{cert.issuer}</p>
+                </div>
+                <p class="text-xs text-muted-foreground shrink-0 ml-2">{cert.date}</p>
+              </a>
             </div>
           {/each}
         </div>

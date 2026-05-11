@@ -20,6 +20,15 @@
 
   const certifications = [
     { 
+      title: 'Certified in Cybersecurity (CC)', 
+      issuer: 'ISC2', 
+      date: 'May 2026', 
+      description: 'Foundational cybersecurity certification covering security principles, business continuity, disaster recovery, incident response, access control, and network security.', 
+      credentialLink: 'https://linkedin.com/in/aaditya-raj-390113324', 
+      icon: ShieldIcon, 
+      featured: true 
+    },
+    { 
       title: 'Ethical Hacker', 
       issuer: 'Cisco Networking Academy', 
       date: 'May 09, 2026', 
