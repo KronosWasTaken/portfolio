@@ -52,7 +52,7 @@
 
   const certifications = [
     { name: 'Certified in Cybersecurity (CC)', issuer: 'ISC2', date: 'May 2026', link: 'https://linkedin.com/in/aaditya-raj-390113324' },
-    { name: 'Ethical Hacker', issuer: 'Cisco Networking Academy', date: 'May 09, 2026', link: 'https://www.credly.com/badges/70bc2207-39e7-4363-8871-4c2bdc8ea14c' },
+    { name: 'Ethical Hacker', issuer: 'Cisco Networking Academy', date: 'May 2026', link: 'https://www.credly.com/badges/70bc2207-39e7-4363-8871-4c2bdc8ea14c' },
     { name: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional', issuer: 'Oracle', date: 'September 2025', link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=AAD114450C5C2A72ABF108B067E8420E9C80CB8C985ACB75FD8103F137B49A12' },
     { name: 'Oracle Cloud Infrastructure 2025 Certified DevOps Professional', issuer: 'Oracle', date: 'September 2025', link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=682D36DF25A1F92246D19E905BE1A7B607EE5CE04BA24304CE18184580FC1E27' },
     { name: 'Google Cybersecurity Professional', issuer: 'Google', date: 'August 2025', link: 'https://coursera.org/share/a55bf7c9a80544e82a22ae5f3e6228a7' },

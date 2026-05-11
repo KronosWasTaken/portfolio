@@ -31,7 +31,7 @@
     { 
       title: 'Ethical Hacker', 
       issuer: 'Cisco Networking Academy', 
-      date: 'May 09, 2026', 
+      date: 'May 2026', 
       description: 'Advanced certification in ethical hacking covering legal compliance, vulnerability assessment scoping, and execution using Kali Linux and specialized security tools.', 
       credentialLink: 'https://www.credly.com/badges/70bc2207-39e7-4363-8871-4c2bdc8ea14c', 
       icon: CiscoIcon, 
