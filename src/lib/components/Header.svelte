@@ -115,7 +115,7 @@
             <FileTextIcon height="16" class="mr-2" />
             {isResumePage ? 'Portfolio' : 'Resume'}
           </Button>
-          <Button class="rounded-full bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2 btn-cv-glow" href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf" aria-label="Download CV PDF">
+          <Button class="rounded-full bg-highlight text-highlight-foreground hover:bg-highlight/90 ml-2 btn-cv-glow" href="/Aaditya_Raj_CV.pdf?v=20260511" download="Aaditya_Raj_CV.pdf" aria-label="Download CV PDF">
             <DownloadIcon height="16" class="mr-2" />
             CV
           </Button>
@@ -168,7 +168,7 @@
               <FileTextIcon height="16" class="mr-2" />
               Resume
             </Button>
-            <Button class="flex-1 h-12 rounded-full bg-highlight text-highlight-foreground font-bold" href="/Aaditya_Raj_CV.pdf" download="Aaditya_Raj_CV.pdf">
+            <Button class="flex-1 h-12 rounded-full bg-highlight text-highlight-foreground font-bold" href="/Aaditya_Raj_CV.pdf?v=20260511" download="Aaditya_Raj_CV.pdf">
               <DownloadIcon height="16" class="mr-2" />
               CV
             </Button>
