@@ -65,7 +65,7 @@ export const experiences: Experience[] = [
   {
     company: 'Neelgai',
     position: 'Cybersecurity Research Intern',
-    period: 'Aug 2025 - Jan 2025',
+    period: 'Aug 2025 - Jan 2026',
     location: 'Remote',
     achievements: [
       'Designed and built an MCP server to explore secure integrations with various services.',
