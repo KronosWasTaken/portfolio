@@ -42,7 +42,7 @@
 
     <Card class="border-border/50 overflow-hidden">
       <CardContent class="p-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div class="space-y-6">
             <div>
               <h3
