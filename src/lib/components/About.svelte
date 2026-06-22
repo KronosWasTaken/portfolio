@@ -38,7 +38,7 @@
   ];
 </script>
 
-<section id="about" class="py-20 px-6">
+<section class="py-20 px-6">
   <div class="max-w-6xl mx-auto">
     <div use:reveal class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">My Expertise</h2>

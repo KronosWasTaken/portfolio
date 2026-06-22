@@ -52,22 +52,22 @@
 <main class="min-h-screen bg-background">
   <Header />
   <Hero />
-  <div style="content-visibility: auto; contain-intrinsic-size: 0 600px">
+  <div id="about" style="content-visibility: auto; contain-intrinsic-size: 0 600px">
     {#if About}<About />{/if}
   </div>
-  <div style="content-visibility: auto; contain-intrinsic-size: 0 700px">
+  <div id="experience" style="content-visibility: auto; contain-intrinsic-size: 0 700px">
     {#if Experience}<Experience />{/if}
   </div>
-  <div style="content-visibility: auto; contain-intrinsic-size: 0 600px">
+  <div id="tech-stack" style="content-visibility: auto; contain-intrinsic-size: 0 600px">
     {#if TechStack}<TechStack />{/if}
   </div>
-  <div style="content-visibility: auto; contain-intrinsic-size: 0 900px">
+  <div id="projects" style="content-visibility: auto; contain-intrinsic-size: 0 900px">
     {#if Projects}<Projects />{/if}
   </div>
-  <div style="content-visibility: auto; contain-intrinsic-size: 0 800px">
+  <div id="certifications" style="content-visibility: auto; contain-intrinsic-size: 0 800px">
     {#if Certifications}<Certifications />{/if}
   </div>
-  <div style="content-visibility: auto; contain-intrinsic-size: 0 500px">
+  <div id="contact" style="content-visibility: auto; contain-intrinsic-size: 0 500px">
     {#if Contact}<Contact />{/if}
   </div>
   {#if Footer}<Footer />{/if}
