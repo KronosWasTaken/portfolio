@@ -7,15 +7,9 @@
   import { emails, socialLinks } from '$lib/data';
 
   let emailOpen = $state(false);
-  let githubTextHovered = $state(false);
-  let linkedinTextHovered = $state(false);
-  let emailTextHovered = $state(false);
 
   const handleEmailToggle = () => { emailOpen = !emailOpen; };
-  const handleEmailClose = () => { 
-    emailOpen = false; 
-    emailTextHovered = false;
-  };
+  const handleEmailClose = () => { emailOpen = false; };
 </script>
 
 <footer class="border-t border-border/40 py-12 px-6">
@@ -34,16 +28,12 @@
           href={socialLinks.github}
           target="_blank"
           rel="noopener noreferrer"
-          class="relative flex flex-row-reverse items-center justify-start h-9 w-9 hover:w-[105px] rounded-full border px-2 transition-all duration-500 ease-out overflow-hidden group cursor-pointer
-                 {githubTextHovered ? 'bg-accent text-accent-foreground border-accent' : 'border-border/40 hover:border-highlight/50 bg-transparent text-muted-foreground'}"
+          class="relative flex flex-row-reverse items-center justify-start h-9 w-9 hover:w-[105px] rounded-full border border-border/40 hover:border-highlight/50 bg-transparent px-2 transition-all duration-500 ease-out overflow-hidden group cursor-pointer
+                 has-[span:hover]:bg-accent has-[span:hover]:text-accent-foreground has-[span:hover]:border-accent"
           aria-label="GitHub Profile"
         >
-          <GithubIcon class="h-5 w-5 shrink-0 transition-colors duration-300 {githubTextHovered ? 'text-accent-foreground' : 'group-hover:text-highlight'}" />
-          <span 
-            onmouseenter={() => githubTextHovered = true}
-            onmouseleave={() => githubTextHovered = false}
-            class="font-mono text-xs font-bold tracking-[0.1em] mr-3 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 select-none {githubTextHovered ? 'text-accent-foreground' : 'text-muted-foreground'}"
-          >
+          <GithubIcon class="h-5 w-5 text-muted-foreground group-hover:text-highlight shrink-0 transition-colors duration-300 group-has-[span:hover]:text-accent-foreground" />
+          <span class="font-mono text-xs font-bold tracking-widest mr-3 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 select-none text-muted-foreground hover:text-accent-foreground">
             GitHub
           </span>
         </a>
@@ -53,16 +43,12 @@
           href={socialLinks.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          class="relative flex flex-row-reverse items-center justify-start h-9 w-9 hover:w-[115px] rounded-full border px-2 transition-all duration-500 ease-out overflow-hidden group cursor-pointer
-                 {linkedinTextHovered ? 'bg-accent text-accent-foreground border-accent' : 'border-border/40 hover:border-highlight/50 bg-transparent text-muted-foreground'}"
+          class="relative flex flex-row-reverse items-center justify-start h-9 w-9 hover:w-[115px] rounded-full border border-border/40 hover:border-highlight/50 bg-transparent px-2 transition-all duration-500 ease-out overflow-hidden group cursor-pointer
+                 has-[span:hover]:bg-accent has-[span:hover]:text-accent-foreground has-[span:hover]:border-accent"
           aria-label="LinkedIn Profile"
         >
-          <LinkedinIcon class="h-5 w-5 shrink-0 transition-colors duration-300 {linkedinTextHovered ? 'text-accent-foreground' : 'group-hover:text-highlight'}" />
-          <span 
-            onmouseenter={() => linkedinTextHovered = true}
-            onmouseleave={() => linkedinTextHovered = false}
-            class="font-mono text-xs font-bold tracking-[0.1em] mr-3 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 select-none {linkedinTextHovered ? 'text-accent-foreground' : 'text-muted-foreground'}"
-          >
+          <LinkedinIcon class="h-5 w-5 text-muted-foreground group-hover:text-highlight shrink-0 transition-colors duration-300 group-has-[span:hover]:text-accent-foreground" />
+          <span class="font-mono text-xs font-bold tracking-widest mr-3 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 select-none text-muted-foreground hover:text-accent-foreground">
             LinkedIn
           </span>
         </a>
@@ -74,18 +60,14 @@
             aria-expanded={emailOpen}
             aria-haspopup="menu"
             onclick={handleEmailToggle}
-            class="relative flex flex-row-reverse items-center justify-start h-9 w-12 hover:w-[110px] rounded-full border px-2 transition-all duration-500 ease-out overflow-hidden group cursor-pointer focus:outline-none
-                   {emailTextHovered ? 'bg-accent text-accent-foreground border-accent' : 'border-border/40 hover:border-highlight/50 bg-transparent text-muted-foreground'}"
+            class="relative flex flex-row-reverse items-center justify-start h-9 w-12 hover:w-[110px] rounded-full border border-border/40 hover:border-highlight/50 bg-transparent px-2 transition-all duration-500 ease-out overflow-hidden group cursor-pointer focus:outline-none
+                   has-[span:hover]:bg-accent has-[span:hover]:text-accent-foreground has-[span:hover]:border-accent"
           >
-            <div class="flex items-center shrink-0 transition-colors duration-300 {emailTextHovered ? 'text-accent-foreground' : 'text-muted-foreground group-hover:text-highlight'}">
+            <div class="flex items-center shrink-0 text-muted-foreground group-hover:text-highlight transition-colors duration-300 group-has-[span:hover]:text-accent-foreground">
               <MailIcon class="h-5 w-5" />
               <ChevronDownIcon class="h-3 w-3 ml-0.5" />
             </div>
-            <span 
-              onmouseenter={() => emailTextHovered = true}
-              onmouseleave={() => emailTextHovered = false}
-              class="font-mono text-xs font-bold tracking-[0.1em] mr-3 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 select-none {emailTextHovered ? 'text-accent-foreground' : 'text-muted-foreground'}"
-            >
+            <span class="font-mono text-xs font-bold tracking-widest mr-3 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 select-none text-muted-foreground hover:text-accent-foreground">
               Email
             </span>
           </button>
