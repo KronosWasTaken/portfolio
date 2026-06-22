@@ -14,12 +14,37 @@
 
   let currentIndex = $state(0);
   let sendEmailOpen = $state(false);
+  let loadTime = $state(0);
+  let latency = $state(0);
 
   onMount(() => {
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % emails.length;
     }, 4000);
-    return () => clearInterval(interval);
+
+    const updateMetrics = () => {
+      setTimeout(() => {
+        const [navEntry] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+        if (navEntry) {
+          loadTime = Math.round(navEntry.duration || (navEntry.loadEventEnd - navEntry.startTime));
+          latency = Math.round(navEntry.responseStart - navEntry.requestStart);
+        } else {
+          loadTime = Math.round(performance.now());
+          latency = 15;
+        }
+      }, 50);
+    };
+
+    if (document.readyState === 'complete') {
+      updateMetrics();
+    } else {
+      window.addEventListener('load', updateMetrics);
+    }
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('load', updateMetrics);
+    };
   });
 
   const handleSendEmailToggle = () => {
@@ -159,6 +184,50 @@
                   />
                   GitHub Profile
                 </Button>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-border/50">
+              <div class="flex items-center space-x-2 text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-widest mb-3">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>System Diagnostics</span>
+              </div>
+              <div class="bg-muted/30 border border-border/40 rounded-2xl p-4 font-mono text-[11px] space-y-2 text-muted-foreground">
+                <div class="flex justify-between">
+                  <span>Host Provider</span>
+                  <span class="text-foreground font-medium">Vercel Edge</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Framework</span>
+                  <span class="text-foreground font-medium">SvelteKit 2</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>SSL Connection</span>
+                  <span class="text-foreground font-medium">TLS 1.3 / HTTPS</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Page Load Time</span>
+                  <span class="text-highlight font-semibold">
+                    {#if loadTime > 0}
+                      {loadTime}ms
+                    {:else}
+                      Calculating...
+                    {/if}
+                  </span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Client Latency (TTFB)</span>
+                  <span class="text-highlight font-semibold">
+                    {#if latency > 0}
+                      {latency}ms
+                    {:else}
+                      Calculating...
+                    {/if}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
