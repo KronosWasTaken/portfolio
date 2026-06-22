@@ -14,7 +14,6 @@
 
   let currentIndex = $state(0);
   let sendEmailOpen = $state(false);
-  let getInTouchOpen = $state(false);
 
   onMount(() => {
     const interval = setInterval(() => {
@@ -28,12 +27,6 @@
   };
   const handleSendEmailClose = () => {
     sendEmailOpen = false;
-  };
-  const handleGetInTouchToggle = () => {
-    getInTouchOpen = !getInTouchOpen;
-  };
-  const handleGetInTouchClose = () => {
-    getInTouchOpen = false;
   };
 </script>
 
@@ -166,40 +159,6 @@
                   />
                   GitHub Profile
                 </Button>
-              </div>
-            </div>
-
-            <div class="pt-4">
-              <div class="relative" use:clickOutside={handleGetInTouchClose}>
-                <Button
-                  size="lg"
-                  class="w-full bg-highlight text-highlight-foreground hover:bg-highlight/90 rounded-full"
-                  aria-expanded={getInTouchOpen}
-                  aria-haspopup="menu"
-                  onclick={handleGetInTouchToggle}
-                >
-                  Get in Touch
-                  <ChevronDownIcon class="h-4 w-4 ml-2" />
-                </Button>
-                {#if getInTouchOpen}
-                  <div
-                    role="menu"
-                    class="absolute top-full left-0 z-50 mt-1 w-full rounded-md border bg-popover text-popover-foreground shadow-md p-1"
-                  >
-                    {#each emails as email}
-                      <a
-                        role="menuitem"
-                        href="mailto:{email.address}"
-                        class="flex items-center space-x-2 w-full rounded-sm px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                        onclick={handleGetInTouchClose}
-                        aria-label="Send email via {email.provider}"
-                      >
-                        <MailIcon class="h-4 w-4" />
-                        <span>{email.provider}</span>
-                      </a>
-                    {/each}
-                  </div>
-                {/if}
               </div>
             </div>
           </div>
