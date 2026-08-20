@@ -14,6 +14,7 @@
   import SvelteIcon from '~icons/simple-icons/svelte';
   import VercelIcon from '~icons/simple-icons/vercel';
   import ZustandIcon from '~icons/lucide/paw-print';
+  import UnoCSSIcon from '~icons/simple-icons/unocss';
 
   import PythonIcon from '~icons/simple-icons/python';
   import FastAPIIcon from '~icons/simple-icons/fastapi';
@@ -24,6 +25,7 @@
   import SQLiteIcon from '~icons/simple-icons/sqlite';
   import SupabaseIcon from '~icons/simple-icons/supabase';
   import SQLAlchemyIcon from '~icons/simple-icons/sqlalchemy';
+  import RedisIcon from '~icons/simple-icons/redis';
   import DatabaseIcon from '~icons/lucide/database';
 
   import LinuxIcon from '~icons/simple-icons/linux';
@@ -58,7 +60,8 @@
         { name: 'Electron', icon: ElectronIcon },
         { name: 'Capacitor', icon: CapacitorIcon },
         { name: 'SvelteKit / Svelte 5', icon: SvelteIcon },
-        { name: 'Zustand', icon: ZustandIcon }
+        { name: 'Zustand', icon: ZustandIcon },
+        { name: 'UnoCSS', icon: UnoCSSIcon }
       ]
     },
     {
@@ -74,6 +77,7 @@
         { name: 'SQLite', icon: SQLiteIcon },
         { name: 'Supabase', icon: SupabaseIcon },
         { name: 'SQLAlchemy', icon: SQLAlchemyIcon },
+        { name: 'Redis', icon: RedisIcon },
         { name: 'Alembic', icon: DatabaseIcon },
         { name: 'GORM', icon: DatabaseIcon }
       ]

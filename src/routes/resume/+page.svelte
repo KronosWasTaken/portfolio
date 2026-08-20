@@ -44,8 +44,8 @@
 
   const skills: Record<string, string[]> = {
     'Programming Languages': ['Python', 'Golang', 'Rust', 'Zig', 'JavaScript', 'TypeScript', 'C#'],
-    'Web Development': ['SvelteKit / Svelte 5', 'React', 'Tailwind CSS', 'Electron', 'FastAPI', 'Flask', 'Gin', 'Zustand'],
-    'Database & Cloud': ['PostgreSQL', 'Supabase', 'SQLAlchemy', 'Oracle Cloud', 'Vercel', 'Docker', 'FinOps', 'DevOps'],
+    'Web Development': ['SvelteKit / Svelte 5', 'React', 'Tailwind CSS', 'UnoCSS', 'Electron', 'FastAPI', 'Flask', 'Gin', 'Zustand'],
+    'Database & Cloud': ['PostgreSQL', 'Supabase', 'Redis', 'SQLAlchemy', 'Oracle Cloud', 'Vercel', 'Docker', 'FinOps', 'DevOps'],
     'Cybersecurity': ['Network Defense', 'Ethical Hacking', 'Cryptography', 'Endpoint Security', 'Cloud Security', 'Network Security', 'DevSecOps'],
     'Systems & Tools': ['Linux', 'Git', 'Tauri', 'Selenium']
   };
@@ -211,7 +211,7 @@
                     </div>
                     <div class="flex-1">
                       {#if exp.roles}
-                        <CardTitle class="text-xl text-highlight">{exp.roles[0].position}</CardTitle>
+                        <CardTitle class="text-xl group-hover:text-highlight transition-colors">{exp.roles[0].position}</CardTitle>
                         <p class="text-muted-foreground font-medium">{exp.company}</p>
                         <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
                           <div class="flex items-center text-xs text-muted-foreground whitespace-nowrap">

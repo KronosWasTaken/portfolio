@@ -69,7 +69,7 @@
                             
                             <div>
                               {#if exp.roles}
-                                <h3 class="text-xl font-bold text-highlight leading-tight">{exp.roles[0].position}</h3>
+                                <h3 class="text-xl font-bold group-hover:text-highlight transition-colors duration-300 leading-tight">{exp.roles[0].position}</h3>
                                 <div class="flex flex-wrap items-center gap-1.5 mt-2">
                                   <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
                                     <BuildingIcon class="h-4 w-4" />
