@@ -14,13 +14,23 @@
   import JuniperIcon from '~icons/simple-icons/junipernetworks';
   import CiscoIcon from '~icons/simple-icons/cisco';
   import FortinetIcon from '~icons/simple-icons/fortinet';
+  import RedisIcon from '~icons/simple-icons/redis';
   import ShieldIcon from '~icons/lucide/shield';
   import CalendarIcon from '~icons/lucide/calendar';
   import ExternalLinkIcon from '~icons/lucide/external-link';
 
   const certifications = [
-    { 
-      title: 'Certified in Cybersecurity (CC)', 
+    {
+      title: 'Redis Certified: Associate Software Operator',
+      issuer: 'Redis',
+      date: 'August 2026',
+      description: 'Certification covering Redis deployment, configuration, and operational management for production environments.',
+      credentialLink: 'https://university.redis.io/certificate/rkqezozwmzghip',
+      icon: RedisIcon,
+      featured: true
+    },
+    {
+      title: 'Certified in Cybersecurity (CC)',
       issuer: 'ISC2', 
       date: 'May 2026', 
       description: 'Foundational cybersecurity certification covering security principles, business continuity, disaster recovery, incident response, access control, and network security.', 

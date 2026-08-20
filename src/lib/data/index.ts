@@ -3,11 +3,17 @@ export type Email = {
   provider: string;
 };
 
+export type Role = {
+  position: string;
+  period: string;
+};
+
 export type Experience = {
   company: string;
   position: string;
   period: string;
   location: string;
+  roles?: Role[];
   achievements: string[];
   technologies: string[];
   logo: string;
@@ -41,6 +47,7 @@ import IconShield from '~icons/lucide/shield';
 import programizLogo from '$lib/assets/logos/programiz.jpeg';
 import neelgaiLogo from '$lib/assets/logos/neelgai.webp';
 import icsLogo from '$lib/assets/logos/ics-logo.webp';
+import weBlackSheepLogo from '$lib/assets/logos/weblacksheep.jpg';
 
 export const socialLinks = {
   github: 'https://github.com/KronosWasTaken',
@@ -49,16 +56,34 @@ export const socialLinks = {
 
 export const experiences: Experience[] = [
   {
-    company: 'Programiz',
-    position: 'Cybersecurity Trainee',
-    period: 'April 2026 - Present',
-    location: 'Nepal',
+    company: 'WeBlackSheep',
+    position: 'DevSecOps Consultant',
+    period: 'Aug 2026 - Present',
+    location: 'Kathmandu, Nepal · Remote',
     achievements: [
-      'Managing granular access control levels across Production, Staging, and Dev environments to ensure security compliance.',
-      'Optimizing DevOps workflows and resource transparency via cloud API integrations and DevContainer orchestration.',
-      'Hardening system security through rigorous Access Management, Software Inventory Management (SBOM), and the implementation of organizational Compliance frameworks.'
+      'Advising on network services architecture and server administration practices as a part-time DevSecOps consultant.',
+      'Supporting secure infrastructure and deployment workflows across client environments.'
     ],
-    technologies: ['Cybersecurity', 'DevSecOps', 'DevOps', 'Network Security', 'Cloud Security', 'FinOps'],
+    technologies: ['Network Services', 'Server Administration', 'DevSecOps', 'Cloud Security', 'Infrastructure', 'Consulting'],
+    logo: weBlackSheepLogo,
+    current: true
+  },
+  {
+    company: 'Programiz',
+    position: 'DevSecOps Associate',
+    period: 'April 2026 - Present',
+    location: 'Kathmandu, Nepal',
+    roles: [
+      { position: 'DevSecOps Associate', period: 'Aug 2026 - Present · 1 mo' },
+      { position: 'Cybersecurity Trainee', period: 'Apr 2026 - Aug 2026 · 5 mos' }
+    ],
+    achievements: [
+      'Managed granular access control and security compliance (SBOM, org frameworks) across Production, Staging, and Dev environments.',
+      'Optimized DevOps workflows via cloud API integrations and container orchestration, including a full-scale infrastructure consolidation project.',
+      'Diagnosed and resolved production incidents through root-cause analysis using real system metrics, not guesswork.',
+      'Triaged security vulnerabilities and helped run the organization\'s bug bounty and disclosure program.'
+    ],
+    technologies: ['Cybersecurity Incident Response', 'Cybersecurity Incident Management', 'DevSecOps', 'DevOps', 'Network Security', 'Cloud Security', 'FinOps'],
     logo: programizLogo,
     current: true
   },

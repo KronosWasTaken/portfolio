@@ -51,6 +51,7 @@
   };
 
   const certifications = [
+    { name: 'Redis Certified: Associate Software Operator', issuer: 'Redis', date: 'August 2026', link: 'https://university.redis.io/certificate/rkqezozwmzghip' },
     { name: 'Certified in Cybersecurity (CC)', issuer: 'ISC2', date: 'May 2026', link: 'https://linkedin.com/in/aaditya-raj-390113324' },
     { name: 'Ethical Hacker', issuer: 'Cisco Networking Academy', date: 'May 2026', link: 'https://www.credly.com/badges/70bc2207-39e7-4363-8871-4c2bdc8ea14c' },
     { name: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional', issuer: 'Oracle', date: 'September 2025', link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=AAD114450C5C2A72ABF108B067E8420E9C80CB8C985ACB75FD8103F137B49A12' },
@@ -86,7 +87,7 @@
       <div use:reveal class="text-center mb-12">
         <h1 class="text-4xl font-bold mb-4">Aaditya Raj</h1>
         <p class="text-xl text-muted-foreground mb-6">
-          Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience in
+          Security-focused CSIT student and DevSecOps Associate at Programiz with hands-on experience in
           network defense, Python scripting, and intrusion detection systems
         </p>
 
@@ -149,7 +150,7 @@
           <CardHeader><CardTitle>Career Objective</CardTitle></CardHeader>
           <CardContent>
             <p class="text-muted-foreground leading-relaxed">
-              Security-focused CSIT student and Cybersecurity Trainee at Programiz with hands-on experience
+              Security-focused CSIT student and DevSecOps Associate at Programiz with hands-on experience
               in network defense, Python scripting, and intrusion detection systems. Eager to contribute
               to a cybersecurity team where I can apply my training and continue growing as a blue team analyst.
             </p>
@@ -208,17 +209,43 @@
                     <div class="w-10 h-10 mt-1 bg-white rounded-lg flex items-center justify-center overflow-hidden shrink-0 border border-border/50 shadow-sm">
                       <img src={exp.logo} alt="{exp.company} logo" loading="lazy" decoding="async" width="40" height="40" class="w-full h-full object-contain p-1.5" />
                     </div>
-                    <div>
-                      <CardTitle class="text-xl group-hover:text-highlight transition-colors">{exp.position}</CardTitle>
-                      <p class="text-muted-foreground font-medium">{exp.company}</p>
-                      <div class="flex items-center gap-4 mt-1">
-                        <div class="flex items-center text-xs text-muted-foreground">
-                          <CalendarIcon class="h-3 w-3 mr-1" />{exp.period}
+                    <div class="flex-1">
+                      {#if exp.roles}
+                        <CardTitle class="text-xl text-highlight">{exp.roles[0].position}</CardTitle>
+                        <p class="text-muted-foreground font-medium">{exp.company}</p>
+                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
+                          <div class="flex items-center text-xs text-muted-foreground whitespace-nowrap">
+                            <CalendarIcon class="h-3 w-3 mr-1" />{exp.roles[0].period}
+                          </div>
+                          <div class="flex items-center text-xs text-muted-foreground">
+                            <MapPinIcon class="h-3 w-3 mr-1" />{exp.location}
+                          </div>
                         </div>
-                        <div class="flex items-center text-xs text-muted-foreground">
-                          <MapPinIcon class="h-3 w-3 mr-1" />{exp.location}
+                        {#if exp.roles.length > 1}
+                          <div class="mt-2.5 space-y-1.5 border-l border-border pl-3.5">
+                            {#each exp.roles.slice(1) as role}
+                              <div class="relative">
+                                <div class="absolute -left-[17px] top-1 w-1.5 h-1.5 rounded-full bg-border"></div>
+                                <p class="text-xs text-muted-foreground">{role.position}</p>
+                                <div class="flex items-center text-xs text-muted-foreground/70 mt-0.5 whitespace-nowrap">
+                                  <CalendarIcon class="h-3 w-3 mr-1" />{role.period}
+                                </div>
+                              </div>
+                            {/each}
+                          </div>
+                        {/if}
+                      {:else}
+                        <CardTitle class="text-xl group-hover:text-highlight transition-colors">{exp.position}</CardTitle>
+                        <p class="text-muted-foreground font-medium">{exp.company}</p>
+                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
+                          <div class="flex items-center text-xs text-muted-foreground whitespace-nowrap">
+                            <CalendarIcon class="h-3 w-3 mr-1" />{exp.period}
+                          </div>
+                          <div class="flex items-center text-xs text-muted-foreground">
+                            <MapPinIcon class="h-3 w-3 mr-1" />{exp.location}
+                          </div>
                         </div>
-                      </div>
+                      {/if}
                     </div>
                   </div>
                 </CardHeader>

@@ -106,7 +106,7 @@
           class="text-base sm:text-lg md:text-xl text-foreground max-w-2xl lg:mx-0 mx-auto mb-10 leading-relaxed animate-fade-up font-medium"
           style="animation-delay: 200ms;"
         >
-          Security-focused CSIT student and <span class="text-highlight font-bold">Cybersecurity Trainee</span> at Programiz. 
+          Security-focused CSIT student and <span class="text-highlight font-bold">DevSecOps Associate</span> at Programiz. 
           Designing resilient digital infrastructures with a focus on threat intelligence and secure automation.
         </p>
 

@@ -68,18 +68,47 @@
                             </div>
                             
                             <div>
-                              <h3 class="text-xl font-bold group-hover:text-highlight transition-colors duration-300 leading-tight">{exp.position}</h3>
-                              <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 mt-2">
-                                <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
-                                  <BuildingIcon class="h-4 w-4" />
-                                  {exp.company}
+                              {#if exp.roles}
+                                <h3 class="text-xl font-bold text-highlight leading-tight">{exp.roles[0].position}</h3>
+                                <div class="flex flex-wrap items-center gap-1.5 mt-2">
+                                  <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
+                                    <BuildingIcon class="h-4 w-4" />
+                                    {exp.company}
+                                  </div>
+                                  <div class="flex items-center gap-1.5 text-sm text-muted-foreground whitespace-nowrap">
+                                    <span class="hidden sm:inline-block w-1 h-1 rounded-full bg-muted-foreground/50"></span>
+                                    <CalendarIcon class="h-4 w-4" />
+                                    {exp.roles[0].period}
+                                  </div>
                                 </div>
-                                <span class="hidden sm:block w-1 h-1 rounded-full bg-muted-foreground/50"></span>
-                                <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
-                                  <CalendarIcon class="h-4 w-4" />
-                                  {exp.period}
+                                {#if exp.roles.length > 1}
+                                  <div class="mt-2.5 space-y-1.5 border-l border-border pl-3.5">
+                                    {#each exp.roles.slice(1) as role}
+                                      <div class="relative">
+                                        <div class="absolute -left-[17px] top-1 w-1.5 h-1.5 rounded-full bg-muted-foreground/40"></div>
+                                        <p class="text-xs font-medium text-muted-foreground">{role.position}</p>
+                                        <div class="flex items-center gap-1.5 text-xs text-muted-foreground/70 mt-0.5 whitespace-nowrap">
+                                          <CalendarIcon class="h-3 w-3" />
+                                          {role.period}
+                                        </div>
+                                      </div>
+                                    {/each}
+                                  </div>
+                                {/if}
+                              {:else}
+                                <h3 class="text-xl font-bold group-hover:text-highlight transition-colors duration-300 leading-tight">{exp.position}</h3>
+                                <div class="flex flex-wrap items-center gap-1.5 mt-2">
+                                  <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
+                                    <BuildingIcon class="h-4 w-4" />
+                                    {exp.company}
+                                  </div>
+                                  <div class="flex items-center gap-1.5 text-sm text-muted-foreground whitespace-nowrap">
+                                    <span class="hidden sm:inline-block w-1 h-1 rounded-full bg-muted-foreground/50"></span>
+                                    <CalendarIcon class="h-4 w-4" />
+                                    {exp.period}
+                                  </div>
                                 </div>
-                              </div>
+                              {/if}
                             </div>
                           </div>
                           
