@@ -21,11 +21,11 @@
 
   const certifications = [
     {
-      title: 'Redis Certified: Associate Software Operator',
+      title: 'Redis Associate Software Operator',
       issuer: 'Redis',
       date: 'August 2026',
       description: 'Certification covering Redis deployment, configuration, and operational management for production environments.',
-      credentialLink: 'https://university.redis.io/certificate/rkqezozwmzghip',
+      credentialLink: 'https://credentials.redis.io/07dbdf25-8a24-4c6f-ad9e-6ce790259c64#acc.RmxJBXQK',
       icon: RedisIcon,
       featured: true
     },

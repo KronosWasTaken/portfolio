@@ -51,7 +51,7 @@
   };
 
   const certifications = [
-    { name: 'Redis Certified: Associate Software Operator', issuer: 'Redis', date: 'August 2026', link: 'https://university.redis.io/certificate/rkqezozwmzghip' },
+    { name: 'Redis Associate Software Operator', issuer: 'Redis', date: 'August 2026', link: 'https://credentials.redis.io/07dbdf25-8a24-4c6f-ad9e-6ce790259c64#acc.RmxJBXQK' },
     { name: 'Certified in Cybersecurity (CC)', issuer: 'ISC2', date: 'May 2026', link: 'https://linkedin.com/in/aaditya-raj-390113324' },
     { name: 'Ethical Hacker', issuer: 'Cisco Networking Academy', date: 'May 2026', link: 'https://www.credly.com/badges/70bc2207-39e7-4363-8871-4c2bdc8ea14c' },
     { name: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional', issuer: 'Oracle', date: 'September 2025', link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=AAD114450C5C2A72ABF108B067E8420E9C80CB8C985ACB75FD8103F137B49A12' },

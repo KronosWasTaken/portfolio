@@ -1,16 +1,54 @@
-const observerMap = new Map();
+const observerMap = new Map<number, IntersectionObserver>();
+const pending = new Set<HTMLElement>();
+
+function revealNode(node: HTMLElement) {
+  node.style.opacity = '1';
+  node.style.transform = 'translateY(0)';
+  pending.delete(node);
+}
+
+// Safety net: IntersectionObserver only fires when a node's intersection
+// state *changes*. A fast/instant scroll (scrollbar drag, scrollbar-track
+// click, anchor-link jump) can move a node from "below the viewport"
+// straight to "above the viewport" in a single frame, so it never crosses
+// the threshold and the observer never fires - leaving it permanently
+// hidden. Re-check pending nodes directly against the viewport on scroll.
+function checkPending() {
+  for (const node of pending) {
+    const rect = node.getBoundingClientRect();
+    const alreadyPassed = rect.top < 0 || rect.bottom < 0;
+    const inView = rect.top < window.innerHeight;
+    if (alreadyPassed || inView) revealNode(node);
+  }
+}
+
+let scrollScheduled = false;
+function scheduleCheck() {
+  if (scrollScheduled) return;
+  scrollScheduled = true;
+  requestAnimationFrame(() => {
+    scrollScheduled = false;
+    checkPending();
+  });
+}
+
+let listenersAttached = false;
+function ensureListeners() {
+  if (listenersAttached) return;
+  listenersAttached = true;
+  window.addEventListener('scroll', scheduleCheck, { passive: true });
+  window.addEventListener('resize', scheduleCheck, { passive: true });
+}
 
 function getObserver(threshold: number) {
-  if (observerMap.has(threshold)) return observerMap.get(threshold);
+  if (observerMap.has(threshold)) return observerMap.get(threshold)!;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const node = entry.target as HTMLElement;
-          const { duration, delay } = node.dataset;
-          node.style.opacity = '1';
-          node.style.transform = 'translateY(0)';
+          revealNode(node);
           observer.unobserve(node);
         }
       });
@@ -40,10 +78,14 @@ export function reveal(
 
   const observer = getObserver(0.1);
   observer.observe(node);
+  pending.add(node);
+  ensureListeners();
+  scheduleCheck();
 
   return {
     destroy() {
       observer.unobserve(node);
+      pending.delete(node);
     }
   };
 }
