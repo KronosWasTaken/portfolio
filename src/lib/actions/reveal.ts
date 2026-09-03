@@ -7,12 +7,8 @@ function revealNode(node: HTMLElement) {
   pending.delete(node);
 }
 
-// Safety net: IntersectionObserver only fires when a node's intersection
-// state *changes*. A fast/instant scroll (scrollbar drag, scrollbar-track
-// click, anchor-link jump) can move a node from "below the viewport"
-// straight to "above the viewport" in a single frame, so it never crosses
-// the threshold and the observer never fires - leaving it permanently
-// hidden. Re-check pending nodes directly against the viewport on scroll.
+// A fast scroll can jump a node from below the viewport to above it in one
+// frame, so it never crosses the threshold and the observer never fires.
 function checkPending() {
   for (const node of pending) {
     const rect = node.getBoundingClientRect();
@@ -68,23 +64,34 @@ export function reveal(
     return { destroy() {} };
   }
 
+  let destroyed = false;
+  let observer: IntersectionObserver | null = null;
+
   requestAnimationFrame(() => {
+    if (destroyed) return;
+
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight) return;
+
     node.style.opacity = '0';
     node.style.transform = `translateY(${distance}px)`;
     node.style.transition = `opacity ${duration}ms ease ${delay}ms, transform ${duration}ms ease ${delay}ms`;
     node.dataset.duration = duration.toString();
     node.dataset.delay = delay.toString();
-  });
 
-  const observer = getObserver(0.1);
-  observer.observe(node);
-  pending.add(node);
-  ensureListeners();
-  scheduleCheck();
+    // Track only after hiding, or a reveal that lands first gets stomped
+    // back to hidden with nothing left watching to undo it.
+    observer = getObserver(0.1);
+    observer.observe(node);
+    pending.add(node);
+    ensureListeners();
+    scheduleCheck();
+  });
 
   return {
     destroy() {
-      observer.unobserve(node);
+      destroyed = true;
+      observer?.unobserve(node);
       pending.delete(node);
     }
   };

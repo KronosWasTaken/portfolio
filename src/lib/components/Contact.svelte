@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { page } from "$app/state";
   import { fly } from "svelte/transition";
   import Card from "./ui/card.svelte";
   import CardContent from "./ui/card-content.svelte";
@@ -302,7 +301,7 @@
           class="h-full relative transition-all duration-300 ease-out transform-3d"
         >
           <a 
-            href={page.data.cv.href}
+            href={__CV_HREF__}
             download="Aaditya_Raj_CV.pdf"
             class="h-full rounded-2xl border border-border bg-card/85 backdrop-blur-xl transition-all duration-500 hover:border-highlight/60 hover:bg-card/95 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between"
           >
@@ -325,7 +324,7 @@
               <div class="flex justify-between items-end mt-4">
                 <div>
                   <span class="font-semibold text-xs sm:text-sm text-foreground">Aaditya_Raj_CV.pdf</span>
-                  <p class="text-xs text-muted-foreground mt-0.5">{page.data.cv.sizeLabel}</p>
+                  <p class="text-xs text-muted-foreground mt-0.5">{__CV_SIZE__}</p>
                 </div>
                 <div class="p-2 rounded-xl bg-highlight/10 text-highlight border border-highlight/20 transition-all duration-300 group-hover:bg-highlight group-hover:text-highlight-foreground">
                   <DownloadIcon class="h-4 w-4" />
