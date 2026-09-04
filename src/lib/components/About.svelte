@@ -58,7 +58,7 @@
             class="h-full relative transition-all duration-300 ease-out transform-3d"
           >
             <div
-              class="h-full rounded-2xl border border-border bg-card/80 backdrop-blur-xl p-7 overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/90 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]"
+              class="relative h-full rounded-2xl border border-border bg-card/80 p-7 overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/90 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]"
             >
               <div
                 class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--highlight)/0.03)_1px,transparent_1px)] bg-size-[20px_20px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -92,7 +92,7 @@
                 <div class="flex items-start justify-between mb-6">
                   <div class="relative">
                     <div
-                      class="relative w-12 h-12 bg-linear-to-br from-highlight/20 to-highlight/5 rounded-xl flex items-center justify-center border border-highlight/30 group-hover:border-highlight/60 transition-all duration-500 shadow-inner backdrop-blur-sm"
+                      class="relative w-12 h-12 bg-linear-to-br from-highlight/20 to-highlight/5 rounded-xl flex items-center justify-center border border-highlight/30 group-hover:border-highlight/60 transition-all duration-500 shadow-inner"
                     >
                       <item.icon
                         class="h-6 w-6 text-highlight group-hover:scale-110 transition-transform duration-500"
@@ -162,7 +162,7 @@
         class="lg:col-span-4 group relative mt-6"
       >
         <div
-          class="relative rounded-3xl border border-border bg-linear-to-br from-card/80 via-card/70 to-highlight/5 backdrop-blur-2xl p-8 lg:p-12 overflow-hidden transition-all duration-700 hover:border-highlight/30 hover:shadow-[0_30px_70px_-30px_rgba(0,0,0,0.6),0_0_50px_-20px_hsl(var(--highlight)/0.2)]"
+          class="relative rounded-3xl border border-border bg-linear-to-br from-card/80 via-card/70 to-highlight/5 p-8 lg:p-12 overflow-hidden transition-all duration-700 hover:border-highlight/30 hover:shadow-[0_30px_70px_-30px_rgba(0,0,0,0.6),0_0_50px_-20px_hsl(var(--highlight)/0.2)]"
         >
           <!-- Bold Grid Background for Expertise -->
           <div
@@ -178,7 +178,7 @@
                 class="absolute -inset-10 bg-highlight/30 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
               ></div>
               <div
-                class="w-24 h-24 bg-linear-to-br from-highlight/35 to-highlight/15 rounded-2xl flex items-center justify-center border border-highlight/50 shadow-2xl relative backdrop-blur-sm"
+                class="w-24 h-24 bg-linear-to-br from-highlight/35 to-highlight/15 rounded-2xl flex items-center justify-center border border-highlight/50 shadow-2xl relative"
               >
                 <BrainIcon
                   class="h-10 w-10 text-highlight group-hover:scale-110 transition-transform duration-700"

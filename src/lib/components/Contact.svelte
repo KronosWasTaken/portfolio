@@ -76,7 +76,7 @@
           use:tilt={{ max: 5, perspective: 1500, scale: 1.01 }}
           class="h-full relative transition-all duration-300 ease-out transform-3d"
         >
-          <div class="h-full rounded-2xl border border-border bg-card/85 backdrop-blur-xl transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/95 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.3)] relative p-8 flex flex-col justify-between">
+          <div class="h-full rounded-2xl border border-border bg-card/85 transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/95 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.3)] relative p-8 flex flex-col justify-between">
             <!-- Background effects -->
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">
               <!-- Scanning Line Effect -->
@@ -119,7 +119,7 @@
           use:tilt={{ max: 10, perspective: 1500, scale: 1.02 }}
           class="h-full relative transition-all duration-300 ease-out transform-3d"
         >
-          <div class="h-full rounded-2xl border border-border bg-card/85 backdrop-blur-xl transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/95 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between">
+          <div class="h-full rounded-2xl border border-border bg-card/85 transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/95 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between">
             <!-- Background effects -->
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">
               <!-- Scanning Line Effect -->
@@ -167,7 +167,7 @@
                 {#if sendEmailOpen}
                   <div
                     role="menu"
-                    class="absolute top-full left-0 z-50 mt-2 w-full rounded-xl border border-border bg-card/95 backdrop-blur-xl text-popover-foreground shadow-xl p-1 font-mono text-xs"
+                    class="absolute top-full left-0 z-50 mt-2 w-full rounded-xl border border-border bg-card/95 text-popover-foreground shadow-xl p-1 font-mono text-xs"
                   >
                     {#each emails as email}
                       <a
@@ -198,7 +198,7 @@
             href={socialLinks.github} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="h-full rounded-2xl border border-border bg-card/85 backdrop-blur-xl transition-all duration-500 hover:border-highlight/60 hover:bg-card/95 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between"
+            class="h-full rounded-2xl border border-border bg-card/85 transition-all duration-500 hover:border-highlight/60 hover:bg-card/95 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between"
           >
             <!-- Background effects -->
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">
@@ -235,7 +235,7 @@
             href={socialLinks.linkedin} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="h-full rounded-2xl border border-border bg-card/85 backdrop-blur-xl transition-all duration-500 hover:border-highlight/60 hover:bg-card/95 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between"
+            class="h-full rounded-2xl border border-border bg-card/85 transition-all duration-500 hover:border-highlight/60 hover:bg-card/95 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between"
           >
             <!-- Background effects -->
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">
@@ -268,7 +268,7 @@
           use:tilt={{ max: 10, perspective: 1500, scale: 1.02 }}
           class="h-full relative transition-all duration-300 ease-out transform-3d"
         >
-          <div class="h-full rounded-2xl border border-border bg-card/85 backdrop-blur-xl transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/95 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between">
+          <div class="h-full rounded-2xl border border-border bg-card/85 transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/95 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between">
             <!-- Background effects -->
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">
               <!-- Scanning Line Effect -->
@@ -303,7 +303,7 @@
           <a 
             href={__CV_HREF__}
             download="Aaditya_Raj_CV.pdf"
-            class="h-full rounded-2xl border border-border bg-card/85 backdrop-blur-xl transition-all duration-500 hover:border-highlight/60 hover:bg-card/95 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between"
+            class="h-full rounded-2xl border border-border bg-card/85 transition-all duration-500 hover:border-highlight/60 hover:bg-card/95 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] relative p-6 flex flex-col justify-between"
           >
             <!-- Background effects -->
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">

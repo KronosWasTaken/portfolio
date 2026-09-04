@@ -115,7 +115,7 @@
             <CalendarIcon height="20" class="mr-2" />
             Get in Touch
           </Button>
-          <Button variant="outline" size="lg" class="rounded-2xl px-10 h-14 text-base font-bold border-border/50 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all hover:scale-105 active:scale-95" onclick={() => scrollTo('projects')}>
+          <Button variant="outline" size="lg" class="rounded-2xl px-10 h-14 text-base font-bold border-border/50 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all hover:scale-105 active:scale-95" onclick={() => scrollTo('projects')}>
             View Projects
             <ArrowRightIcon height="20" class="ml-2" />
           </Button>

@@ -39,7 +39,7 @@
                     use:tilt={{ max: 8, perspective: 1500, scale: 1.01 }}
                     class="relative transition-all duration-300 ease-out transform-3d"
                   >
-                    <div class="rounded-2xl border border-border bg-card/80 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/90 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]">
+                    <div class="relative rounded-2xl border border-border bg-card/80 overflow-hidden transition-all duration-500 group-hover:border-highlight/60 group-hover:bg-card/90 group-hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6),0_0_30px_-15px_hsl(var(--highlight)/0.4)]">
                       
                       <!-- Scanning Line Effect -->
                       <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -55,7 +55,7 @@
                             <!-- Logo Container -->
                             <div class="relative group/logo">
                               <div class="absolute -inset-2 bg-highlight/20 rounded-xl blur-md opacity-0 group-hover/logo:opacity-100 transition-opacity duration-500"></div>
-                              <div class="relative w-14 h-14 bg-white rounded-xl flex items-center justify-center overflow-hidden border border-border/50 shadow-inner p-2.5 backdrop-blur-sm">
+                              <div class="relative w-14 h-14 bg-white rounded-xl flex items-center justify-center overflow-hidden border border-border/50 shadow-inner p-2.5">
                                 <img
                                   src={exp.logo}
                                   alt="{exp.company} logo"
